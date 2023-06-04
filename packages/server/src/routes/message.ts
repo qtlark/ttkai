@@ -49,9 +49,10 @@ async function chatGPT(ctx) {
     
 
     try {
-        return res.data.choices[0].message.content.trim().replaceAll('\n', '<br>') ;
+        return res.data.choices[0].message.content.trim().replaceAll('\n', '<br>');
     } catch (err) {
         assert(false, '屑CloseAI的数据解析异常');
+        console.log(err);
     }
 
     return [];
