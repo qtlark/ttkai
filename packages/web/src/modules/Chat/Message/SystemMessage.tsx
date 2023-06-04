@@ -14,7 +14,7 @@ function SystemMessage(props: SystemMessageProps) {
                 {username}
             </span>
             &nbsp;
-            {message}
+            dangerouslySetInnerHTML={{ __html: message }}
         </div>
     );
 }
