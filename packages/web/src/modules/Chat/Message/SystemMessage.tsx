@@ -9,12 +9,11 @@ interface SystemMessageProps {
 function SystemMessage(props: SystemMessageProps) {
     const { message, username } = props;
     return (
-        <div className="system">
+        <div className="system" dangerouslySetInnerHTML={{ __html: message }}>
             <span style={{ color: getPerRandomColor(username) }}>
                 {username}
             </span>
             &nbsp;
-            dangerouslySetInnerHTML={{ __html: message }}
         </div>
     );
 }
