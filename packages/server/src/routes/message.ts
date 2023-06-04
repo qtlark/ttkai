@@ -1,9 +1,11 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
+import axios from 'axios';
 import assert, { AssertionError } from 'assert';
 import { Types } from '@fiora/database/mongoose';
 import { Expo, ExpoPushErrorTicket } from 'expo-server-sdk';
 
+import config from '@fiora/config/server';
 import xss from '@fiora/utils/xss';
 import logger from '@fiora/utils/logger';
 import User, { UserDocument } from '@fiora/database/mongoose/models/user';
@@ -25,6 +27,37 @@ import {
     Redis,
 } from '@fiora/database/redis/initRedis';
 import client from '../../../config/client';
+
+
+
+
+
+async function chatGPT(ctx) {
+    const res = await axios({
+        method: 'post',
+        url: 'https://api.openai.com/v1/chat/completions',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer "+ config.chatGPTtoken
+        },
+        data: {
+            "model": "gpt-3.5-turbo",
+            "messages": [{"role": "user", "content": ctx.trim()}]
+        }
+    });
+    assert(res.status === 200, 'ChatGPT出错');
+    
+
+    try {
+        return res.data.choices[0].message.content.trim() ;
+    } catch (err) {
+        assert(false, '屑CloseAI的数据解析异常');
+    }
+
+    return [];
+}
+
+
 
 const { isValid } = Types.ObjectId;
 
@@ -118,6 +151,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         assert(messageContent.length <= 2048, '消息长度过长');
 
         const rollRegex = /^-roll( ([0-9]*))?$/;
+        const gptRegex  = /^-gpt( (.*))?$/;
         if (rollRegex.test(messageContent)) {
             const regexResult = rollRegex.exec(messageContent);
             if (regexResult) {
@@ -139,7 +173,22 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 command: 'rps',
                 value: RPS[Math.floor(Math.random() * RPS.length)],
             });
-        }
+        } else if (gptRegex.test(messageContent)) {
+            const regexResult = gptRegex.exec(messageContent)[1];
+            if (regexResult) {
+                type = 'system';
+                const ansqq = await chatGPT(regexResult.trim());
+                if (ansqq)
+                {
+                    messageContent = JSON.stringify({
+                        command: 'gpt',
+                        ask: regexResult,
+                        answer: ansqq,
+                    });
+                }
+            }
+
+        };
         messageContent = xss(messageContent);
     } else if (type === 'file') {
         const file: { size: number } = JSON.parse(content);

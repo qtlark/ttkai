@@ -33,6 +33,10 @@ function convertSystemMessage(message: any) {
                 message.content = `使出了 ${content.value}`;
                 break;
             }
+            case 'gpt': {
+                message.content = `:「${content.ask}」#auqa#ChatGPT:#font${content.answer}`;
+                break;
+            }
             default: {
                 message.content = '不支持的指令';
             }
@@ -53,6 +57,8 @@ function convertMessageHtml(message: any) {
         message.content = message.content
             .replace('<', '≺')
             .replace('>', '≻')
+            .replace('aqua#', '<font color=aqua>')
+            .replace('#font', '</font>')
             .replace('#', '<br>');
     }
     return message;
