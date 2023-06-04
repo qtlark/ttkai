@@ -68,7 +68,7 @@ function convertSystemMessage(message: Message) {
  * @param {Object} message 消息
  */
 function convertMessageHtml(message: Message) {
-    if (message.type) {
+    if (message.type === 'text') {
         message.content = message.content
             .replace('<', '≺')
             .replace('>', '≻')
