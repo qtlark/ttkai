@@ -181,7 +181,7 @@ socket.on('message', async (message: any) => {
             title,
             message.from.avatar,
             message.type === 'text'
-                ? message.content.replace(/&lt;/g, '≺').replace(/&gt;/g, '≻')
+                ? message.content.replace('<', '≺').replace('>', '≻')
                 : `[${message.type}]`,
             Math.random().toString(),
         );
