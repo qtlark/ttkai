@@ -73,7 +73,8 @@ function convertMessageHtml(message: Message) {
             .replace('<', '≺')
             .replace('>', '≻')
             .replace('aqua#', '<font color=aqua>')
-            .replace('#font', '</font>')
+            .replace('red#' , '<font color=red>')
+            .replace('#ft', '</font>')
             .replace('#', '<br>');
     }
     return message;
