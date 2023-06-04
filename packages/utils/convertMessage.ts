@@ -34,7 +34,7 @@ function convertSystemMessage(message: any) {
                 break;
             }
             case 'gpt': {
-                message.content = `:「${content.ask}」<hr><font color=OrangeRed>ChatGPT：</font>${content.answer}`;
+                message.content = `:「${content.ask}」<hr><font color=OrangeRed>ChatGPT：</font>${content.answer.replaceAll('\n','<br>')}`;
                 break;
             }
             default: {
@@ -53,13 +53,14 @@ function convertSystemMessage(message: any) {
 }
 
 function convertMessageHtml(message: any) {
-    if (message.type === 'text') {
+    if (message.type) {
         message.content = message.content
-            .replaceAll('<', '≺')
-            .replaceAll('>', '≻')
-            .replaceAll('aqua#', '<font color=aqua>')
-            .replaceAll('#font', '</font>')
-            .replaceAll('#', '<br>');
+            .replace('<', '≺')
+            .replace('>', '≻')
+            .replace('aqua#', '<font color=aqua>')
+            .replace('red#' , '<font color=red>')
+            .replace('#ft', '</font>')
+            .replace('#', '<br>');
     }
     return message;
 }
