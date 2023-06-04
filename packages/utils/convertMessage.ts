@@ -55,11 +55,11 @@ function convertSystemMessage(message: any) {
 function convertMessageHtml(message: any) {
     if (message.type === 'text') {
         message.content = message.content
-            .replace('<', '≺')
-            .replace('>', '≻')
-            .replace('aqua#', '<font color=aqua>')
-            .replace('#font', '</font>')
-            .replace('#', '<br>');
+            .replaceAll('<', '≺')
+            .replaceAll('>', '≻')
+            .replaceAll('aqua#', '<font color=aqua>')
+            .replaceAll('#font', '</font>')
+            .replaceAll('#', '<br>');
     }
     return message;
 }
