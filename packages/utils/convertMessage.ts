@@ -53,7 +53,7 @@ function convertSystemMessage(message: any) {
 }
 
 function convertMessageHtml(message: any) {
-    if (message.type) {
+    if (message.type === 'text') {
         message.content = message.content
             .replace('<', '≺')
             .replace('>', '≻')
