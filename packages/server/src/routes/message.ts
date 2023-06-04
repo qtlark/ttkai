@@ -45,7 +45,7 @@ async function chatGPT(ctx) {
             "messages": [{"role": "user", "content": ctx.trim()}]
         }
     });
-    assert(res.status === 200, 'ChatGPT出错');
+    assert(res.status === 200, '未配置token或ChatGPT服务端错误');
     
 
     try {
