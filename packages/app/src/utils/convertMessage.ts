@@ -74,6 +74,6 @@ function convertMessageHtml(message: Message) {
 
 export default function convertMessage(message: Message) {
     convertSystemMessage(message);
-    convertMessageHtml(message);
+    //convertMessageHtml(message);
     return message;
 }
