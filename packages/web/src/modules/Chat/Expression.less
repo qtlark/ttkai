@@ -4,6 +4,9 @@
     height: 100%;
     
     :global {
+        .rc-tabs-tab {
+            margin-right: 10px;
+        }
         .rc-tabs {
             height: 100%;
             display: flex;
@@ -103,5 +106,18 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+    }
+}
+
+.disImage {
+    height: 150px;
+    width: 100%;
+
+    & > img {
+        max-width: 400px;
+        max-height: 150px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
     }
 }

@@ -28,6 +28,22 @@ function Expression(props: ExpressionProps) {
     const [searchLoading, toggleSearchLoading] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
 
+    
+    //判断图片是否存在
+    function validateImage(imgurl: string) {
+        return new Promise(function(resolve, reject) {
+            var ImgObj = new Image(); //判断图片是否存在
+            ImgObj.src = imgurl;
+            ImgObj.onload = function(res) {
+                resolve(res);
+            }
+            ImgObj.onerror = function(err) {
+                reject(err)
+            }
+        })
+    }
+
+
     async function handleSearchExpression() {
         if (keywords) {
             toggleSearchLoading(true);
@@ -40,6 +56,21 @@ function Expression(props: ExpressionProps) {
                     Message.info('没有相关表情, 换个关键字试试吧');
                 }
             }
+            toggleSearchLoading(false);
+        }
+    }
+
+    async function handleDisExpression() {
+        if (keywords) {
+            toggleSearchLoading(true);
+            setSearchResults([]);
+            const result = [{"image":keywords,"width":90,"height":90}];
+
+            validateImage(keywords).then(()=>{
+                setSearchResults(result);
+            }).catch(()=>{
+                Message.info('无法加载指定链接中的图片');
+            })
             toggleSearchLoading(false);
         }
     }
@@ -120,6 +151,49 @@ function Expression(props: ExpressionProps) {
         </div>
     );
 
+    const renderOuterExpression = (
+        <div className={Style.searchExpression}>
+            <div className={Style.searchExpressionInputBlock}>
+                <Input
+                    className={Style.searchExpressionInput}
+                    value={keywords}
+                    onChange={setKeywords}
+                    onEnter={handleDisExpression}
+                />
+                <Button
+                    className={Style.searchExpressionButton}
+                    onClick={handleDisExpression}
+                >
+                    预览
+                </Button>
+            </div>
+            <div
+                className={`${Style.loading} ${
+                    searchLoading ? 'show' : 'hide'
+                }`}
+            >
+                <Loading
+                    type="spinningBubbles"
+                    color="#4A90E2"
+                    height={100}
+                    width={100}
+                />
+            </div>
+            <div className={Style.searchResult}>
+                {searchResults.map(({ image }) => (
+                    <div className={Style.disImage}>
+                        <img
+                            src={image}
+                            alt="外链图片"
+                            key={image}
+                            onClick={handleClickExpression}
+                        />
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+
     return (
         <div className={Style.expression}>
             <Tabs
@@ -132,6 +206,9 @@ function Expression(props: ExpressionProps) {
                 </TabPane>
                 <TabPane tab="搜索表情包" key="search">
                     {renderSearchExpression}
+                </TabPane>
+                <TabPane tab="发送外链图片" key="outer">
+                    {renderOuterExpression}
                 </TabPane>
             </Tabs>
         </div>
