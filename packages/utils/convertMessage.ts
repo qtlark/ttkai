@@ -34,7 +34,7 @@ function convertSystemMessage(message: any) {
                 break;
             }
             case 'gpt': {
-                message.content = `:「${content.ask}」<br><font color=OrangeRed>ChatGPT：</font>${content.answer}`;
+                message.content = `:「${content.ask}」<hr><font color=OrangeRed>ChatGPT：</font>${content.answer}`;
                 break;
             }
             default: {
