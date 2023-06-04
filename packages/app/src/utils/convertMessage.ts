@@ -66,14 +66,14 @@ function convertSystemMessage(message: Message) {
 function convertMessageHtml(message: Message) {
     if (message.type === 'text') {
         message.content = message.content
-            .replace(/&lt;/g, '<')
-            .replace(/&gt;/g, '>');
+            .replace('<', '≺')
+            .replace('>', '≻');
     }
     return message;
 }
 
 export default function convertMessage(message: Message) {
     convertSystemMessage(message);
-    //convertMessageHtml(message);
+    convertMessageHtml(message);
     return message;
 }

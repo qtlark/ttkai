@@ -48,7 +48,17 @@ function convertSystemMessage(message: any) {
     }
 }
 
+function convertMessageHtml(message: any) {
+    if (message.type === 'text') {
+        message.content = message.content
+            .replace('<', '≺')
+            .replace('>', '≻');
+    }
+    return message;
+}
+
 export default function convertMessage(message: any) {
     convertSystemMessage(message);
+    convertMessageHtml(message);
     return message;
 }
