@@ -14,8 +14,7 @@ function SystemMessage(props: SystemMessageProps) {
                 {username}
             </span>
             &nbsp;
-            <span style={{ color: getPerRandomColor(username) }}>
-            {message}
+            <span dangerouslySetInnerHTML={{ __html: message }}>
             </span>
         </div>
     );
