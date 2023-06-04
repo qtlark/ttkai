@@ -20,6 +20,9 @@ export default {
     // jwt encryption secret
     jwtSecret: env.JwtSecret || 'jwtSecret',
 
+    // chatGPT token
+    chatGPTtoken: env.chatGPTtoken || 'None',
+
     // Maximize the number of groups
     maxGroupsCount: env.MaxGroupCount ? parseInt(env.MaxGroupCount, 10) : 3,
 
