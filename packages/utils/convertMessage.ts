@@ -52,7 +52,8 @@ function convertMessageHtml(message: any) {
     if (message.type === 'text') {
         message.content = message.content
             .replace('<', '≺')
-            .replace('>', '≻');
+            .replace('>', '≻')
+            .replace('#', '<br>');
     }
     return message;
 }
