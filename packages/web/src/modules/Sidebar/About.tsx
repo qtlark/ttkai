@@ -61,7 +61,7 @@ function About(props: AboutProps) {
                         <li>粗体：1#[段落]              例：1#啊这</li>
                         <li>斜体：2#[段落]              例：2#额额</li>
                         <li>下划线：3#[段落]            例：3#咚咚蹬</li>
-                        <li>删除体：4#[段落]            例：4#不是</li>
+                        <li>删除线：4#[段落]            例：4#不是</li>
                     </ul>
                 </div>
                 <div className={Common.block}>
