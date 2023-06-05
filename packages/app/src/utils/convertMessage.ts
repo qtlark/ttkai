@@ -43,7 +43,7 @@ function convertSystemMessage(message: Message) {
                 break;
             }
             case 'gpt': {
-                message.content = `:「${content.ask}」<br><font color=OrangeRed>ChatGPT:</font>${content.answer.replaceAll('<', '≺').replaceAll('>', '≻').replaceAll('\n','<br>')}`;
+                message.content = `:「${content.ask}」<hr><font color=OrangeRed>ChatGPT:</font>${content.answer.replaceAll('<', '≺').replaceAll('>', '≻').replaceAll('\n\n','<br>')}`;
                 break;
             }
             default: {
