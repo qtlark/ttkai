@@ -78,7 +78,8 @@ function convertMessageHtml(message: Message) {
             .replaceAll('3#', '<u>')
             .replaceAll('4#', '<s>')
             .replaceAll('#red', '<font color=red>')
-            .replaceAll('#blue', '<font color=blue>');
+            .replaceAll('#blue', '<font color=blue>')
+            .replaceAll('#aqua', '<font color=aqua>');
     }
     return message;
 }
