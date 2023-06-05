@@ -56,7 +56,7 @@ function About(props: AboutProps) {
                 <div className={Common.block}>
                     <p className={Common.title}>井号转义</p>
                     <ul>
-                        <li>换行：[段落]#[段落]         例：铁咩#无路赛！</li>
+                        <li>换行：[段落]#0[段落]         例：铁咩#0无路赛！</li>
                         <li>颜色：[颜色]#[段落]         例：aqua#阿夸真的是</li>
                         <li>粗体：1#[段落]              例：1#啊这</li>
                         <li>斜体：2#[段落]              例：2#额额</li>
