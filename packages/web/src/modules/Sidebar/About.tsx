@@ -35,7 +35,7 @@ function About(props: AboutProps) {
                         <li>
                             点击地址栏最右边三个点按钮(或者地址栏末尾收藏前的按钮)
                         </li>
-                        <li>选择&quot;安装fiora&quot;</li>
+                        <li>选择&quot;安装 ttkai&quot;</li>
                     </ul>
                 </div>
                 <div className={Common.block}>
