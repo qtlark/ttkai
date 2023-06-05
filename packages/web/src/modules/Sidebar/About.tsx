@@ -41,23 +41,27 @@ function About(props: AboutProps) {
                 <div className={Common.block}>
                     <p className={Common.title}>输入框快捷键</p>
                     <ul>
-                        <li>Alt + S: 发送滑稽</li>
-                        <li>Alt + D: 发送表情</li>
+                        <li>Alt + S：发送滑稽</li>
+                        <li>Alt + D：发送表情</li>
                     </ul>
                 </div>
                 <div className={Common.block}>
                     <p className={Common.title}>减号终端</p>
                     <ul>
                         <li>骰子：-roll [最大点数]    例：-roll 6</li>
-                        <li>石头剪刀布：-rps          例：-rps</li>
-                        <li>chatGPT：-gpt [问话]      例：-gpt 你好</li>
+                        <li>猜拳：-rps [没有参数]     例：-rps</li>
+                        <li>GPT：-gpt [咨询问题]      例：-gpt 你好</li>
                     </ul>
                 </div>
                 <div className={Common.block}>
                     <p className={Common.title}>井号转义</p>
                     <ul>
-                        <li>换行：[段落]#[段落]         例：八嘎#hentai#无路赛！</li>
+                        <li>换行：[段落]#[段落]         例：铁咩#无路赛！</li>
                         <li>颜色：[颜色]#[段落]         例：aqua#阿夸真的是</li>
+                        <li>粗体：1#[段落]              例：1#啊这</li>
+                        <li>斜体：2#[段落]              例：2#额额</li>
+                        <li>下划线：3#[段落]            例：3#咚咚蹬</li>
+                        <li>删除体：4#[段落]            例：4#不是</li>
                     </ul>
                 </div>
                 <div className={Common.block}>

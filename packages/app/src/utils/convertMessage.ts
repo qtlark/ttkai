@@ -43,7 +43,7 @@ function convertSystemMessage(message: Message) {
                 break;
             }
             case 'gpt': {
-                message.content = `:「${content.ask}」<br><font color=OrangeRed>ChatGPT:</font>${content.answer.replaceAll('\n','<br>')}`;
+                message.content = `:「${content.ask}」<br><font color=OrangeRed>ChatGPT:</font>${content.answer.replaceAll('<', '≺').replaceAll('>', '≻').replaceAll('\n','<br>')}`;
                 break;
             }
             default: {
@@ -72,9 +72,12 @@ function convertMessageHtml(message: Message) {
         message.content = message.content
             .replaceAll('<', '≺')
             .replaceAll('>', '≻')
-            .replaceAll('aqua#', '<font color=aqua>')
-            .replaceAll('red#' , '<font color=red>')
-            .replaceAll('#ft', '</font>')
+            .replaceAll('#1', '<b>')
+            .replaceAll('#2' ,'<i>')
+            .replaceAll('#3', '<u>')
+            .replaceAll('#4', '<s>')
+            .replaceAll('#red', '<font color=red>')
+            .replaceAll('#blue', '<font color=blue>')
             .replaceAll('#', '<br>');
     }
     return message;
