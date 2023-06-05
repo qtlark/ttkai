@@ -57,11 +57,11 @@ function convertMessageHtml(message: any) {
         message.content = message.content
             .replaceAll('<', '≺')
             .replaceAll('>', '≻')
-            .replaceAll('#0', '<br>')
-            .replaceAll('#1', '<b>')
-            .replaceAll('#2' ,'<i>')
-            .replaceAll('#3', '<u>')
-            .replaceAll('#4', '<s>')
+            .replaceAll('0#', '<br>')
+            .replaceAll('1#', '<b>')
+            .replaceAll('2#' ,'<i>')
+            .replaceAll('3#', '<u>')
+            .replaceAll('4#', '<s>')
             .replaceAll('#red', '<font color=red>')
             .replaceAll('#blue', '<font color=blue>');
     }
