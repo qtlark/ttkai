@@ -55,17 +55,18 @@ function convertSystemMessage(message: any) {
 function convertMessageHtml(message: any) {
     if (message.type === 'text') {
         message.content = message.content
-            .replace(/</gm, '≺')
-            .replace(/>/gm, '≻')
-            .replace(/0#/gm, '<br>')
-            .replace(/1#(\S+)/gm, '<b>$1</b>')
-            .replace(/2#(\S+)/gm ,'<i>$1</i>')
-            .replace(/3#(\S+)/gm, '<u>$1</u>')
-            .replace(/4#(\S+)/gm, '<s>$1</s>')
-            .replace(/red#(\S+)/gm,   '<font color=red>$1</font>')
-            .replace(/blue#(\S+)/gm, '<font color=blue>$1</font>')
-            .replace(/aqua#(\S+)/gm, '<font color=aqua>$1</font>')
-            .replace(/x(\S+)#(\S+)/gm, '<font color=$1>$2</font>');
+        .replace(/</gm, '≺')
+        .replace(/>/gm, '≻')
+        .replace(/0#/gm, '<br>')
+        .replace(/1#(\S+)/gm, '<b>$1</b>')
+        .replace(/2#(\S+)/gm ,'<i>$1</i>')
+        .replace(/3#(\S+)/gm, '<u>$1</u>')
+        .replace(/4#(\S+)/gm, '<s>$1</s>')
+        .replace(/red#(\S+)/gm,   '<font color=red>$1</font>')
+        .replace(/blue#(\S+)/gm, '<font color=blue>$1</font>')
+        .replace(/aqua#(\S+)/gm, '<font color=aqua>$1</font>')
+        .replace(/x(\S+)#(\S+)/gm, '<font color=$1>$2</font>')
+        .replace(/@(\S+)/gm, '<font color=00BFFF>@$1</font>');
     }
     return message;
 }
