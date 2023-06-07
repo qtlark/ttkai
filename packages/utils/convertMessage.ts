@@ -66,7 +66,7 @@ function convertMessageHtml(message: any) {
         .replace(/blue#(\S+)/gm, '<font color=blue>$1</font>')
         .replace(/aqua#(\S+)/gm, '<font color=aqua>$1</font>')
         .replace(/x(\S+)#(\S+)/gm, '<font color=$1>$2</font>')
-        .replace(/@(\S+)/gm, '<font color=00BFFF>@$1</font>');
+        .replace(/@(\S+)/gm, '<font color=8A2BE2>@$1</font>');
     }
     return message;
 }
