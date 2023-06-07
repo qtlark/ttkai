@@ -66,11 +66,12 @@ function About(props: AboutProps) {
                     <p className={Common.title}>井号转义</p>
                     <ul>
                         <li>换行：[段落]0#[段落]         例：铁咩0#无路赛！</li>
-                        <li>颜色：[颜色]#[段落]         例：aqua#阿夸真的是</li>
                         <li>粗体：1#[段落]              例：1#啊这</li>
                         <li>斜体：2#[段落]              例：2#额额</li>
                         <li>下划线：3#[段落]            例：3#咚咚蹬</li>
                         <li>删除线：4#[段落]            例：4#不是</li>
+                        <li>固定颜色：[颜色]#[段落]         例：aqua#阿夸真的是</li>
+                        <li>HEX颜色：x[HEX]#[段落]         例：x66ccff#天依赛高！</li>
                     </ul>
                 </div>
                 <div className={Common.block}>
