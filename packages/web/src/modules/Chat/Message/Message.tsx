@@ -80,20 +80,20 @@ class Message extends Component<MessageProps, MessageState> {
             return;
         }
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
-            this.setState({ showDeleteList: true, showDeleteList: false });
+            this.setState({ showDeleteList: true });
         }
         if (type === 'text' && (!client.disableDeleteMessage && !isSelf)) {
-            this.setState({ showDeleteList: false, showReplyList: true  });
+            this.setState({ showReplyList: true  });
         }
     };
 
     handleMouseLeave = () => {
         const { isAdmin, isSelf } = this.props;
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
-            this.setState({ showDeleteList: false, showReplyList: false });
+            this.setState({ showDeleteList: false });
         }
         if (type === 'text' && (!client.disableDeleteMessage && !isSelf)) {
-            this.setState({ showDeleteList: false, showReplyList: false });
+            this.setState({ showReplyList: false });
         }
     };
 
@@ -124,7 +124,7 @@ class Message extends Component<MessageProps, MessageState> {
                     shouldDelete: isAdmin,
                 } as DeleteMessagePayload,
             });
-            this.setState({ showDeleteList: false, showReplyList: false });
+            this.setState({ showDeleteList: false});
         }
     };
 
@@ -152,7 +152,7 @@ class Message extends Component<MessageProps, MessageState> {
                     shouldDelete: isAdmin,
                 } as DeleteMessagePayload,
             });
-            this.setState({ showDeleteList: false, showReplyList: false });
+            this.setState({ showReplyList: false });
         }
     };
 
