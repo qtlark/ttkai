@@ -120,6 +120,34 @@ class Message extends Component<MessageProps, MessageState> {
         }
     };
 
+    handleReplyMessage = async () => {
+        const { id, linkmanId, loading, isAdmin } = this.props;
+        if (loading) {
+            dispatch({
+                type: ActionTypes.DeleteMessage,
+                payload: {
+                    linkmanId,
+                    messageId: id,
+                    shouldDelete: isAdmin,
+                } as DeleteMessagePayload,
+            });
+            return;
+        }
+
+        const isSuccess = await deleteMessage(id);
+        if (isSuccess) {
+            dispatch({
+                type: ActionTypes.DeleteMessage,
+                payload: {
+                    linkmanId,
+                    messageId: id,
+                    shouldDelete: isAdmin,
+                } as DeleteMessagePayload,
+            });
+            this.setState({ showButtonList: false });
+        }
+    };
+
     handleClickAvatar(showUserInfo: (userinfo: any) => void) {
         const { isSelf, userId, type, username, avatar } = this.props;
         if (!isSelf && type !== 'system') {
@@ -251,6 +279,22 @@ class Message extends Component<MessageProps, MessageState> {
                                             width={20}
                                             height={20}
                                             onClick={this.handleDeleteMessage}
+                                        />
+                                    </div>
+                                </Tooltip>
+                                <Tooltip
+                                    placement={isSelf ? 'left' : 'right'}
+                                    mouseEnterDelay={0.3}
+                                    overlay={<span>回复消息</span>}
+                                >
+                                    <div>
+                                        <IconButton
+                                            className={Style.button}
+                                            icon="chat"
+                                            iconSize={16}
+                                            width={20}
+                                            height={20}
+                                            onClick={this.handleReplyMessage}
                                         />
                                     </div>
                                 </Tooltip>
