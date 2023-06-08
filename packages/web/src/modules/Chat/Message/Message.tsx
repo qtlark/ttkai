@@ -282,6 +282,11 @@ class Message extends Component<MessageProps, MessageState> {
                                         />
                                     </div>
                                 </Tooltip>
+                            </div>
+                        )}
+
+                        {showButtonList && (
+                            <div className={Style.buttonList}>
                                 <Tooltip
                                     placement={isSelf ? 'left' : 'right'}
                                     mouseEnterDelay={0.3}
