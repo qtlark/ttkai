@@ -45,7 +45,8 @@ interface MessageProps {
 }
 
 interface MessageState {
-    showButtonList: boolean;
+    showDeleteList: boolean;
+    showReplyList: boolean;
 }
 
 /**
@@ -60,7 +61,8 @@ class Message extends Component<MessageProps, MessageState> {
     constructor(props: MessageProps) {
         super(props);
         this.state = {
-            showButtonList: false,
+            showDeleteList: false,
+            showReplyList: false,
         };
     }
 
@@ -78,14 +80,20 @@ class Message extends Component<MessageProps, MessageState> {
             return;
         }
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
-            this.setState({ showButtonList: true });
+            this.setState({ showDeleteList: true, showDeleteList: false });
+        }
+        if (type === 'text' && (!client.disableDeleteMessage && !isSelf)) {
+            this.setState({ showDeleteList: false, showReplyList: true  });
         }
     };
 
     handleMouseLeave = () => {
         const { isAdmin, isSelf } = this.props;
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
-            this.setState({ showButtonList: false });
+            this.setState({ showDeleteList: false, showReplyList: false });
+        }
+        if (type === 'text' && (!client.disableDeleteMessage && !isSelf)) {
+            this.setState({ showDeleteList: false, showReplyList: false });
         }
     };
 
@@ -116,7 +124,7 @@ class Message extends Component<MessageProps, MessageState> {
                     shouldDelete: isAdmin,
                 } as DeleteMessagePayload,
             });
-            this.setState({ showButtonList: false });
+            this.setState({ showDeleteList: false, showReplyList: false });
         }
     };
 
@@ -144,7 +152,7 @@ class Message extends Component<MessageProps, MessageState> {
                     shouldDelete: isAdmin,
                 } as DeleteMessagePayload,
             });
-            this.setState({ showButtonList: false });
+            this.setState({ showDeleteList: false, showReplyList: false });
         }
     };
 
@@ -216,7 +224,7 @@ class Message extends Component<MessageProps, MessageState> {
 
     render() {
         const { isSelf, avatar, tag, tagColorMode, username } = this.props;
-        const { showButtonList } = this.state;
+        const { showDeleteList, showReplyList } = this.state;
 
         let tagColor = `rgb(${themes.default.primaryColor})`;
         if (tagColorMode === 'fixedColor') {
@@ -264,7 +272,7 @@ class Message extends Component<MessageProps, MessageState> {
                         <div className={Style.content}>
                             {this.renderContent()}
                         </div>
-                        {showButtonList && (
+                        {showDeleteList && (
                             <div className={Style.buttonList}>
                                 <Tooltip
                                     placement={isSelf ? 'left' : 'right'}
@@ -285,7 +293,7 @@ class Message extends Component<MessageProps, MessageState> {
                             </div>
                         )}
 
-                        {showButtonList && (
+                        {showReplyList && (
                             <div className={Style.buttonList}>
                                 <Tooltip
                                     placement={isSelf ? 'left' : 'right'}
