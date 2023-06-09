@@ -82,7 +82,7 @@ class Message extends Component<MessageProps, MessageState> {
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
             this.setState({ showDeleteList: true });
         }
-        if (type === 'text' && (!client.disableDeleteMessage && !isSelf)) {
+        if (!isAdmin && type === 'text' && (!client.disableDeleteMessage && !isSelf)) {
             this.setState({ showReplyList: true  });
         }
     };
