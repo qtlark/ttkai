@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react';
+import React, { Component, createRef, useRef } from 'react';
 import pureRender from 'pure-render-decorator';
 import { connect } from 'react-redux';
 
@@ -22,6 +22,8 @@ import { State } from '../../../state/reducer';
 import Tooltip from '../../../components/Tooltip';
 import themes from '../../../themes';
 import FileMessage from './FileMessage';
+
+
 
 const { dispatch } = store;
 
@@ -124,31 +126,10 @@ class Message extends Component<MessageProps, MessageState> {
     };
 
     handleReplyMessage = async () => {
-        const { id, linkmanId, loading, isAdmin } = this.props;
-        if (loading) {
-            dispatch({
-                type: ActionTypes.DeleteMessage,
-                payload: {
-                    linkmanId,
-                    messageId: id,
-                    shouldDelete: isAdmin,
-                } as DeleteMessagePayload,
-            });
-            return;
-        }
-
-        const isSuccess = await deleteMessage(id);
-        if (isSuccess) {
-            dispatch({
-                type: ActionTypes.DeleteMessage,
-                payload: {
-                    linkmanId,
-                    messageId: id,
-                    shouldDelete: isAdmin,
-                } as DeleteMessagePayload,
-            });
-            this.setState({ showReplyList: false });
-        }
+        const { id, linkmanId, loading, isAdmin, username } = this.props;
+        const $input = useRef<HTMLInputElement>(null);
+        $input.current.value = username;
+        $input.current.focus();
     };
 
     handleClickAvatar(showUserInfo: (userinfo: any) => void) {
