@@ -88,13 +88,8 @@ class Message extends Component<MessageProps, MessageState> {
     };
 
     handleMouseLeave = () => {
-        const { isAdmin, isSelf } = this.props;
-        if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
             this.setState({ showDeleteList: false });
-        }
-        if (type === 'text' && (!client.disableDeleteMessage && !isSelf)) {
             this.setState({ showReplyList: false });
-        }
     };
 
     /**
