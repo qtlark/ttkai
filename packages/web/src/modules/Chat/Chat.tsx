@@ -31,6 +31,10 @@ function Chat() {
     const aero = useAero();
     const self = useSelector((state: State) => state.user?._id) || '';
 
+
+    const inputrf = useRef(null);
+
+
     function handleBodyClick(e: MouseEvent) {
         const { currentTarget } = e;
         let target = e.target as HTMLDivElement;
@@ -152,8 +156,8 @@ function Chat() {
                 isOnline={linkman.isOnline}
                 onClickFunction={handleClickFunction}
             />
-            <MessageList />
-            <ChatInput />
+            <MessageList qwe={inputrf}/>
+            <ChatInput ref={inputrf}/>
 
             {linkman.type === 'group' && (
                 <GroupManagePanel

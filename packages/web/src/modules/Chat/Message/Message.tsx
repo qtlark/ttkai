@@ -128,8 +128,8 @@ class Message extends Component<MessageProps, MessageState> {
     };
 
     handleReplyMessage = async () => {
-        const { id, linkmanId, loading, isAdmin, username } = this.props;
-        ChatInput.insertAtCursor('#');
+        const { id, linkmanId, loading, isAdmin, username, qwe } = this.props;
+        console.log(qwe)
     };
 
     handleClickAvatar(showUserInfo: (userinfo: any) => void) {

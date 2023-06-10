@@ -37,7 +37,8 @@ const styles = {
     `,
 };
 
-function MessageList() {
+function MessageList(props) {
+    const {qwe} = props
     const action = useAction();
     const selfId = useSelector((state: State) => state.user?._id || '');
     const focus = useSelector((state: State) => state.focus);
@@ -144,6 +145,7 @@ function MessageList() {
                 percent={message.percent}
                 shouldScroll={shouldScroll}
                 tagColorMode={tagColorMode}
+                qwe={qwe}
             />
         );
     }
