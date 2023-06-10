@@ -129,7 +129,7 @@ class Message extends Component<MessageProps, MessageState> {
 
     handleReplyMessage = async () => {
         const { id, linkmanId, loading, isAdmin, username, qwe } = this.props;
-        console.log(qwe)
+        qwe.current.insertCursor(username);
     };
 
     handleClickAvatar(showUserInfo: (userinfo: any) => void) {
