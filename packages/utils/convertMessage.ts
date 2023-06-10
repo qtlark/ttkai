@@ -57,7 +57,7 @@ function convertMessageHtml(message: any) {
         message.content = message.content
         .replace(/</gm, '≺')
         .replace(/>/gm, '≻')
-        .replace(/^x([0-9a-fA-F]{6}|[0-9a-fA-F]{3})#(\S+)/gm, '<font color=$1>$2</font>')
+        .replace(/x([0-9a-fA-F]{6}|[0-9a-fA-F]{3})#(\S+)/gm, '<font color=$1>$2</font>')
         .replace(/0#/gm, '<br>')
         .replace(/1#(\S+)/gm, '<b>$1</b>')
         .replace(/2#(\S+)/gm ,'<i>$1</i>')
@@ -66,7 +66,7 @@ function convertMessageHtml(message: any) {
         .replace(/red#(\S+)/gm,   '<font color=red>$1</font>')
         .replace(/blue#(\S+)/gm, '<font color=blue>$1</font>')
         .replace(/aqua#(\S+)/gm, '<font color=aqua>$1</font>')
-        .replace(/@(\S+)/gm, '<font color=8A2BE2>@$1</font>');
+        .replace(/(^@|\W@)(\S+)/gm, '<font color=8A2BE2>@$1</font>');
     }
     return message;
 }
