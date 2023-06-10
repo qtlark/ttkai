@@ -23,8 +23,6 @@ import Tooltip from '../../../components/Tooltip';
 import themes from '../../../themes';
 import FileMessage from './FileMessage';
 
-import ChatInput from '../ChatInput';
-
 
 
 const { dispatch } = store;
@@ -128,8 +126,8 @@ class Message extends Component<MessageProps, MessageState> {
     };
 
     handleReplyMessage = async () => {
-        const { id, linkmanId, loading, isAdmin, username, qwe } = this.props;
-        qwe.current.insertCursor(username);
+        const { content, username, qwe } = this.props;
+        qwe.current.insertCursor(`回复${username}：「${content}」5# `);
     };
 
     handleClickAvatar(showUserInfo: (userinfo: any) => void) {
