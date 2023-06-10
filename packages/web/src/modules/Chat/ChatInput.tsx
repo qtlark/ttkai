@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import { useSelector } from 'react-redux';
 import loadable from '@loadable/component';
 
@@ -59,7 +59,7 @@ let searchExpressionTimer: number = 0;
 
 let inputIME = false;
 
-function ChatInput() {
+const ChatInput = forwardRef((props, ref) => {
     const action = useAction();
     const isLogin = useIsLogin();
     const connect = useSelector((state: State) => state.connect);
