@@ -59,7 +59,7 @@ let searchExpressionTimer: number = 0;
 
 let inputIME = false;
 
-const ChatInput = forwardRef((props, $input) => {
+const ChatInput = forwardRef((props, ref) => {
     const action = useAction();
     const isLogin = useIsLogin();
     const connect = useSelector((state: State) => state.connect);
@@ -589,6 +589,11 @@ const ChatInput = forwardRef((props, $input) => {
             $input.current.value = '';
         }
     }
+
+
+    useImperativeHandle(ref, () => ({
+        insertAtCursor,
+    }))
 
     return (
         <div className={Style.chatInput} {...aero}>
