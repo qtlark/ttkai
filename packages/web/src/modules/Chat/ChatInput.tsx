@@ -734,6 +734,6 @@ const ChatInput = forwardRef((props, ref) => {
             )}
         </div>
     );
-}
+})
 
 export default ChatInput;
