@@ -23,6 +23,8 @@ import Tooltip from '../../../components/Tooltip';
 import themes from '../../../themes';
 import FileMessage from './FileMessage';
 
+import ChatInput from '../ChatInput';
+
 
 
 const { dispatch } = store;
@@ -127,9 +129,7 @@ class Message extends Component<MessageProps, MessageState> {
 
     handleReplyMessage = async () => {
         const { id, linkmanId, loading, isAdmin, username } = this.props;
-        const $input = useRef<HTMLInputElement>(null);
-        $input.current.value = username;
-        $input.current.focus();
+        ChatInput.insertAtCursor('#');
     };
 
     handleClickAvatar(showUserInfo: (userinfo: any) => void) {
