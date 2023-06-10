@@ -1,4 +1,4 @@
-import React, { Component, createRef, useRef } from 'react';
+import React, { Component, createRef } from 'react';
 import pureRender from 'pure-render-decorator';
 import { connect } from 'react-redux';
 
