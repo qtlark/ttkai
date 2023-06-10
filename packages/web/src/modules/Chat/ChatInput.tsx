@@ -59,7 +59,7 @@ let searchExpressionTimer: number = 0;
 
 let inputIME = false;
 
-const ChatInput = forwardRef((props, ref) => {
+const ChatInput = forwardRef((props, $input) => {
     const action = useAction();
     const isLogin = useIsLogin();
     const connect = useSelector((state: State) => state.connect);
