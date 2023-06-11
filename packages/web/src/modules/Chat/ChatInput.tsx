@@ -115,6 +115,7 @@ const ChatInput = forwardRef((props, ref) => {
         }
         else{
             $input.current.value = value;
+            $input.current.focus();
         }
     }
 

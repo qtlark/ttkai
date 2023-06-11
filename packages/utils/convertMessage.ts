@@ -79,7 +79,7 @@ function convertMessageHtml(message: any) {
 function convertMessageReply(message: any) {
     if (message.type === 'reply') {
         const content = JSON.parse(message.content);
-        message.content = `<font color=8A2BE2>${content.replywho}:</font>「${content.orignmsg.replace(/<[^>]+>/gm, '')}」<br>${jhconvert(content.replymsg)}`;
+        message.content = `<font color=8A2BE2>${content.replywho}:</font>「${content.orignmsg.replace(/<[^>]+>/gm, '')}」<hr>${jhconvert(content.replymsg)}`;
     }
     return message;
 }
