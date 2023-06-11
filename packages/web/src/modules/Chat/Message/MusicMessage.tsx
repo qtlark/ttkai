@@ -11,7 +11,7 @@ function MusicMessage(props: MusicMessageProps) {
 
     return (
         <div className={Style.textMessage} style="margin:-10px -12px">
-            content
+            {content}
         </div>
     );
 }
