@@ -79,15 +79,15 @@ function convertMessageHtml(message: any) {
 function convertMessageReply(message: any) {
     if (message.type === 'reply') {
         const content = JSON.parse(message.content);
-        message.content = `<font color=8A2BE2>${content.replywho}:</font>「${content.orignmsg}」<hr>${jhconvert(content.replymsg)}`;
+        message.content = `<font color=8A2BE2>${content.replywho}</font>:「${content.orignmsg}」<hr>${jhconvert(content.replymsg)}`;
     }
     return message;
 }
 
 
 export default function convertMessage(message: any) {
+    convertMessageReply(message);
     convertSystemMessage(message);
     convertMessageHtml(message);
-    convertMessageReply(message);
     return message;
 }
