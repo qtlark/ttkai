@@ -15,7 +15,7 @@ const MessageSchema = new Schema({
     },
     type: {
         type: String,
-        enum: ['text', 'image', 'file', 'code', 'inviteV2', 'system'],
+        enum: ['text', 'image', 'file', 'code', 'inviteV2', 'system', 'reply'],
         default: 'text',
     },
     content: {
