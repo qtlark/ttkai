@@ -163,6 +163,9 @@ class Message extends Component<MessageProps, MessageState> {
             case 'text': {
                 return <TextMessage content={content} />;
             }
+            case 'reply': {
+                return <TextMessage content={content} />;
+            }
             case 'image': {
                 return (
                     <ImageMessage

@@ -153,6 +153,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
 
         const rollRegex = /^-roll( ([0-9]*))?$/;
         const gptRegex  = /^-gpt( (.*))?$/;
+        const replyRegex= /^回复(.*)：「(.*)」5# (.*)/;
         if (rollRegex.test(messageContent)) {
             const regexResult = rollRegex.exec(messageContent);
             if (regexResult) {
@@ -188,7 +189,16 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                     });
                 }
             }
-
+        } else if (replyRegex.test(messageContent)){
+            const regexResult = replyRegex.exec(messageContent);
+            if (regexResult) {
+                type = 'reply';
+                messageContent = JSON.stringify({
+                    replywho: regexResult[1],
+                    orignmsg: regexResult[2],
+                    replymsg: regexResult[3],
+                });
+            }
         };
         messageContent = xss(messageContent);
     } else if (type === 'file') {
