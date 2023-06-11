@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react';
 import pureRender from 'pure-render-decorator';
 import { connect } from 'react-redux';
 
+
 import Time from '@fiora/utils/time';
 import { getRandomColor, getPerRandomColor } from '@fiora/utils/getRandomColor';
 import client from '@fiora/config/client';
@@ -44,6 +45,7 @@ interface MessageProps {
     shouldScroll: boolean;
     tagColorMode: string;
     isAdmin?: boolean;
+    isLogin: boolean;
 }
 
 interface MessageState {
@@ -77,21 +79,20 @@ class Message extends Component<MessageProps, MessageState> {
     }
 
     handleMouseEnter = () => {
-        const { isAdmin, isSelf, type } = this.props;
+        const { isLogin, isAdmin, isSelf, type } = this.props;
         if (type === 'system') {
             return;
         }
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
             this.setState({ showDeleteList: true });
         }
-        if (!isAdmin && type === 'text' && (!client.disableDeleteMessage && !isSelf)) {
+        if (isLogin && !isAdmin && type === 'text' && (!client.disableDeleteMessage && !isSelf)) {
             this.setState({ showReplyList: true  });
         }
     };
 
     handleMouseLeave = () => {
-            this.setState({ showDeleteList: false });
-            this.setState({ showReplyList: false });
+            this.setState({ showDeleteList: false, showReplyList: false });
     };
 
     /**

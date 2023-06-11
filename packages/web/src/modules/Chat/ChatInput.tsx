@@ -108,6 +108,20 @@ const ChatInput = forwardRef((props, ref) => {
         setExpressions([]);
     }, [enableSearchExpression]);
 
+
+    const insertCursor = (value: string) => {
+        if(!isLogin){
+            return null;
+        }
+        else{
+            $input.current.value = value;
+        }
+    }
+
+    useImperativeHandle(ref, () => ({
+        insertCursor,
+    }))
+
     if (!isLogin) {
         return (
             <div className={Style.chatInput}>
@@ -128,28 +142,6 @@ const ChatInput = forwardRef((props, ref) => {
         );
     }
 
-
-    const insertCursor = (value: string) => {
-        const input = $input.current as unknown as HTMLInputElement;
-        if (input.selectionStart || input.selectionStart === 0) {
-            const startPos = input.selectionStart;
-            const endPos = input.selectionEnd;
-            const restoreTop = input.scrollTop;
-            input.value =
-                input.value.substring(0, startPos) +
-                value +
-                input.value.substring(endPos as number, input.value.length);
-            if (restoreTop > 0) {
-                input.scrollTop = restoreTop;
-            }
-            input.focus();
-            input.selectionStart = startPos + value.length;
-            input.selectionEnd = startPos + value.length;
-        } else {
-            input.value += value;
-            input.focus();
-        }
-    }
 
     /**
      * 插入文本到输入框光标处
@@ -613,10 +605,6 @@ const ChatInput = forwardRef((props, ref) => {
         }
     }
 
-
-    useImperativeHandle(ref, () => ({
-        insertCursor,
-    }))
 
     return (
         <div className={Style.chatInput} {...aero}>
