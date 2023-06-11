@@ -8,7 +8,7 @@ interface MusicMessageProps {
 function MusicMessage(props: MusicMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
     const content = `https://music.163.com/outchain/player?type=2&id=${props.content}&auto=0&height=66`;
-    const w=280;
+    const w=200;
     const h=86;
 
     return (
