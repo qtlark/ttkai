@@ -194,8 +194,8 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             if (regexResult) {
                 type = 'reply';
                 messageContent = JSON.stringify({
-                    replywho: regexResult[1],
-                    orignmsg: regexResult[2],
+                    replywho: regexResult[1].replace(/<[^>]+>/gm, ''),
+                    orignmsg: regexResult[2].replace(/<[^>]+>/gm, ''),
                     replymsg: regexResult[3],
                 });
             }
