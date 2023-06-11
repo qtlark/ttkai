@@ -23,6 +23,7 @@ import { State } from '../../../state/reducer';
 import Tooltip from '../../../components/Tooltip';
 import themes from '../../../themes';
 import FileMessage from './FileMessage';
+import MusicMessage from './MusicMessage';
 
 
 
@@ -165,6 +166,9 @@ class Message extends Component<MessageProps, MessageState> {
             }
             case 'reply': {
                 return <TextMessage content={content} />;
+            }
+            case 'music': {
+                return <MusicMessage content={content} />;
             }
             case 'image': {
                 return (
