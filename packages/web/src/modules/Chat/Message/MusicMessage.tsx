@@ -1,39 +1,19 @@
 import React from 'react';
-
-import expressions from '@fiora/utils/expressions';
-import { TRANSPARENT_IMAGE } from '@fiora/utils/const';
 import Style from './Message.less';
 
-interface TextMessageProps {
+interface MusicMessageProps {
     content: string;
 }
 
-function TextMessage(props: TextMessageProps) {
+function MusicMessage(props: MusicMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
-    const content = props.content
-        .replace(
-            /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}(\.[a-z]{2,6})?\b(:[0-9]{2,5})?([-a-zA-Z0-9@:%_+.~#?&//=]*)/g,
-            (r) =>
-                `<a class="${Style.selecteAble}" href="${r}" rel="noopener noreferrer" target="_blank">${r}</a>`,
-        )
-        .replace(/#\(([\u4e00-\u9fa5a-z]+)\)/g, (r, e) => {
-            const index = expressions.default.indexOf(e);
-            if (index !== -1) {
-                return `<img class="${Style.baidu} ${
-                    Style.selecteAble
-                }" src="${TRANSPARENT_IMAGE}" style="background-position: left ${-30 *
-                    index}px;" onerror="this.style.display='none'" alt="${r}">`;
-            }
-            return r;
-        });
+    const content = `//music.163.com/outchain/player?type=2&id=${props.content}&auto=1&height=66`;
 
     return (
-        <div
-            className={Style.textMessage}
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: content }}
-        />
+        <div className={Style.textMessage} style="margin:-10px -12px;">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src={content}></iframe>
+        </div>
     );
 }
 
-export default TextMessage;
+export default MusicMessage;
