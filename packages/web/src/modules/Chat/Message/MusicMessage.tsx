@@ -12,7 +12,7 @@ function MusicMessage(props: MusicMessageProps) {
     const h=86;
 
     return (
-        <div className={Style.textMessage} style={{margin:'-10px -12px'}}>
+        <div className={Style.textMessage} style={{margin:'-10px -12px -14px -12px'}}>
             <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width={w} height={h} src={content}></iframe>
         </div>
     );
