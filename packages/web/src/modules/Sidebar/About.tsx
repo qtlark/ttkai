@@ -25,7 +25,7 @@ function About(props: AboutProps) {
                         <li>欢迎来到ttkai!</li>
                         <li>回复模块基本可用（试验性）</li>
                         <li>更新规划以及反馈<a href="https://kdocs.cn/l/cl4jWlAN5F90" target="_blank">传送门</a></li>
-
+                        <li><a href="https://chat.ttkai.xyz/FileMessage/ttkai.apk" target="_blank">安卓版下载</a></li>
                     </ul>
                 </div>
                 <div className={Common.block}>

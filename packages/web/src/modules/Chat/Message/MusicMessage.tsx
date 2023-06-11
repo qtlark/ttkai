@@ -11,7 +11,7 @@ function MusicMessage(props: MusicMessageProps) {
 
     return (
         <div className={Style.textMessage} style="margin:-10px -12px">
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src={content} />
+            content
         </div>
     );
 }
