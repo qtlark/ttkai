@@ -128,7 +128,7 @@ class Message extends Component<MessageProps, MessageState> {
 
     handleReplyMessage = async () => {
         const { content, username, qwe } = this.props;
-        qwe.current.insertCursor(`回复${username}：「${content}」5# `);
+        qwe.current.insertCursor(`回复${username}：「${content.replace(/<[^>]+>/gm, '')}」5# `);
     };
 
     handleClickAvatar(showUserInfo: (userinfo: any) => void) {
