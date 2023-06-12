@@ -153,7 +153,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
 
         const rollRegex = /^-roll( ([0-9]*))?$/;
         const gptRegex  = /^-gpt( (.*))?$/;
-        const replyRegex= /^回复(.*)「(.*)」:(.*)/;
+        const replyRegex= /^回复(.*)「(.*)」:　(.*)/;
         const musicRegex= /.*music.163.com.*\bid=\b(\d+).*/;
         if (rollRegex.test(messageContent)) {
             const regexResult = rollRegex.exec(messageContent);
@@ -195,8 +195,8 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             if (regexResult) {
                 type = 'reply';
                 messageContent = JSON.stringify({
-                    replywho: regexResult[1].replace(/<[^>]+>/gm, ''),
-                    orignmsg: regexResult[2].replace(/<[^>]+>/gm, ''),
+                    replywho: regexResult[1].replace(/<[^>]+>/gm, '').trim(),
+                    orignmsg: regexResult[2].replace(/<[^>]+>/gm, '').trim(),
                     replymsg: regexResult[3].trim()?regexResult[3].trim():'　',
                 });
             }
