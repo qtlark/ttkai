@@ -65,7 +65,7 @@ function jhconvert(strstr: string){
     .replace(/red#(\S+)/gm,   "<font color=red>$1</font>")
     .replace(/blue#(\S+)/gm, "<font color=blue>$1</font>")
     .replace(/aqua#(\S+)/gm, "<font color=aqua>$1</font>")
-    .replace(/(^@|\W+@)(\S+)/gm, "<font color=8A2BE2>$1$2</font>");
+    .replace(/(^|\W+)@(\S+)/gm, "<font color=8A2BE2>@$2</font> $1");
 }
 
 function convertMessageHtml(message: any) {
