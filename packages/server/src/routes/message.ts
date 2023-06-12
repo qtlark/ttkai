@@ -185,7 +185,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 {
                     messageContent = JSON.stringify({
                         command: 'gpt',
-                        ask: regexResult[1],
+                        ask: regexResult[1].trim(),
                         answer: ansqq,
                     });
                 }
