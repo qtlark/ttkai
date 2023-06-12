@@ -153,7 +153,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
 
         const rollRegex = /^-roll( ([0-9]*))?$/;
         const gptRegex  = /^-gpt( (.*))?$/;
-        const replyRegex= /^回复(.*)：「(.*)」5#(.*)/;
+        const replyRegex= /^回复(.*)「(.*)」:(.*)/;
         const musicRegex= /.*music.163.com.*\bid=\b(\d+).*/;
         if (rollRegex.test(messageContent)) {
             const regexResult = rollRegex.exec(messageContent);
@@ -177,15 +177,15 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 value: RPS[Math.floor(Math.random() * RPS.length)],
             });
         } else if (gptRegex.test(messageContent)) {
-            const regexResult = gptRegex.exec(messageContent)[1];
+            const regexResult = gptRegex.exec(messageContent);
             if (regexResult) {
                 type = 'system';
-                const ansqq = await chatGPT(regexResult.trim());
+                const ansqq = await chatGPT(regexResult[1].trim());
                 if (ansqq)
                 {
                     messageContent = JSON.stringify({
                         command: 'gpt',
-                        ask: regexResult,
+                        ask: regexResult[1],
                         answer: ansqq,
                     });
                 }
