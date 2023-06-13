@@ -28,7 +28,7 @@ import {
 } from '@fiora/database/redis/initRedis';
 import client from '../../../config/client';
 
-import jhconvert from '@fiora/utils/convertMessage';
+import jhconvert from '@fiora/utils/jh';
 
 
 
