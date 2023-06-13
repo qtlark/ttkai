@@ -23,7 +23,6 @@ import { State } from '../../../state/reducer';
 import Tooltip from '../../../components/Tooltip';
 import themes from '../../../themes';
 import FileMessage from './FileMessage';
-import MusicMessage from './MusicMessage';
 
 
 
@@ -129,7 +128,7 @@ class Message extends Component<MessageProps, MessageState> {
 
     handleReplyMessage = async () => {
         const { content, username, qwe } = this.props;
-        qwe.current.insertCursor(`回复${username}「${content.replace(/<[^>]+>/gm, '')}」:　`);
+        qwe.current.insertCursor(`回复${username}「${content.replace(/<[^>]+>/gm, '')}」:   `);
     };
 
     handleClickAvatar(showUserInfo: (userinfo: any) => void) {
@@ -166,9 +165,6 @@ class Message extends Component<MessageProps, MessageState> {
             }
             case 'reply': {
                 return <TextMessage content={content} />;
-            }
-            case 'music': {
-                return <MusicMessage content={content} />;
             }
             case 'image': {
                 return (

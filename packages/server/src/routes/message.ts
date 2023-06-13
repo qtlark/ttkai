@@ -28,7 +28,7 @@ import {
 } from '@fiora/database/redis/initRedis';
 import client from '../../../config/client';
 
-
+import jhconvert from '@fiora/utils/convertMessage';
 
 
 
@@ -153,8 +153,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
 
         const rollRegex = /^-roll( ([0-9]*))?$/;
         const gptRegex  = /^-gpt( (.*))?$/;
-        const replyRegex= /^回复(.*)「(.*)」:　(.*)/;
-        const musicRegex= /.*music.163.com.*\bid=\b(\d+).*/;
+        const replyRegex= /^回复(.*)「(.*)」:(.*)/;
         if (rollRegex.test(messageContent)) {
             const regexResult = rollRegex.exec(messageContent);
             if (regexResult) {
@@ -194,17 +193,9 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             const regexResult = replyRegex.exec(messageContent);
             if (regexResult) {
                 type = 'reply';
-                messageContent = JSON.stringify({
-                    replywho: regexResult[1].replace(/<[^>]+>/gm, '').trim(),
-                    orignmsg: regexResult[2].replace(/<[^>]+>/gm, '').trim(),
-                    replymsg: regexResult[3].trim()?regexResult[3].trim():'　',
-                });
-            }
-        }else if (musicRegex.test(messageContent)){
-            const regexResult = musicRegex.exec(messageContent);
-            if (regexResult) {
-                type = 'music';
-                messageContent = regexResult[1];
+                messageContent = `<font color=8A2BE2>${regexResult[1].replace(/<[^>]+>/gm, '').trim()}</font>:\
+                「${regexResult[2].replace(/<[^>]+>/gm, '').trim()}」<hr>\
+                ${ jhconvert(regexResult[3].trim()?regexResult[3].trim():'　') }`
             }
         };
         messageContent = xss(messageContent);
