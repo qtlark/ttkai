@@ -193,7 +193,11 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             const regexResult = replyRegex.exec(messageContent);
             if (regexResult) {
                 type = 'reply';
-                messageContent = `<font color=8A2BE2>${regexResult[1].replace(/<[^>]+>/gm, '').trim()}</font>:「${regexResult[2].replace(/<[^>]+>/gm, '').trim()}」<hr>${ jhconvert(regexResult[3].trim()?regexResult[3].trim():'　') }`
+                messageContent = JSON.stringify({
+                    replywho: regexResult[1].replace(/<[^>]+>/gm, ''),
+                    orignmsg: regexResult[2].replace(/<[^>]+>/gm, ''),
+                    replymsg: regexResult[3].trim()?regexResult[3].trim():'　',
+                });
             }
         };
         messageContent = xss(messageContent);
