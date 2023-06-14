@@ -1,5 +1,4 @@
 import WuZeiNiangImage from '@fiora/assets/images/wuzeiniang.gif';
-import jhconvert from './jh';
 
 // function convertRobot10Message(message) {
 //     if (message.from._id === '5adad39555703565e7903f79') {
@@ -54,24 +53,17 @@ function convertSystemMessage(message: any) {
 }
 
 
-function convertMessageHtml(message: any) {
-    if (message.type === 'text') {
-        message.content = jhconvert(message.content)
-    }
-    return message;
-}
 
 function convertMessageReply(message: any) {
     if (message.type === 'reply') {
         const content = JSON.parse(message.content);
-        message.content = `<font color=8A2BE2>${content.replywho}</font>:「${content.orignmsg}」<hr>${jhconvert(content.replymsg)}`;
+        message.content = `<font color=8A2BE2>${content.replywho}</font>:「${content.orignmsg}」<hr>${content.replymsg}`;
     }
     return message;
 }
 
 export default function convertMessage(message: any) {
-    convertMessageReply(message)
+    convertMessageReply(message);
     convertSystemMessage(message);
-    convertMessageHtml(message);
     return message;
 }
