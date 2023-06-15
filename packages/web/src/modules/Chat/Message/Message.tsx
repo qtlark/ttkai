@@ -86,7 +86,7 @@ class Message extends Component<MessageProps, MessageState> {
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
             this.setState({ showDeleteList: true });
         }
-        if (!isAdmin && type === 'text' && (!client.disableDeleteMessage && !isSelf)) {
+        if (!isAdmin && (type==='text' || type==='reply'  ) && (!client.disableDeleteMessage && !isSelf)) {
             this.setState({ showReplyList: true  });
         }
     };
@@ -127,8 +127,15 @@ class Message extends Component<MessageProps, MessageState> {
     };
 
     handleReplyMessage = async () => {
-        const { content, username, qwe } = this.props;
-        qwe.current.insertCursor(`回复${username}「${content.replace(/<[^>]+>/gm, '')}」:   `);
+        const { type, content, username, qwe } = this.props;
+        if (type==='text'){
+            qwe.current.insertCursor(`回复${username}「${content}」:   `);
+        }
+        else if (type==='reply'){
+            const jscontent = JSON.parse(content);
+            qwe.current.insertCursor(`回复${username}「${jscontent.replymsg}」:   `);
+        }
+        
     };
 
     handleClickAvatar(showUserInfo: (userinfo: any) => void) {
