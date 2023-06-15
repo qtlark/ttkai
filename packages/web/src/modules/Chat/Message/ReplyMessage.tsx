@@ -1,23 +1,36 @@
 import React from 'react';
-import { getPerRandomColor } from '@fiora/utils/getRandomColor';
 
-interface SystemMessageProps {
-    message: string;
-    username: string;
+import expressions from '@fiora/utils/expressions';
+import { TRANSPARENT_IMAGE } from '@fiora/utils/const';
+import Style from './Message.less';
+import jhconvert from './jh';
+
+interface ReplyMessageProps {
+    content: string;
 }
 
-function SystemMessage(props: SystemMessageProps) {
-    const { message, username } = props;
+
+function convertMessageReply(message: any) {
+    if (message.type === 'reply') {
+        const content = JSON.parse(message.content);
+        message.content = `<font color=8A2BE2>${content.replywho}</font>:「${content.orignmsg}」<hr>${content.replymsg}`;
+    }
+    return message;
+}
+
+
+function ReplyMessage(props: ReplyMessageProps) {
+    // eslint-disable-next-line react/destructuring-assignment
+    const jscontent = JSON.parse(props.content);
+    const content   = `<font color=8A2BE2>${jhconvert(jscontent.replywho)}</font>:「${jhconvert(jscontent.orignmsg)}」<hr>${jhconvert(jscontent.replymsg)}`
+
     return (
-        <div className="system">
-            <span style={{ color: getPerRandomColor(username) }}>
-                {username}
-            </span>
-            &nbsp;
-            <span dangerouslySetInnerHTML={{ __html: message }}>
-            </span>
-        </div>
+        <div
+            className={Style.textMessage}
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: content }}
+        />
     );
 }
 
-export default SystemMessage;
+export default ReplyMessage;
