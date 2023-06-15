@@ -1,9 +1,5 @@
 import React from 'react';
-
-import expressions from '@fiora/utils/expressions';
-import { TRANSPARENT_IMAGE } from '@fiora/utils/const';
 import Style from './Message.less';
-
 import jhconvert from './jh';
 
 interface TextMessageProps {
