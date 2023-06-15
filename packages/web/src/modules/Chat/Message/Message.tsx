@@ -10,6 +10,7 @@ import Style from './Message.less';
 import Avatar from '../../../components/Avatar';
 import TextMessage from './TextMessage';
 import { ShowUserOrGroupInfoContext } from '../../../context';
+import ReplyMessage from './ReplyMessage';
 import ImageMessage from './ImageMessage';
 import CodeMessage from './CodeMessage';
 import UrlMessage from './UrlMessage';
@@ -163,7 +164,7 @@ class Message extends Component<MessageProps, MessageState> {
                 return <TextMessage content={content} />;
             }
             case 'reply': {
-                return <TextMessage content={content} />;
+                return <ReplyMessage content={content} />;
             }
             case 'image': {
                 return (
