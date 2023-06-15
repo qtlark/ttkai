@@ -45,7 +45,6 @@ interface MessageProps {
     shouldScroll: boolean;
     tagColorMode: string;
     isAdmin?: boolean;
-    isLogin: boolean;
 }
 
 interface MessageState {
@@ -79,14 +78,14 @@ class Message extends Component<MessageProps, MessageState> {
     }
 
     handleMouseEnter = () => {
-        const { isLogin, isAdmin, isSelf, type } = this.props;
+        const { isAdmin, isSelf, type } = this.props;
         if (type === 'system') {
             return;
         }
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
             this.setState({ showDeleteList: true });
         }
-        if (isLogin && !isAdmin && type === 'text' && (!client.disableDeleteMessage && !isSelf)) {
+        if (!isAdmin && type === 'text' && (!client.disableDeleteMessage && !isSelf)) {
             this.setState({ showReplyList: true  });
         }
     };

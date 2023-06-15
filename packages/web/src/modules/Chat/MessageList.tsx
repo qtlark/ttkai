@@ -146,7 +146,6 @@ function MessageList(props) {
                 shouldScroll={shouldScroll}
                 tagColorMode={tagColorMode}
                 qwe={qwe}
-                isLogin={isLogin}
             />
         );
     }
