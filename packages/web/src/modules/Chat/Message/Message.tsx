@@ -10,12 +10,14 @@ import Style from './Message.less';
 import Avatar from '../../../components/Avatar';
 import TextMessage from './TextMessage';
 import { ShowUserOrGroupInfoContext } from '../../../context';
-import ReplyMessage from './ReplyMessage';
+
 import ImageMessage from './ImageMessage';
 import CodeMessage from './CodeMessage';
 import UrlMessage from './UrlMessage';
 import InviteMessageV2 from './InviteMessageV2';
 import SystemMessage from './SystemMessage';
+import FileMessage from './FileMessage';
+
 import store from '../../../state/store';
 import { ActionTypes, DeleteMessagePayload } from '../../../state/action';
 import { deleteMessage } from '../../../service';
@@ -23,7 +25,11 @@ import IconButton from '../../../components/IconButton';
 import { State } from '../../../state/reducer';
 import Tooltip from '../../../components/Tooltip';
 import themes from '../../../themes';
-import FileMessage from './FileMessage';
+
+
+
+import ReplyMessage from './ReplyMessage';
+import BiliMessage from './BiliMessage';
 
 
 
@@ -174,7 +180,7 @@ class Message extends Component<MessageProps, MessageState> {
                 return <ReplyMessage content={content} />;
             }
             case 'bilibili': {
-                return <TextMessage content={content} />;
+                return <BiliMessage content={content} />;
             }
             case 'image': {
                 return (

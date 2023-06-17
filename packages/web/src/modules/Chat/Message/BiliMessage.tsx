@@ -1,12 +1,12 @@
 import React from 'react';
 import Style from './Message.less';
 
-interface ReplyMessageProps {
+interface BiliMessageProps {
     content: string;
 }
 
 
-function ReplyMessage(props: ReplyMessageProps) {
+function BiliMessage(props: BiliMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
     const jsc = JSON.parse(props.content);
     const blink = `https://www.bilibili.com/video/${jsc.bvid}`
@@ -31,4 +31,4 @@ function ReplyMessage(props: ReplyMessageProps) {
     );
 }
 
-export default ReplyMessage;
+export default BiliMessage;
