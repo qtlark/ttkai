@@ -86,9 +86,8 @@ async function shortBV2long(surl) {
     
 
     try {
-        console.log(res.headers);
-        console.log(res.headers['Location']);
-        return res.headers['Location'];
+        console.log(res.request.responseURL);
+        return res.request.responseURL;
     } catch (err) {
         assert(false, '屑b站的数据解析异常');
         console.log(err);
@@ -249,7 +248,6 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             }
         } else if (b23Regex.test(messageContent)){
             const regexResult = b23Regex.exec(messageContent);
-            console.log(regexResult);
             if (regexResult) {
                 const trueurl = await shortBV2long(regexResult[0]);
                 const nowbv = bvRegex.exec(trueurl)
