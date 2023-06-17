@@ -13,8 +13,8 @@ function BiliMessage(props: BiliMessageProps) {
     const st = `${jsc.stat.view}播放 ${jsc.stat.like}点赞 ${jsc.stat.danmaku}弹幕`;
 
 
-    const face = `https://wsrv.nl/?url=${jsc.owner.face}&w=240`
-    const cover= `https://wsrv.nl/?url=${jsc.pic}&w=50`
+    const face = `https://wsrv.nl/?url=${jsc.owner.face}@30h_!web-comment-note.webp`
+    const cover= `https://wsrv.nl/?url=${jsc.pic}@300w_!web-comment-note.webp`
 
 
     return (
