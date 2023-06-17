@@ -5,6 +5,10 @@ interface BiliMessageProps {
     content: string;
 }
 
+function bignum(num: any){
+    return num<10000?num+'':(num / 10000).toFixed(1) + 'W'
+}
+
 
 function BiliMessage(props: BiliMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
@@ -14,6 +18,8 @@ function BiliMessage(props: BiliMessageProps) {
 
     const face = `https://wsrv.nl/?url=${jsc.owner.face}@20h_!web-comment-note.webp`
     const cover= `https://wsrv.nl/?url=${jsc.pic}@200w_!web-comment-note.webp`
+
+    const view = jsc.stat.view<10000?jsc.stat.view:``
 
 
     return (
@@ -36,9 +42,9 @@ function BiliMessage(props: BiliMessageProps) {
                 </a>
 
                 <div className={Style.st}>
-                    <div>{jsc.stat.view}播放</div>
-                    <div>{jsc.stat.like}点赞</div>
-                    <div>{jsc.stat.danmaku}弹幕</div>
+                    <div>{bignum(jsc.stat.view)}播放</div>
+                    <div>{bignum(jsc.stat.like)}点赞</div>
+                    <div>{bignum(jsc.stat.danmaku)}弹幕</div>
                 </div>
             </div>
         </div>
