@@ -13,7 +13,7 @@ function bignum(num: any){
     }else if (num<10000000){
         num = (num / 10000).toFixed(0) + 'W'
     }else{
-        num = (num / 10000000).toFixed(1) + 'KW'
+        num = (num / 10000000).toFixed(0) + 'KW'
     }
     return num;
 }
