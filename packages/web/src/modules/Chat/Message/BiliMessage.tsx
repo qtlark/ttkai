@@ -17,7 +17,7 @@ function BiliMessage(props: BiliMessageProps) {
 
 
     return (
-        <div className={Style.textMessage}>
+        <div className={Style.biliMessage}>
             <div>
 
                 <div className={Style.title}>{jsc.title}</div>
