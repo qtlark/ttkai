@@ -86,7 +86,7 @@ async function shortBV2long(surl) {
     
 
     try {
-        console.log(res.request.responseURL);
+        console.log(res.request);
         return res.request;
     } catch (err) {
         assert(false, '屑b站的数据解析异常');
