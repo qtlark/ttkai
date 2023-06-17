@@ -249,6 +249,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             }
         } else if (b23Regex.test(messageContent)){
             const regexResult = b23Regex.exec(messageContent);
+            console.log(regexResult);
             if (regexResult) {
                 const trueurl = await shortBV2long(regexResult[0]);
                 const nowbv = bvRegex.exec(trueurl)
