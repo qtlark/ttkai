@@ -68,7 +68,7 @@ async function getBV(bvid) {
     
 
     try {
-        return res.data;
+        return res.data.data;
     } catch (err) {
         assert(false, '屑b站的数据解析异常');
         console.log(err);
