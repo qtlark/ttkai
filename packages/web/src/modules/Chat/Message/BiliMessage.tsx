@@ -10,7 +10,7 @@ function BiliMessage(props: BiliMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
     const jsc = JSON.parse(props.content);
     const blink = `https://www.bilibili.com/video/${jsc.bvid}`;
-    const st = `${jsc.stat.view}播放 ${jsc.stat.like}点赞 ${jsc.stat.danmaku}弹幕`;
+    const st = `${jsc.stat.view}播放  ${jsc.stat.like}点赞  ${jsc.stat.danmaku}弹幕`;
 
 
     const face = `https://wsrv.nl/?url=${jsc.owner.face}@20h_!web-comment-note.webp`
@@ -27,6 +27,7 @@ function BiliMessage(props: BiliMessageProps) {
                 <div>
                     <img src={face} className={Style.face}/>
                     <div className={Style.upname}>{jsc.owner.name}</div>
+                    <div className={Style.up}>up主</div>
                 </div>
 
                 
@@ -35,7 +36,7 @@ function BiliMessage(props: BiliMessageProps) {
                     <img src={cover}/>
                 </a>
 
-                <div>{st}</div>
+                <div className={Style.st}>{st}</div>
             </div>
         </div>
     );
