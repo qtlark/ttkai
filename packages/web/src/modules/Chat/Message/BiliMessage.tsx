@@ -13,16 +13,20 @@ function BiliMessage(props: BiliMessageProps) {
     const st = `${jsc.stat.view}播放 ${jsc.stat.like}点赞 ${jsc.stat.danmaku}弹幕`;
 
 
+    const face = `https://wsrv.nl/?url=${jsc.owner.face}&w=240`
+    const cover= `https://wsrv.nl/?url=${jsc.pic}&w=50`
+
+
     return (
         <div className={Style.textMessage}>
             <div>
                 <div>
-                    <img src={jsc.owner.face}/>
+                    <img src={face}/>
                     <div>{jsc.owner.name}</div>
                 </div>
 
                 <a href={blink}>
-                    <img src={jsc.pic}/>
+                    <img src={cover}/>
                 </a>
 
                 <div>{st}</div>
