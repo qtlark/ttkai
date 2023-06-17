@@ -9,20 +9,20 @@ interface BiliMessageProps {
 function BiliMessage(props: BiliMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
     const jsc = JSON.parse(props.content);
-    const blink = `https://www.bilibili.com/video/${jsc.bvid}`
-    const st = `${jsc.stat.view}播放 ${jsc.stat.like}点赞 ${jsc.stat.danmaku}弹幕`
+    const blink = `https://www.bilibili.com/video/${jsc.bvid}`;
+    const st = `${jsc.stat.view}播放 ${jsc.stat.like}点赞 ${jsc.stat.danmaku}弹幕`;
 
 
     return (
         <div className={Style.textMessage}>
             <div>
                 <div>
-                    <img src={jsc.owner.face}>
+                    <img src={jsc.owner.face}/>
                     <div>{jsc.owner.name}</div>
                 </div>
 
                 <a href={blink}>
-                    <img src={jsc.pic}>
+                    <img src={jsc.pic}/>
                 </a>
 
                 <div>{st}</div>
