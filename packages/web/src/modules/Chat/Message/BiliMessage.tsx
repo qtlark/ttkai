@@ -1,5 +1,5 @@
 import React from 'react';
-import Style from './Message.less';
+import Style from './BiliMessage.less';
 
 interface BiliMessageProps {
     content: string;
@@ -13,19 +13,21 @@ function BiliMessage(props: BiliMessageProps) {
     const st = `${jsc.stat.view}播放 ${jsc.stat.like}点赞 ${jsc.stat.danmaku}弹幕`;
 
 
-    const face = `https://wsrv.nl/?url=${jsc.owner.face}@30h_!web-comment-note.webp`
-    const cover= `https://wsrv.nl/?url=${jsc.pic}@300w_!web-comment-note.webp`
+    const face = `https://wsrv.nl/?url=${jsc.owner.face}@20h_!web-comment-note.webp`
+    const cover= `https://wsrv.nl/?url=${jsc.pic}@200w_!web-comment-note.webp`
 
 
     return (
-        <div className={Style.textMessage}>
+        <div className={Style.biliMessage}>
             <div>
                 <div>
-                    <img src={face}/>
-                    <div>{jsc.owner.name}</div>
+                    <img src={face} className={Style.face}/>
+                    <div className={Style.upname}>{jsc.owner.name}</div>
                 </div>
 
-                <a href={blink}>
+                <div className={Style.title}>{jsc.title}</div>
+
+                <a href={blink} target="_blank">
                     <img src={cover}/>
                 </a>
 
