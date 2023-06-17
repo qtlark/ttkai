@@ -77,6 +77,24 @@ async function getBV(bvid) {
     return [];
 }
 
+async function shortBV2long(surl) {
+    const res = await axios({
+        method: 'get',
+        url: surl,
+    });
+    assert(res.status === 200, 'bilibili服务端错误');
+    
+
+    try {
+        return res.headers['Location'];
+    } catch (err) {
+        assert(false, '屑b站的数据解析异常');
+        console.log(err);
+    }
+
+    return [];
+}
+
 
 
 const { isValid } = Types.ObjectId;
@@ -173,7 +191,8 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         const rollRegex = /^-roll( ([0-9]*))?$/;
         const gptRegex  = /^-gpt( (.*))?$/;
         const replyRegex= /^回复(.*)「(.*)」:(.*)/;
-        const bvRegex   = /(BV.*?).{10}/i;
+        const bvRegex   = /BV\w{10}/i;
+        const b23Regex  = /\w+:\/\/b23.tv\/\w{7}/;
         if (rollRegex.test(messageContent)) {
             const regexResult = rollRegex.exec(messageContent);
             if (regexResult) {
@@ -225,6 +244,17 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 type = 'bilibili';
                 const ansbv = await getBV(regexResult[0]);
                 messageContent = JSON.stringify(ansbv);
+            }
+        } else if (b23Regex.test(messageContent)){
+            const regexResult = b23Regex.exec(messageContent);
+            if (regexResult) {
+                const trueurl = await shortBV2long(regexResult[0]);
+                const nowbv = bvRegex.exec(trueurl)
+                if (nowbv){
+                    type = 'bilibili';
+                    const ansbv = await getBV(nowbv);
+                    messageContent = JSON.stringify(ansbv);
+                }
             }
         };
         messageContent = xss(messageContent);
