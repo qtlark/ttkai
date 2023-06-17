@@ -6,7 +6,16 @@ interface BiliMessageProps {
 }
 
 function bignum(num: any){
-    return num<10000?num+'':(num / 10000).toFixed(1) + 'W'
+    if (num<10000){
+        num = num + '';
+    }else if (num<100000){
+        num = (num / 10000).toFixed(1) + 'W'
+    }else if (num<10000000){
+        num = (num / 10000).toFixed(0) + 'W'
+    }else{
+        num = (num / 10000000).toFixed(1) + 'KW'
+    }
+    return num;
 }
 
 
