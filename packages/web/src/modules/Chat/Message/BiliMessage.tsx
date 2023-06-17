@@ -27,7 +27,7 @@ function BiliMessage(props: BiliMessageProps) {
                 <div>
                     <img src={face} className={Style.face}/>
                     <div className={Style.upname}>{jsc.owner.name}</div>
-                    <div className={Style.up}>up主</div>
+                    <div className={Style.up}>UP主</div>
                 </div>
 
                 
