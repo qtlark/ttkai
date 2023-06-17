@@ -18,14 +18,17 @@ function BiliMessage(props: BiliMessageProps) {
 
 
     return (
-        <div className={Style.biliMessage}>
+        <div className={Style.textMessage}>
             <div>
+
+                <div className={Style.title}>{jsc.title}</div>
+                
                 <div>
                     <img src={face} className={Style.face}/>
                     <div className={Style.upname}>{jsc.owner.name}</div>
                 </div>
 
-                <div className={Style.title}>{jsc.title}</div>
+                
 
                 <a href={blink} target="_blank">
                     <img src={cover}/>
