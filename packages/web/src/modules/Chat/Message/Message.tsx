@@ -173,6 +173,9 @@ class Message extends Component<MessageProps, MessageState> {
             case 'reply': {
                 return <ReplyMessage content={content} />;
             }
+            case 'bilibili': {
+                return <TextMessage content={content} />;
+            }
             case 'image': {
                 return (
                     <ImageMessage

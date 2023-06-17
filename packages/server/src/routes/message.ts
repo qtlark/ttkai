@@ -59,6 +59,26 @@ async function chatGPT(ctx) {
 
 
 
+async function getBV(bvid) {
+    const res = await axios({
+        method: 'get',
+        url: `https://api.bilibili.com/x/web-interface/view?bvid=${bvid}`,
+    });
+    assert(res.status === 200, 'bilibili服务端错误');
+    
+
+    try {
+        return res.data;
+    } catch (err) {
+        assert(false, '屑b站的数据解析异常');
+        console.log(err);
+    }
+
+    return [];
+}
+
+
+
 const { isValid } = Types.ObjectId;
 
 /** 初次获取历史消息数 */
@@ -153,6 +173,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         const rollRegex = /^-roll( ([0-9]*))?$/;
         const gptRegex  = /^-gpt( (.*))?$/;
         const replyRegex= /^回复(.*)「(.*)」:(.*)/;
+        const bvRegex   = /(BV.*?).{10}/i;
         if (rollRegex.test(messageContent)) {
             const regexResult = rollRegex.exec(messageContent);
             if (regexResult) {
@@ -197,6 +218,13 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                     orignmsg: regexResult[2].replace(/<[^>]+>/gm, ''),
                     replymsg: regexResult[3].trim()?regexResult[3].trim():'　',
                 });
+            }
+        } else if (bvRegex.test(messageContent)){
+            const regexResult = bvRegex.exec(messageContent);
+            if (regexResult) {
+                type = 'bilibili';
+                const ansbv = await getBV(regexResult[0]);
+                messageContent = JSON.stringify(ansbv);
             }
         };
         messageContent = xss(messageContent);
