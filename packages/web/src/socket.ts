@@ -5,7 +5,7 @@ import convertMessage from '@fiora/utils/convertMessage';
 import getFriendId from '@fiora/utils/getFriendId';
 import config from '@fiora/config/client';
 import notification from './utils/notification';
-import voice from './utils/voice';
+
 import { initOSS } from './utils/uploadFile';
 import playSound from './utils/playSound';
 import { Message, Linkman } from './state/reducer';
@@ -192,38 +192,7 @@ socket.on('message', async (message: any) => {
         playSound(soundType);
     }
 
-    if (state.status.voiceSwitch) {
-        if (message.type === 'text') {
-            const text = message.content
-                .replace(
-                    /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g,
-                    '',
-                )
-                .replace(/#/g, '');
 
-            if (text.length > 100) {
-                return;
-            }
-
-            const from =
-                linkman && linkman.type === 'group'
-                    ? `${message.from.username}${
-                        linkman.name === prevName ? '' : `在${linkman.name}`
-                    }说`
-                    : `${message.from.username}对你说`;
-            if (text) {
-                voice.push(
-                    from !== prevFrom ? from + text : text,
-                    message.from.username,
-                );
-            }
-            prevFrom = from;
-            prevName = message.from.username;
-        } else if (message.type === 'system') {
-            voice.push(message.from.originUsername + message.content, '');
-            prevFrom = null;
-        }
-    }
 });
 
 socket.on(
