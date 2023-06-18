@@ -49,13 +49,6 @@ function About(props: AboutProps) {
                     </ul>
                 </div>
                 <div className={Common.block}>
-                    <p className={Common.title}>输入框快捷键</p>
-                    <ul>
-                        <li>Alt + S：发送滑稽</li>
-                        <li>Alt + D：发送表情</li>
-                    </ul>
-                </div>
-                <div className={Common.block}>
                     <p className={Common.title}>减号终端</p>
                     <ul>
                         <li>骰子：-roll [最大点数]    例：-roll 6</li>

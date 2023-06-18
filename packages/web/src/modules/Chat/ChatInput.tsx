@@ -11,7 +11,6 @@ import fetch from '../../utils/fetch';
 import voice from '../../utils/voice';
 import readDiskFile, { ReadFileResult } from '../../utils/readDiskFile';
 import uploadFile from '../../utils/uploadFile';
-import getRandomHuaji from '../../utils/getRandomHuaji';
 import Style from './ChatInput.less';
 import useIsLogin from '../../hooks/useIsLogin';
 import useAction from '../../hooks/useAction';
@@ -323,11 +322,6 @@ const ChatInput = forwardRef((props, ref) => {
         sendImageMessage(image);
         return null;
     }
-    async function sendHuaji() {
-        const huaji = getRandomHuaji();
-        const id = addSelfMessage('image', huaji);
-        handleSendMessage(id, 'image', huaji);
-    }
     async function handleSendFile() {
         if (!connect) {
             Message.error('发送消息失败, 您当前处于离线状态');
@@ -355,10 +349,6 @@ const ChatInput = forwardRef((props, ref) => {
         switch (key) {
             case 'image': {
                 handleSendImage();
-                break;
-            }
-            case 'huaji': {
-                sendHuaji();
                 break;
             }
             case 'code': {
@@ -488,12 +478,6 @@ const ChatInput = forwardRef((props, ref) => {
             e.preventDefault();
         } else if (e.key === 'Enter' && !inputIME) {
             sendTextMessage();
-        } else if (e.altKey && (e.key === 's' || e.key === 'ß')) {
-            sendHuaji();
-            e.preventDefault();
-        } else if (e.altKey && (e.key === 'd' || e.key === '∂')) {
-            toggleExpressionDialog(true);
-            e.preventDefault();
         } else if (e.key === '@') {
             // 如果按下@建, 则进入@计算模式
             // @ts-ignore
@@ -637,7 +621,6 @@ const ChatInput = forwardRef((props, ref) => {
                 overlay={
                     <div className={Style.featureDropdown}>
                         <Menu onClick={handleFeatureMenuClick}>
-                            <MenuItem key="huaji">发送滑稽</MenuItem>
                             <MenuItem key="image">发送图片</MenuItem>
                             <MenuItem key="code">发送代码</MenuItem>
                             <MenuItem key="file">发送文件</MenuItem>
