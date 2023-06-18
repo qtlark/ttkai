@@ -20,10 +20,11 @@ function About(props: AboutProps) {
         >
             <div>
                 <div className={Common.block}>
-                    <p className={Common.title}>版本：<font color="red">v23.06.11</font></p>
+                    <p className={Common.title}>版本：<font color="red">v23.06.18</font></p>
                     <ul>
                         <li>欢迎来到ttkai!</li>
-                        <li>回复模块基本可用（试验性）</li>
+                        <li>现在可以回复回复了！</li>
+                        <li>新增隐式渲染，B站分享链接可以自动渲染成卡片</li>
                         <li>更新规划以及反馈<a href="https://kdocs.cn/l/cl4jWlAN5F90" target="_blank">传送门</a></li>
                         <li><a href="https://chat.ttkai.xyz/FileMessage/ttkai.apk" target="_blank">安卓版下载</a></li>
                     </ul>
@@ -72,6 +73,12 @@ function About(props: AboutProps) {
                         <li>删除线：4#[段落]            例：4#不是</li>
                         <li>固定颜色：[颜色]#[段落]         例：aqua#阿夸真的是</li>
                         <li>HEX颜色：x[HEX]#[段落]         例：x66ccff#天依赛高！</li>
+                    </ul>
+                </div>
+                <div className={Common.block}>
+                    <p className={Common.title}>隐式渲染</p>
+                    <ul>
+                        <li>任意包含BV的B站链接将被自动渲染成卡片</li>
                     </ul>
                 </div>
                 <div className={Common.block}>
