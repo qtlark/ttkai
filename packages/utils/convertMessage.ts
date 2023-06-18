@@ -1,4 +1,4 @@
-import WuZeiNiangImage from '@fiora/assets/images/wuzeiniang.webp';
+import WuZeiNiangImage from '@fiora/assets/images/wuzeiniang.gif';
 
 // function convertRobot10Message(message) {
 //     if (message.from._id === '5adad39555703565e7903f79') {
