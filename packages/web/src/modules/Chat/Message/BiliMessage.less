@@ -229,11 +229,13 @@
 
 .title{
     width: 200px;
-    white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     font-weight: bold;
     margin: 5px 0 0 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .face{
