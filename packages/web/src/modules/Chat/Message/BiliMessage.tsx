@@ -38,7 +38,7 @@ function BiliMessage(props: BiliMessageProps) {
                 <div className={Style.title}>{jsc.title}</div>
                 <hr />
 
-                <div>
+                <div className={Style.clo}>
                     <img src={face} className={Style.face}/>
                     <div className={Style.upname}>{jsc.owner.name}</div>
                     <div className={Style.up}>UP主</div>
@@ -46,7 +46,7 @@ function BiliMessage(props: BiliMessageProps) {
 
                 
 
-                <a href={blink} target="_blank">
+                <a href={blink} target="_blank" className={Style.blink}>
                     <img src={cover}/>
                 </a>
 
