@@ -1,4 +1,5 @@
 import WuZeiNiangImage from '@fiora/assets/images/wuzeiniang.gif';
+import AtriImage from '@fiora/assets/images/atri.gif';
 
 // function convertRobot10Message(message) {
 //     if (message.from._id === '5adad39555703565e7903f79') {
@@ -35,6 +36,8 @@ function convertSystemMessage(message: any) {
             }
             case 'gpt': {
                 message.content = `:「${content.ask}」<hr><font color=OrangeRed>ChatGPT</font>：${content.answer.replaceAll('<', '≺').replaceAll('>', '≻').replaceAll('\n\n','<br>').replaceAll('\n','<br>')}`;
+                message.from.avatar = AtriImage;
+                message.from.username = '亚托莉';
                 break;
             }
             default: {
