@@ -15,7 +15,6 @@ import Message from '../../components/Message';
 
 import Admin from './Admin';
 import Download from './Download';
-import Reward from './Reward';
 import About from './About';
 
 import Style from './Sidebar.less';
@@ -50,7 +49,7 @@ function Sidebar() {
     const [adminDialogVisible, toggleAdminDialogVisible] = useState(false);
     const [downloadDialogVisible, toggleDownloadDialogVisible] =
         useState(false);
-    const [rewardDialogVisible, toggleRewardDialogVisible] = useState(false);
+
     const [aboutDialogVisible, toggleAboutDialogVisible] = useState(false);
     const [settingDialogVisible, toggleSettingDialogVisible] = useState(false);
     const aero = useAero();
@@ -163,10 +162,7 @@ function Sidebar() {
                     visible={downloadDialogVisible}
                     onClose={() => toggleDownloadDialogVisible(false)}
                 />
-                <Reward
-                    visible={rewardDialogVisible}
-                    onClose={() => toggleRewardDialogVisible(false)}
-                />
+
                 <About
                     visible={aboutDialogVisible}
                     onClose={() => toggleAboutDialogVisible(false)}
