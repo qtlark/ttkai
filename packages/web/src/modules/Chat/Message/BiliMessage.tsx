@@ -26,7 +26,7 @@ function BiliMessage(props: BiliMessageProps) {
 
 
     const face = `https://ttkai.top/bpi/${jsc.owner.face.substring(21)}@20h_!web-comment-note.webp`
-    const cover= `https://ttkai.top/bpi/${jsc.pic.substring(21)}@200w_!web-comment-note.webp`
+    const cover= `https://ttkai.top/bpi/${jsc.pic.substring(20)}@200w_!web-comment-note.webp`
 
     const view = jsc.stat.view<10000?jsc.stat.view:``
 
