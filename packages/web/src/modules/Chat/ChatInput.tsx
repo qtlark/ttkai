@@ -334,6 +334,10 @@ const ChatInput = forwardRef((props, ref) => {
         }
 
         switch (key) {
+            case 'clear': {
+                insertCursor('');
+                break;
+            }
             case 'image': {
                 handleSendImage();
                 break;
@@ -608,6 +612,7 @@ const ChatInput = forwardRef((props, ref) => {
                 overlay={
                     <div className={Style.featureDropdown}>
                         <Menu onClick={handleFeatureMenuClick}>
+                            <MenuItem key="clear">清空输入</MenuItem>
                             <MenuItem key="image">发送图片</MenuItem>
                             <MenuItem key="code">发送代码</MenuItem>
                             <MenuItem key="file">发送文件</MenuItem>
