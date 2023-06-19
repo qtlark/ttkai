@@ -25,8 +25,10 @@ function BiliMessage(props: BiliMessageProps) {
     const blink = `https://www.bilibili.com/video/${jsc.bvid}`;
 
 
-    const face = `https://ttkai.top/bpi/${jsc.owner.face.substring(21)}@20h_!web-comment-note.webp`
-    const cover= `https://ttkai.top/bpi/${jsc.pic.substring(20)}@200w_!web-comment-note.webp`
+    const face = `//ttkai.top/bpi/${jsc.owner.face.substring(21)}@20h_!web-comment-note.webp`
+    const cover= `//ttkai.top/bpi/${jsc.pic.substring(20)}@200w_!web-comment-note.webp`
+    console.log(jsc.pic);
+    
 
     const view = jsc.stat.view<10000?jsc.stat.view:``
 
