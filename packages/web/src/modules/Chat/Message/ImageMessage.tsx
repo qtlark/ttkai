@@ -102,6 +102,7 @@ function ImageMessage(props: ImageMessageProps) {
                             {
                                 src: getOSSFileUrl(src, `image/quality,q_95`),
                                 alt: '',
+                                downloadUrl: getOSSFileUrl(src, `image/quality,q_95`),
                             },
                         ]}
                         noNavbar
