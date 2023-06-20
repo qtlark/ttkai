@@ -105,6 +105,7 @@ function ImageMessage(props: ImageMessageProps) {
                             },
                         ]}
                         noNavbar
+                        downloadable
                     />
                 )}
             </div>
