@@ -21,6 +21,8 @@ interface ImageMessageProps {
 function ImageMessage(props: ImageMessageProps) {
     const { src, loading, percent } = props;
 
+    console.log(src);
+
     const [viewer, toggleViewer] = useState(false);
     const closeViewer = useCallback(() => toggleViewer(false), []);
     const $container = useRef(null);
