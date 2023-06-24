@@ -237,14 +237,14 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 const user = await User.findOne({username: regexResult[1].trim()});
                 if (user)
                 {
-                    const tt = Math.floor((user.lastLoginTime.getTime() - Date.now())/(60*60*24))
+                    const tt = Math.floor((Date.now() - user.lastLoginTime.getTime())/(24*3600*1000))
                     if (tt<1) {
-                        messageContent = `今天也是想念${regexResult[1].trim()}的一天${user.lastLoginTime.getTime() - Date.now()}`;
+                        messageContent = `今天也是想念${regexResult[1].trim()}的一天`;
                     } else {
                         messageContent = `想念${regexResult[1].trim()}的第${tt}天`;
                     }
                 }else{
-                    messageContent = '想念龙小姐的第0天';
+                    messageContent = '想念龙小姐的第∞天';
                 }
             }
         } else if (replyRegex.test(messageContent)){
