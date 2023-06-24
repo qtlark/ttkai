@@ -166,7 +166,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             user && user.createTime.getTime() > Date.now() - OneYear;
         assert(
             ctx.socket.isAdmin || !isNewUser,
-            '新用户禁言中! 主群禁止闲聊, 多交流fiora和开发技术, 自发维护交流环境',
+            '新用户禁言中! 请自发维护交流环境',
         );
     }
 
@@ -192,7 +192,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
 
         const rollRegex = /^-roll( ([0-9]*))?$/;
         const gptRegex  = /^-gpt( (.*))?$/;
-        const missRegex = /^-miss( (.*))?$$/;
+        const missRegex = /^-miss( (.*))?$/;
         const replyRegex= /^回复(.*)「(.*)」:(.*)/;
         const bvRegex   = /BV\w{10}/i;
         const b23Regex  = /\w+:\/\/b23.tv\/\w{7}/;
@@ -237,9 +237,14 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 const user = await User.findOne({username: regexResult[1].trim()});
                 if (user)
                 {
-                    messageContent = user.lastLoginTime;
+                    const tt = Math.floor((user.lastLoginTime.getTime() - Date.now())/(60*60*24))
+                    if (tt<1) {
+                        messageContent = `今天也是想念${regexResult[1].trim()}的一天`;
+                    } else {
+                        messageContent = `想念${regexResult[1].trim()}的第${tt}天`;
+                    }
                 }else{
-                    messageContent = '';
+                    messageContent = '想念龙小姐的第0天';
                 }
             }
         } else if (replyRegex.test(messageContent)){
