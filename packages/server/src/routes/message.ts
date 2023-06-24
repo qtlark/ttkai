@@ -239,7 +239,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 {
                     const tt = Math.floor((user.lastLoginTime.getTime() - Date.now())/(60*60*24))
                     if (tt<1) {
-                        messageContent = `今天也是想念${regexResult[1].trim()}的一天`;
+                        messageContent = `今天也是想念${regexResult[1].trim()}的一天${user.lastLoginTime.getTime() - Date.now()}`;
                     } else {
                         messageContent = `想念${regexResult[1].trim()}的第${tt}天`;
                     }

@@ -53,6 +53,7 @@ function About(props: AboutProps) {
                     <ul>
                         <li>骰子：-roll [最大点数]    例：-roll 6</li>
                         <li>猜拳：-rps [没有参数]     例：-rps</li>
+                        <li>思念：-miss [思念之人]    例：-miss 亚澄</li>
                         <li>GPT：-gpt [咨询问题]      例：-gpt 你好</li>
                     </ul>
                 </div>
