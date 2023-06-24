@@ -31,6 +31,8 @@ import client from '../../../config/client';
 
 
 
+
+
 async function chatGPT(ctx) {
     const res = await axios({
         method: 'post',
@@ -190,6 +192,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
 
         const rollRegex = /^-roll( ([0-9]*))?$/;
         const gptRegex  = /^-gpt( (.*))?$/;
+        const missRegex = /^-miss( (.*))?$$/;
         const replyRegex= /^回复(.*)「(.*)」:(.*)/;
         const bvRegex   = /BV\w{10}/i;
         const b23Regex  = /\w+:\/\/b23.tv\/\w{7}/;
@@ -223,9 +226,20 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 {
                     messageContent = JSON.stringify({
                         command: 'gpt',
-                        ask: regexResult[1].trim(),
+                        ask: regexResult[2].trim(),
                         answer: ansqq,
                     });
+                }
+            }
+        } else if (missRegex.test(messageContent)) {
+            const regexResult = missRegex.exec(messageContent);
+            if (regexResult) {
+                const user = await User.findOne({username: regexResult[1].trim()});
+                if (user)
+                {
+                    messageContent = user.lastLoginTime;
+                }else{
+                    messageContent = '';
                 }
             }
         } else if (replyRegex.test(messageContent)){
