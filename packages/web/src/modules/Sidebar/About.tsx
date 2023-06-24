@@ -20,11 +20,11 @@ function About(props: AboutProps) {
         >
             <div>
                 <div className={Common.block}>
-                    <p className={Common.title}>版本：<font color="red">v23.06.18</font></p>
+                    <p className={Common.title}>版本：<font color="red">v23.06.24</font></p>
                     <ul>
                         <li>欢迎来到ttkai!</li>
-                        <li>现在可以回复回复了！</li>
-                        <li>新增隐式渲染，B站分享链接可以自动渲染成卡片</li>
+                        <li>现在可以传达思念了！</li>
+                        <li>安卓下载半成品（基本没用，悲）</li>
                         <li>更新规划以及反馈<a href="https://kdocs.cn/l/cl4jWlAN5F90" target="_blank">传送门</a></li>
                         <li><a href="https://chat.ttkai.xyz/FileMessage/ttkai.apk" target="_blank">安卓版下载</a></li>
                     </ul>
