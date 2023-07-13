@@ -8,13 +8,8 @@ interface TextMessageProps {
 
 function TextMessage(props: TextMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
-    const mcRegex   = /^\w{32}(#\w{32})?#.+#.+$/;
     
-    var content = props.content;
-
-    if (! mcRegex.test(content)) {
-        content = jhconvert(content);
-    }
+    const content = jhconvert(props.content);
 
     return (
         <div

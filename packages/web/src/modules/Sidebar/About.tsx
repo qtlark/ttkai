@@ -23,8 +23,6 @@ function About(props: AboutProps) {
                     <p className={Common.title}>版本：<font color="red">v23.06.24</font></p>
                     <ul>
                         <li>欢迎来到ttkai!</li>
-                        <li>现在可以传达思念了！</li>
-                        <li>安卓下载半成品（基本没用，悲）</li>
                         <li>更新规划以及反馈<a href="https://kdocs.cn/l/cl4jWlAN5F90" target="_blank">传送门</a></li>
                         <li><a href="https://chat.ttkai.xyz/FileMessage/ttkai.apk" target="_blank">安卓版下载</a></li>
                     </ul>
@@ -32,9 +30,8 @@ function About(props: AboutProps) {
                 <div className={Common.block}>
                     <p className={Common.title}>一些说明</p>
                     <ul>
-                        <li>
-                        请不要发送站内的资源链接
-                        </li>
+                        <li>请不要发送站内的资源链接</li>
+                        <li>禁止男酮、鉴证、猎奇等讨论</li>
                         <li>图片不能大于1M，建议换成jpg格式</li>
                         <li>外链图片无大小限制，如果可以请尽量使用高速稳定的图床</li>
                     </ul>

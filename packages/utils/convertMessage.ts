@@ -1,5 +1,6 @@
 import WuZeiNiangImage from '@fiora/assets/images/wuzeiniang.gif';
 import AtriImage from '@fiora/assets/images/atri.gif';
+import AliceImage from '@fiora/assets/images/alice.jpg';
 
 // function convertRobot10Message(message) {
 //     if (message.from._id === '5adad39555703565e7903f79') {
@@ -22,7 +23,7 @@ function convertSystemMessage(message: any) {
         message.from.originUsername = message.from.username;
         message.from.username = '乌贼娘殿下';
         message.from.avatar = WuZeiNiangImage;
-        message.from.tag = 'system';
+        message.from.tag = '看板娘';
 
         const content = JSON.parse(message.content);
         switch (content.command) {
@@ -38,6 +39,15 @@ function convertSystemMessage(message: any) {
                 message.content = `:「${content.ask}」<hr><font color=OrangeRed>ChatGPT</font>：${content.answer.replaceAll('<', '≺').replaceAll('>', '≻').replaceAll('\n\n','<br>').replaceAll('\n','<br>')}`;
                 message.from.avatar = AtriImage;
                 message.from.username = '亚托莉';
+                message.from.tag = '萝卜子';
+                break;
+            }
+            case 'sys': {
+                message.from.originUsername = ''
+                message.content = content.tt;
+                message.from.avatar = AliceImage;
+                message.from.username = '爱丽丝';
+                message.from.tag = '扫地机器人';
                 break;
             }
             default: {

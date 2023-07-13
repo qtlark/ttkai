@@ -193,6 +193,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         const rollRegex = /^-roll( ([0-9]*))?$/;
         const gptRegex  = /^-gpt( (.*))?$/;
         const missRegex = /^-miss( (.*))?$/;
+        const sysRegex = /^-sys( (.*))?$/;
         const replyRegex= /^回复(.*)「(.*)」:(.*)/;
         const bvRegex   = /BV\w{10}/i;
         const b23Regex  = /\w+:\/\/b23.tv\/\w{7}/;
@@ -217,6 +218,15 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 command: 'rps',
                 value: RPS[Math.floor(Math.random() * RPS.length)],
             });
+        } else if (sysRegex.test(messageContent)) {
+            const regexResult = sysRegex.exec(messageContent);
+            if (regexResult) {
+                type = 'system';
+                messageContent = JSON.stringify({
+                    command: 'sys',
+                    tt: regexResult[1].trim()
+                });
+            }
         } else if (gptRegex.test(messageContent)) {
             const regexResult = gptRegex.exec(messageContent);
             if (regexResult) {
