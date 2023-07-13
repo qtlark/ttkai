@@ -44,7 +44,7 @@ function convertSystemMessage(message: any) {
             }
             case 'sys': {
                 message.from.originUsername = ''
-                message.content = content.tt.replace(/0#/gm, "<br>").replace(/^@\S+/gm, "<font color=8A2BE2>@$0</font>");
+                message.content = content.tt.replace(/0#/gm, "<br>").replace(/^(@\S+)/gm, "<font color=8A2BE2>$1</font>");
                 message.from.avatar = AliceImage;
                 message.from.username = '爱丽丝';
                 message.from.tag = '扫地机器人';
