@@ -22,6 +22,7 @@ export default function jhconvert(text: string) {
         .replace(/blue#(\S+)/gm, "<font color=blue>$1</font>")
         .replace(/aqua#(\S+)/gm, "<font color=aqua>$1</font>")
         .replace(/^@\S+/gm, "<font color=8A2BE2>@$0</font>")
+        .replace(/😂/gm, "qwe")
         .replace(
             /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}(\.[a-z]{2,6})?\b(:[0-9]{2,5})?([-a-zA-Z0-9@:%_+.~#?&//=]*)/g,
             (r) =>
