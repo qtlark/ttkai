@@ -38,5 +38,7 @@ export default function jhconvert(text: string) {
             }
             return r;
         });
-    }
+    } 
+
+    return text
 }
