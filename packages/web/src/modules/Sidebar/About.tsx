@@ -20,7 +20,7 @@ function About(props: AboutProps) {
         >
             <div>
                 <div className={Common.block}>
-                    <p className={Common.title}>版本：<font color="red">v23.06.24</font></p>
+                    <p className={Common.title}>版本：<font color="red">v23.07.13</font></p>
                     <ul>
                         <li>欢迎来到ttkai!</li>
                         <li>更新规划以及反馈<a href="https://kdocs.cn/l/cl4jWlAN5F90" target="_blank">传送门</a></li>
