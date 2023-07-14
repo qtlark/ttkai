@@ -12,10 +12,9 @@ function ReplyMessage(props: ReplyMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
     const jscontent = JSON.parse(props.content);
     const imgRegex  = /^.+width=(.+)&height=(.+)$/;
+    var content = `<font color=8A2BE2>${jhconvert(jscontent.replywho)}</font>:「${jhconvert(jscontent.orignmsg)}」<hr>${jhconvert(jscontent.replymsg)}`;
     if (imgRegex.test(jscontent.orignmsg)) {
-        const content = `<font color=8A2BE2>${jhconvert(jscontent.replywho)}的图片分享</font><br><img src=${jscontent.orignmsg} style="width: 100px;"><hr>${jhconvert(jscontent.replymsg)}`
-    } else {
-        const content = `<font color=8A2BE2>${jhconvert(jscontent.replywho)}</font>:「${jhconvert(jscontent.orignmsg)}」<hr>${jhconvert(jscontent.replymsg)}`
+        content = `<font color=8A2BE2>${jhconvert(jscontent.replywho)}的图片分享</font><br><img src=${jscontent.orignmsg} style="width: 100px;"><hr>${jhconvert(jscontent.replymsg)}`
     }
     
     return (
