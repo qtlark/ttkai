@@ -86,9 +86,6 @@ class Message extends Component<MessageProps, MessageState> {
 
     handleMouseEnter = () => {
         const { isAdmin, isSelf, type } = this.props;
-        if (type === 'system') {
-            return;
-        }
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
             this.setState({ showDeleteList: true });
         }
