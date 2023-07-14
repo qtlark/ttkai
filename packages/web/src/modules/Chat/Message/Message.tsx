@@ -134,7 +134,6 @@ class Message extends Component<MessageProps, MessageState> {
 
     handleReplyMessage = async () => {
         const { type, content, username, qwe } = this.props;
-        console.log(content)
         if (type==='text'){
             qwe.current.insertCursor(`回复${username}「${content}」:   `);
         }else if (type==='reply'){
