@@ -14,12 +14,19 @@ function ReplyMessage(props: ReplyMessageProps) {
     const imgRegex  = /^.+width=(.+)&height=(.+)$/;
     var content = `<font color=8A2BE2>${jhconvert(jscontent.replywho)}</font>:「${jhconvert(jscontent.orignmsg)}」<hr>${jhconvert(jscontent.replymsg)}`;
     if (imgRegex.test(jscontent.orignmsg)) {
-        content = `<font color=8A2BE2>${jhconvert(jscontent.replywho)}的图片分享</font><br><img src=${jscontent.orignmsg} style="width: 100px;"><hr>${jhconvert(jscontent.replymsg)}`
+        content = `<font color=8A2BE2>${jhconvert(jscontent.replywho)}</font><div style="text-align: center;"><img src=${jscontent.orignmsg} style="width: 100px;"></div><hr>${jhconvert(jscontent.replymsg)}`;
+        return (
+            <div
+                className={`${Style.textMessage} ${Style.replyimg}`}
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{ __html: content }}
+            />
+        );
     }
     
     return (
         <div
-            className={Style.textMessage}
+            className={`${Style.textMessage}`}
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: content }}
         />
