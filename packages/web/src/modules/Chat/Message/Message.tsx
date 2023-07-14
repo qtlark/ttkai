@@ -92,7 +92,8 @@ class Message extends Component<MessageProps, MessageState> {
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
             this.setState({ showDeleteList: true });
         }
-        if (!isAdmin && (type==='text' || type==='reply'  ) && (!client.disableDeleteMessage && !isSelf)) {
+        //if (!isAdmin && (type==='text' || type==='reply'  ) && (!client.disableDeleteMessage && !isSelf)) {
+        if (!isAdmin && ( true ) && (!client.disableDeleteMessage && !isSelf)) {
             this.setState({ showReplyList: true  });
         }
     };
@@ -134,7 +135,8 @@ class Message extends Component<MessageProps, MessageState> {
 
     handleReplyMessage = async () => {
         const { type, content, username, qwe } = this.props;
-        if (true){
+        console.log(content)
+        if (type==='text'){
             qwe.current.insertCursor(`回复${username}「${content}」:   `);
         }
         else if (type==='reply'){
