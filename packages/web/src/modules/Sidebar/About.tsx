@@ -48,10 +48,10 @@ function About(props: AboutProps) {
                 <div className={Common.block}>
                     <p className={Common.title}>减号终端</p>
                     <ul>
-                        <li>骰子：-roll [最大点数]    例：-roll 6</li>
                         <li>猜拳：-rps [没有参数]     例：-rps</li>
-                        <li>思念：-miss [思念之人]    例：-miss 亚澄</li>
+                        <li>骰子：-roll [最大点数]    例：-roll 6</li>
                         <li>GPT：-gpt [咨询问题]      例：-gpt 你好</li>
+                        <li>思念：-miss [思念之人]    例：-miss 亚澄</li>
                     </ul>
                 </div>
                 <div className={Common.block}>
@@ -70,6 +70,7 @@ function About(props: AboutProps) {
                     <p className={Common.title}>隐式渲染</p>
                     <ul>
                         <li>任意包含BV的B站链接将被自动渲染成卡片</li>
+                        <li>emoji将自动渲染，现在只支持笑哭</li>
                     </ul>
                 </div>
                 <div className={Common.block}>
