@@ -86,11 +86,13 @@ class Message extends Component<MessageProps, MessageState> {
 
     handleMouseEnter = () => {
         const { isAdmin, isSelf, type } = this.props;
+        if (type === 'system') {
+            return;
+        }
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
             this.setState({ showDeleteList: true });
         }
-        //if (!isAdmin && (type==='text' || type==='reply'  ) && (!client.disableDeleteMessage && !isSelf)) {
-        if (!isAdmin && ( true ) && (!client.disableDeleteMessage && !isSelf)) {
+        if (!isAdmin && (type==='text' || type==='reply' || type==='bilibili' || type==='image' ) && (!client.disableDeleteMessage && !isSelf)) {
             this.setState({ showReplyList: true  });
         }
     };
@@ -135,12 +137,15 @@ class Message extends Component<MessageProps, MessageState> {
         console.log(content)
         if (type==='text'){
             qwe.current.insertCursor(`回复${username}「${content}」:   `);
-        }
-        else if (type==='reply'){
+        }else if (type==='reply'){
             const jscontent = JSON.parse(content);
             qwe.current.insertCursor(`回复${username}「${jscontent.replymsg}」:   `);
+        }else if (type=='bilibili'){
+            const jscontent = JSON.parse(content);
+            qwe.current.insertCursor(`回复${username}「${jscontent.title}」:   `);
+        }else if (type=='image'){
+            qwe.current.insertCursor(`回复${username}「${content}」:   `);
         }
-        
     };
 
     handleClickAvatar(showUserInfo: (userinfo: any) => void) {
