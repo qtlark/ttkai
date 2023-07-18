@@ -44,7 +44,7 @@ function BiliMessage(props: BiliMessageProps) {
                 
 
                 <a href={blink} target="_blank" className={Style.blink}>
-                    <img src={cover}/>
+                    <img src={cover} className={Style.co}/>
                 </a>
 
                 <div className={Style.st}>
