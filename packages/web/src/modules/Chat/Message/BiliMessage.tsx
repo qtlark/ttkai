@@ -24,8 +24,8 @@ function BiliMessage(props: BiliMessageProps) {
     const jsc = JSON.parse(props.content);
     const blink = `https://www.bilibili.com/video/${jsc.bvid}`;
 
-    const face = `https://ttkai.top/bpi${/hdslb.com(.*)/.exec(jsc.owner.face)[1]}@20h_!web-comment-note.webp`
-    const cover= `https://ttkai.top/bpi${/hdslb.com(.*)/.exec(jsc.pic       )[1]}@200w_!web-comment-note.webp`
+    const face = `/bpi${/hdslb.com(.*)/.exec(jsc.owner.face)[1]}@30h_!web-comment-note.webp`
+    const cover= `/bpi${/hdslb.com(.*)/.exec(jsc.pic       )[1]}@300w_!web-comment-note.webp`
 
 
     return (
