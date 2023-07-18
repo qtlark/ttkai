@@ -76,7 +76,7 @@ async function getBV(bvid) {
         console.log(err);
     }
 
-    return [];
+    return false;
 }
 
 async function shortBV2long(surl) {
@@ -272,7 +272,10 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             if (regexResult) {
                 type = 'bilibili';
                 const ansbv = await getBV(regexResult[0]);
-                messageContent = JSON.stringify(ansbv);
+                if(ansbv){
+                    type = 'bilibili';
+                    messageContent = JSON.stringify(ansbv);
+                }
             }
         } else if (b23Regex.test(messageContent)){
             const regexResult = b23Regex.exec(messageContent);
@@ -280,9 +283,11 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 const trueurl = await shortBV2long(regexResult[0]);
                 const nowbv = bvRegex.exec(trueurl)
                 if (nowbv){
-                    type = 'bilibili';
                     const ansbv = await getBV(nowbv);
-                    messageContent = JSON.stringify(ansbv);
+                    if(ansbv){
+                        type = 'bilibili';
+                        messageContent = JSON.stringify(ansbv);
+                    }
                 }
             }
         };
