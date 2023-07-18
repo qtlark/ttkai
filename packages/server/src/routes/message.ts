@@ -270,7 +270,6 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         } else if (bvRegex.test(messageContent)){
             const regexResult = bvRegex.exec(messageContent);
             if (regexResult) {
-                type = 'bilibili';
                 const ansbv = await getBV(regexResult[0]);
                 if(ansbv){
                     type = 'bilibili';
