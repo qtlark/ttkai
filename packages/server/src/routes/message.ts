@@ -271,7 +271,6 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             const regexResult = bvRegex.exec(messageContent);
             if (regexResult) {
                 const ansbv = await getBV(regexResult[0]);
-                console.log(ansbv);
                 if(ansbv){
                     type = 'bilibili';
                     messageContent = JSON.stringify(ansbv);
