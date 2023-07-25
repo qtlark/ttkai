@@ -21,11 +21,20 @@ function bignum(num: any){
 
 function BiliMessage(props: BiliMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
+    const picRegex = /hdslb.com(.*)/;
     const jsc = JSON.parse(props.content);
-    const blink = `https://www.bilibili.com/video/${jsc.bvid}`;
 
-    const face = `/bpi${/hdslb.com(.*)/.exec(jsc.owner.face)[1]}@30h_!web-comment-note.webp`
-    const cover= `/bpi${/hdslb.com(.*)/.exec(jsc.pic       )[1]}@300w_!web-comment-note.webp`
+    if(jsc.keyframe){
+        var blink = `https://live.bilibili.com/${jsc.room_id}`;
+        var face  = `/bpi/bfs/face/8f6a614a48a3813d90da7a11894ae56a59396fcd.jpg@30w_!web-avatar-search-user.webp.webp`;
+        var cover = `/bpi${picRegex.exec(jsc.user_cover)[1]}@300w_!web-search-common-cover.webp`;
+        var info  = [`${jsc.room_id}房号`, `${bignum(jsc.online)}人气`, `${bignum(jsc.attention)}关注`];
+    }else{
+        var blink = `https://www.bilibili.com/video/${jsc.bvid}`;
+        var face  = `/bpi${picRegex.exec(jsc.owner.face)[1]}@30w_!web-avatar-search-user.webp.webp`;
+        var cover = `/bpi${picRegex.exec(jsc.pic       )[1]}@300w_!web-search-common-cover.webp`;
+        var info  = [`${bignum(jsc.stat.view)}播放`, `${bignum(jsc.stat.like)}点赞`, `${bignum(jsc.stat.danmaku)}弹幕`];
+    }
 
 
     return (
@@ -48,9 +57,9 @@ function BiliMessage(props: BiliMessageProps) {
                 </a>
 
                 <div className={Style.st}>
-                    <div>{bignum(jsc.stat.view)}播放</div>
-                    <div>{bignum(jsc.stat.like)}点赞</div>
-                    <div>{bignum(jsc.stat.danmaku)}弹幕</div>
+                    <div>{info[0]}</div>
+                    <div>{info[1]}</div>
+                    <div>{info[2]}</div>
                 </div>
             </div>
         </div>

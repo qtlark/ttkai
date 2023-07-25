@@ -79,6 +79,24 @@ async function getBV(bvid) {
     return false;
 }
 
+async function getLive(lvid) {
+    const res = await axios({
+        method: 'get',
+        url: `https://api.live.bilibili.com/room/v1/Room/get_info?room_id=${lvid}`,
+    });
+    assert(res.status === 200, 'bilibili服务端错误');
+    
+
+    try {
+        return res.data.data;
+    } catch (err) {
+        assert(false, '屑b站的数据解析异常');
+        console.log(err);
+    }
+
+    return false;
+}
+
 async function shortBV2long(surl) {
     const res = await axios({
         method: 'get',
@@ -196,6 +214,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         const sysRegex = /^-sys( (.*))?$/;
         const replyRegex= /^回复(.*)「(.*)」:(.*)/;
         const bvRegex   = /BV\w{10}/i;
+        const liveRegex = /\w+:\/\/live.bilibili.com\/(\d+)/;
         const b23Regex  = /\w+:\/\/b23.tv\/\w{7}/;
         if (rollRegex.test(messageContent)) {
             const regexResult = rollRegex.exec(messageContent);
@@ -274,6 +293,15 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 if(ansbv){
                     type = 'bilibili';
                     messageContent = JSON.stringify(ansbv);
+                }
+            }
+        } else if (liveRegex.test(messageContent)){
+            const regexResult = liveRegex.exec(messageContent);
+            if (regexResult) {
+                const anslv = await getLive(regexResult[0]);
+                if(anslv){
+                    type = 'bilibili';
+                    messageContent = JSON.stringify(anslv);
                 }
             }
         } else if (b23Regex.test(messageContent)){
