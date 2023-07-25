@@ -26,12 +26,14 @@ function BiliMessage(props: BiliMessageProps) {
 
     if(jsc.keyframe){
         var blink = `https://live.bilibili.com/${jsc.room_id}`;
-        var face  = `/bpi/bfs/face/8f6a614a48a3813d90da7a11894ae56a59396fcd.jpg@30w_!web-avatar-search-user.webp.webp`;
+        var name  = jsc.info.uname;
+        var face  = `/bpi${picRegex.exec(jsc.info.face)[1]}@30w_!web-avatar-search-user.webp`;
         var cover = `/bpi${picRegex.exec(jsc.user_cover)[1]}@300w_!web-search-common-cover.webp`;
-        var info  = [`${jsc.room_id}房号`, `${bignum(jsc.online)}人气`, `${bignum(jsc.attention)}关注`];
+        var info  = [`${jsc.room_id}房号`, `${bignum(jsc.online)}人气`, `${bignum(jsc.attention)}粉丝`];
     }else{
         var blink = `https://www.bilibili.com/video/${jsc.bvid}`;
-        var face  = `/bpi${picRegex.exec(jsc.owner.face)[1]}@30w_!web-avatar-search-user.webp.webp`;
+        var name  = jsc.owner.name
+        var face  = `/bpi${picRegex.exec(jsc.owner.face)[1]}@30w_!web-avatar-search-user.webp`;
         var cover = `/bpi${picRegex.exec(jsc.pic       )[1]}@300w_!web-search-common-cover.webp`;
         var info  = [`${bignum(jsc.stat.view)}播放`, `${bignum(jsc.stat.like)}点赞`, `${bignum(jsc.stat.danmaku)}弹幕`];
     }
@@ -46,8 +48,8 @@ function BiliMessage(props: BiliMessageProps) {
 
                 <div className={Style.clo}>
                     <img src={face} className={Style.face}/>
-                    <div className={Style.upname}>{jsc.owner.name}</div>
-                    <div className={Style.up}>UP主</div>
+                    <div className={Style.upname}>{name}</div>
+                    <div className={Style.up}>{jsc.keyframe?'主播':'UP主'}</div>
                 </div>
 
                 

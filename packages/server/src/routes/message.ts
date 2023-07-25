@@ -97,6 +97,24 @@ async function getLive(lvid) {
     return false;
 }
 
+async function getVup(uid) {
+    const res = await axios({
+        method: 'get',
+        url: `https://api.live.bilibili.com/live_user/v1/Master/info?uid=${uid}`,
+    });
+    assert(res.status === 200, 'bilibili服务端错误');
+    
+
+    try {
+        return res.data.data;
+    } catch (err) {
+        assert(false, '屑b站的数据解析异常');
+        console.log(err);
+    }
+
+    return false;
+}
+
 async function shortBV2long(surl) {
     const res = await axios({
         method: 'get',
@@ -299,9 +317,10 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             const regexResult = liveRegex.exec(messageContent);
             if (regexResult) {
                 const anslv = await getLive(regexResult[0]);
-                if(anslv){
+                const ansup = await getVup(anslv.uid);
+                if(anslv && ansup){
                     type = 'bilibili';
-                    messageContent = JSON.stringify(anslv);
+                    messageContent = JSON.stringify(Object.assign(anslv,ansup));
                 }
             }
         } else if (b23Regex.test(messageContent)){
