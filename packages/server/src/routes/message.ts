@@ -116,12 +116,11 @@ async function getVup(uid) {
 }
 
 async function shortBV2long(surl) {
-    return surl
     const res = await axios({
         method: 'get',
         url: surl,
     });
-    assert(res.status === 200, 'bilibili服务端错误');
+    //assert(res.status === 200, 'bilibili服务端错误');
 
     return res.headers;
     
