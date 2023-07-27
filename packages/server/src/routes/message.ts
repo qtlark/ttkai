@@ -328,9 +328,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             const regexResult = b23Regex.exec(messageContent);
             if (regexResult) {
                 const trueurl = await shortBV2long(regexResult[0]);
-                if(true){
-                    messageContent = trueurl;
-                }else if (bvRegex.test(trueurl)){
+                if (bvRegex.test(trueurl)){
                     const regexResult2 = bvRegex.exec(trueurl);
                     if (regexResult2) {
                         const ansbv = await getBV(regexResult2[0]);
