@@ -143,7 +143,7 @@ class Message extends Component<MessageProps, MessageState> {
             const jscontent = JSON.parse(content);
             qwe.current.insertCursor(`回复${username}的B站分享「${jscontent.title}」:   `);
         }else if (type=='image'){
-            qwe.current.insertCursor(`回复${username}「${content}」:   `);
+            qwe.current.insertCursor(`回复${username}的图片「${content}」:   `);
         }
     };
 
