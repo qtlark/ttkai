@@ -338,7 +338,8 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                     }
                 }else if (liveRegex.test(trueurl)){
                     const regexResult3 = liveRegex.exec(trueurl);
-                    if (regexResult3) {
+                    messageContent = trueurl;
+                    if (regexResult3 && false) {
                         const anslv = await getLive(regexResult3[1]);
                         const ansup = await getVup(anslv.uid);
                         if(anslv && ansup){
