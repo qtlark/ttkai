@@ -122,7 +122,7 @@ async function shortBV2long(surl) {
     });
     assert(res.status === 200, 'bilibili服务端错误');
 
-    console.log(res.headers);
+    return res.headers;
     
 
     if(res.headers['bili-trace-id']){
