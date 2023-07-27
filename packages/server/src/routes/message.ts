@@ -327,12 +327,24 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             const regexResult = b23Regex.exec(messageContent);
             if (regexResult) {
                 const trueurl = await shortBV2long(regexResult[0]);
-                const nowbv = bvRegex.exec(trueurl)
-                if (nowbv){
-                    const ansbv = await getBV(nowbv);
-                    if(ansbv){
-                        type = 'bilibili';
-                        messageContent = JSON.stringify(ansbv);
+                if (bvRegex.test(trueurl)){
+                    const regexResult2 = bvRegex.exec(trueurl);
+                    if (regexResult2) {
+                        const ansbv = await getBV(regexResult2[0]);
+                        if(ansbv){
+                            type = 'bilibili';
+                            messageContent = JSON.stringify(ansbv);
+                        }
+                    }
+                }else if (liveRegex.test(trueurl)){
+                    const regexResult3 = liveRegex.exec(trueurl);
+                    if (regexResult3) {
+                        const anslv = await getLive(regexResult3[1]);
+                        const ansup = await getVup(anslv.uid);
+                        if(anslv && ansup){
+                            type = 'bilibili';
+                            messageContent = JSON.stringify(Object.assign(anslv,ansup));
+                        }
                     }
                 }
             }

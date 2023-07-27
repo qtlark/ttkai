@@ -20,11 +20,11 @@ function About(props: AboutProps) {
         >
             <div>
                 <div className={Common.block}>
-                    <p className={Common.title}>版本：<font color="red">v23.07.13</font></p>
+                    <p className={Common.title}>版本：<font color="red">v23.07.27</font></p>
                     <ul>
                         <li>欢迎来到ttkai!</li>
-                        <li>更新规划以及反馈<a href="https://kdocs.cn/l/cl4jWlAN5F90" target="_blank">传送门</a></li>
-                        <li><a href="https://chat.ttkai.xyz/FileMessage/ttkai.apk" target="_blank">安卓版下载</a></li>
+                        <li>建议、反馈请加<a href="/invite/group/64c1f68f72796af87ff6feb9">捉虫群</a></li>
+                        <li><a href="/FileMessage/ttkai.apk" target="_blank">安卓版下载</a></li>
                     </ul>
                 </div>
                 <div className={Common.block}>
@@ -69,7 +69,7 @@ function About(props: AboutProps) {
                 <div className={Common.block}>
                     <p className={Common.title}>隐式渲染</p>
                     <ul>
-                        <li>任意包含BV的B站链接将被自动渲染成卡片</li>
+                        <li>B站视频、直播链接将被自动渲染成卡片</li>
                         <li>emoji将自动渲染，现在只支持笑哭</li>
                     </ul>
                 </div>
