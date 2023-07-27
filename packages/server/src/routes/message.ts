@@ -116,6 +116,7 @@ async function getVup(uid) {
 }
 
 async function shortBV2long(surl) {
+    return surl
     const res = await axios({
         method: 'get',
         url: surl,
