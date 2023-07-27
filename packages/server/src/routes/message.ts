@@ -119,17 +119,18 @@ async function shortBV2long(surl) {
     const res = await axios({
         method: 'get',
         url: surl,
+        headers: {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 QIHU 360SE'}
     });
-    //assert(res.status === 200, 'bilibili服务端错误');
+    assert(res.status === 200, 'bilibili服务端错误');
 
-    return res.headers;
-    
-
-    if(res.headers['bili-trace-id']){
-        return res.headers['location'];
-    }else{
+    try {
         return res.request.res.responseUrl;
+    } catch (err) {
+        assert(false, '屑b站的数据解析异常');
+        console.log(err);
     }
+
+    return false;
 }
 
 
