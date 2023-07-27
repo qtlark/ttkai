@@ -316,7 +316,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         } else if (liveRegex.test(messageContent)){
             const regexResult = liveRegex.exec(messageContent);
             if (regexResult) {
-                const anslv = await getLive(regexResult[0]);
+                const anslv = await getLive(regexResult[1]);
                 const ansup = await getVup(anslv.uid);
                 if(anslv && ansup){
                     type = 'bilibili';
