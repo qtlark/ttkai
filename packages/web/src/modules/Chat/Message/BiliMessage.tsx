@@ -29,7 +29,7 @@ function BiliMessage(props: BiliMessageProps) {
         var name  = jsc.info.uname;
         var face  = `/bpi${picRegex.exec(jsc.info.face)[1]}@30w_!web-avatar-search-user.webp`;
         var cover = `/bpi${picRegex.exec(jsc.user_cover)[1]}@300w_!web-search-common-cover.webp`;
-        var info  = [`${jsc.room_id}房号`, `${bignum(jsc.online)}人气`, `${bignum(jsc.attention)}粉丝`];
+        var info  = [`${bignum(jsc.online)}人气`, `${bignum(jsc.attention)}粉丝`, `${jsc.exp.master_level.level}等级`];
     }else{
         var blink = `https://www.bilibili.com/video/${jsc.bvid}`;
         var name  = jsc.owner.name
