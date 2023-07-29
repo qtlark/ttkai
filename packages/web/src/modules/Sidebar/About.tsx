@@ -69,7 +69,7 @@ function About(props: AboutProps) {
                 <div className={Common.block}>
                     <p className={Common.title}>隐式渲染</p>
                     <ul>
-                        <li>网易云链接将被自动渲染成卡片</li>
+                        <li>网易云音乐链接将被自动渲染成卡片</li>
                         <li>B站视频、直播链接将被自动渲染成卡片</li>
                         <li>emoji将自动渲染，现在只支持笑哭</li>
                     </ul>
