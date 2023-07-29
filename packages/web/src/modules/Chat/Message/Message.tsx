@@ -30,6 +30,7 @@ import themes from '../../../themes';
 
 import ReplyMessage from './ReplyMessage';
 import BiliMessage from './BiliMessage';
+import MusicMessage from './MusicMessage';
 
 
 
@@ -184,6 +185,9 @@ class Message extends Component<MessageProps, MessageState> {
             }
             case 'bilibili': {
                 return <BiliMessage content={content} />;
+            }
+            case 'music': {
+                return <MusicMessage content={content} />;
             }
             case 'image': {
                 return (
