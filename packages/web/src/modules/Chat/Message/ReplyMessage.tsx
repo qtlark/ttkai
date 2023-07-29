@@ -14,7 +14,10 @@ function ReplyMessage(props: ReplyMessageProps) {
     const imgRegex  = /^.+width=(.+)&height=(.+)$/;
     var content = `<font color=8A2BE2>${jhconvert(jscontent.replywho)}</font>:「${jhconvert(jscontent.orignmsg)}」<hr>${jhconvert(jscontent.replymsg)}`;
     if (imgRegex.test(jscontent.orignmsg)) {
-        content = `<font color=8A2BE2>${jhconvert(jscontent.replywho)}</font><div style="text-align: center;"><img src=${jscontent.orignmsg} style="width: 110px;"></div><hr>${jhconvert(jscontent.replymsg)}`;
+        const regexResult = imgRegex.exec(jscontent.orignmsg);
+        const p_width  = 110;
+        const p_height = parseInt(  parseInt(regexResult[2]) * parseInt(regexResult[1]) / p_width  );
+        content = `<font color=8A2BE2>${jhconvert(jscontent.replywho)}</font><div style="text-align: center;"><img src=${jscontent.orignmsg} style="width: ${p_width}px; height: ${p_height}"></div><hr>${jhconvert(jscontent.replymsg)}`;
         return (
             <div
                 className={`${Style.textMessage} ${Style.replyimg}`}
