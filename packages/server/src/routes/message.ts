@@ -235,6 +235,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         const bvRegex   = /BV\w{10}/i;
         const liveRegex = /\w+:\/\/live.bilibili.com\/(\d+)/;
         const b23Regex  = /\w+:\/\/b23.tv\/\w{7}/;
+        const musicRegex= /.*music.163.com.*\bid=\b(\d+).*/;
         if (rollRegex.test(messageContent)) {
             const regexResult = rollRegex.exec(messageContent);
             if (regexResult) {
@@ -348,6 +349,12 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                         }
                     }
                 }
+            }
+        } else if (musicRegex.test(messageContent)){
+            const regexResult = musicRegex.exec(messageContent);
+            if (regexResult) {
+                type = 'music';
+                messageContent = regexResult[1];
             }
         };
         messageContent = xss(messageContent);
