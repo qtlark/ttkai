@@ -10,7 +10,7 @@ function MusicMessage(props: MusicMessageProps) {
     const content = `<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="https://music.163.com/outchain/player?type=2&id=${props.content}&auto=0&height=66"></iframe>`;
 
     return (
-        <div className={Style.textMessage} style={{margin:'-10px -12px -14px -12px'}} dangerouslySetInnerHTML={{ __html: content }}>
+        <div className={Style.textMessage} style={{margin:'-10px -12px -14px -12px';height: '90px'; witdh:'220px'}} dangerouslySetInnerHTML={{ __html: content }}>
         </div>
     );
 }
