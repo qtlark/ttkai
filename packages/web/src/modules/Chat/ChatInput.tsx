@@ -301,7 +301,7 @@ const ChatInput = forwardRef((props, ref) => {
         }
         const image = await readDiskFile(
             'yasuo',
-            'image/png,image/jpeg,image/gif',
+            'image/png,image/jpeg,image/gif,image/webp',
         );
         if (!image) {
             return null;

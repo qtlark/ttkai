@@ -99,7 +99,7 @@ export default async function readDiskFIle(
         );
     }
 
-    if (result && resultType === 'yasuo') {
+    if (result && resultType === 'yasuo' && !(result.type === 'image/gif')) {
         result.result = await compressionFile(result.result);
         result.type   = 'image/webp'
     }
