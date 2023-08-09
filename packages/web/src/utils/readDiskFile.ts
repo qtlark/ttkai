@@ -101,6 +101,7 @@ export default async function readDiskFIle(
 
     if (result && resultType === 'yasuo') {
         result.result = await compressionFile(result.result);
+        result.type   = 'image/webp'
     }
     return result;
 }
@@ -118,7 +119,7 @@ const canvastoFile = (canvas: HTMLCanvasElement, type: string, quality: number):
     return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality))
 }
 
-const compressionFile = async (file, type = 'image/jpeg', quality = 0.5) => {
+const compressionFile = async (file, type = 'image/webp', quality = 0.5) => {
 
     const canvas = document.createElement('canvas')
     const context = canvas.getContext('2d') as CanvasRenderingContext2D
