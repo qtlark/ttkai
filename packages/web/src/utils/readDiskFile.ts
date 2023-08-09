@@ -63,7 +63,7 @@ export default async function readDiskFIle(
                     // @ts-ignore
                     result: this.result,
                     length:
-                        resultType === 'blob'
+                        resultType === 'blob' || (resultType === 'yasuo' && (file.type === 'image/gif' || file.type === 'image/webp'))
                             ? (this.result as ArrayBuffer).byteLength
                             : (this.result as string).length,
                 });
