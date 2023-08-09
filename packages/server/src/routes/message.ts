@@ -115,7 +115,7 @@ async function getVup(uid) {
     return false;
 }
 
-async function shortBV2long(surl) {
+async function short2long(surl) {
     const res = await axios({
         method: 'get',
         url: surl,
@@ -133,6 +133,7 @@ async function shortBV2long(surl) {
 
     return false;
 }
+
 
 
 
@@ -236,6 +237,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         const liveRegex = /\w+:\/\/live.bilibili.com\/(\d+)/;
         const b23Regex  = /\w+:\/\/b23.tv\/\w{7}/;
         const musicRegex= /.*music.163.com.*\bsong\?id=\b(\d+).*/;
+        const m163Regex = /\w+:\/\/163cn.tv\/\w+/;
         if (rollRegex.test(messageContent)) {
             const regexResult = rollRegex.exec(messageContent);
             if (regexResult) {
@@ -328,7 +330,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         } else if (b23Regex.test(messageContent)){
             const regexResult = b23Regex.exec(messageContent);
             if (regexResult) {
-                const trueurl = await shortBV2long(regexResult[0]);
+                const trueurl = await short2long(regexResult[0]);
                 if (bvRegex.test(trueurl)){
                     const regexResult2 = bvRegex.exec(trueurl);
                     if (regexResult2) {
@@ -355,6 +357,16 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             if (regexResult) {
                 type = 'music';
                 messageContent = regexResult[1];
+            }
+        } else if (m163Regex.test(messageContent)){
+            const regexResult = m163Regex.exec(messageContent);
+            if (regexResult) {
+                const trueurl = await short2long(regexResult[0]);
+                const regexResult2 = musicRegex.exec(trueurl);
+                if (regexResult2) {
+                    type = 'music';
+                    messageContent = regexResult2[1];
+                }
             }
         };
         messageContent = xss(messageContent);
