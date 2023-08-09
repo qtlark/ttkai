@@ -18,6 +18,13 @@ function bignum(num: any){
     return num;
 }
 
+function twoline(tit: any){
+    if(tit.length>25){
+        return tit.substring(0,25) + '...'
+    }
+    return tit
+}
+
 
 function BiliMessage(props: BiliMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
@@ -43,7 +50,7 @@ function BiliMessage(props: BiliMessageProps) {
         <div className={Style.biliMessage}>
             <div>
 
-                <div className={Style.title}>{jsc.title}</div>
+                <div className={Style.title}>{twoline(jsc.title)}</div>
                 <hr />
 
                 <div className={Style.clo}>
