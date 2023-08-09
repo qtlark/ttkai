@@ -80,9 +80,11 @@ export default async function readDiskFIle(
                 }
                 case 'yasuo': {
                     if(file.type === 'image/gif' || file.type === 'image/webp'){
+                        console.log(123123);
                         reader.readAsArrayBuffer(file);
                     }else{
                         reader.readAsDataURL(file);
+                        console.log(file.type);
                     }
                     break;
                 }
