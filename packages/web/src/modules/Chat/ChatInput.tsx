@@ -300,7 +300,7 @@ const ChatInput = forwardRef((props, ref) => {
             return Message.error('发送消息失败, 您当前处于离线状态');
         }
         const image = await readDiskFile(
-            'blob',
+            'yasuo',
             'image/png,image/jpeg,image/gif',
         );
         if (!image) {
