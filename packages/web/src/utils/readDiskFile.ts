@@ -79,7 +79,11 @@ export default async function readDiskFIle(
                     break;
                 }
                 case 'yasuo': {
-                    reader.readAsDataURL(file);
+                    if(file.type === 'image/gif' || file.type === 'image/webp'){
+                        reader.readAsArrayBuffer(file);
+                    }else{
+                        reader.readAsDataURL(file);
+                    }
                     break;
                 }
                 default: {
@@ -99,7 +103,7 @@ export default async function readDiskFIle(
         );
     }
 
-    if (result && resultType === 'yasuo' && !(result.type === 'image/gif')) {
+    if (result && resultType === 'yasuo' && !(result.type === 'image/gif' || result.type === 'image/webp')) {
         result.result = await compressionFile(result.result);
         result.type   = 'image/webp'
     }
