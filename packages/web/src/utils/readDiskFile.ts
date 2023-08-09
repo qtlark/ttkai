@@ -79,12 +79,10 @@ export default async function readDiskFIle(
                     break;
                 }
                 case 'yasuo': {
-                    if(file.type === 'image/gif' || file.type === 'image/webp'){
-                        console.log(123123);
+                    if (file.type === 'image/gif' || file.type === 'image/webp') {
                         reader.readAsArrayBuffer(file);
-                    }else{
+                    } else {
                         reader.readAsDataURL(file);
-                        console.log(file.type);
                     }
                     break;
                 }
@@ -105,9 +103,19 @@ export default async function readDiskFIle(
         );
     }
 
-    if (result && resultType === 'yasuo' && !(result.type === 'image/gif' || result.type === 'image/webp')) {
-        result.result = await compressionFile(result.result);
-        result.type   = 'image/webp'
+    if (result && resultType === 'yasuo') {
+        if (result.type === 'image/gif' || result.type === 'image/webp') {
+            result.result = new Blob(
+                [new Uint8Array(result.result as ArrayBuffer)],
+                {
+                    type: result.type,
+                },
+            );
+        } else {
+            result.result = await compressionFile(result.result);
+            result.type = 'image/webp';
+        }
+
     }
     return result;
 }

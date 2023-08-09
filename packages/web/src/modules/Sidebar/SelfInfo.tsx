@@ -65,7 +65,7 @@ function SelfInfo(props: SelfInfoProps) {
 
     async function selectAvatar() {
         const file = await readDiskFile(
-            'blob',
+            'yasuo',
             'image/png,image/jpeg,image/gif,image/webp',
         );
         if (!file) {
