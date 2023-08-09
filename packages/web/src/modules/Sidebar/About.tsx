@@ -20,7 +20,7 @@ function About(props: AboutProps) {
         >
             <div>
                 <div className={Common.block}>
-                    <p className={Common.title}>版本：<font color="red">v23.07.29</font></p>
+                    <p className={Common.title}>版本：<font color="red">v23.08.09</font></p>
                     <ul>
                         <li>欢迎来到ttkai!</li>
                         <li>建议、反馈请加<a href="/invite/group/64c1f68f72796af87ff6feb9">反馈群</a></li>
@@ -32,7 +32,7 @@ function About(props: AboutProps) {
                     <ul>
                         <li>请不要发送站内的资源链接</li>
                         <li>禁止男酮、鉴证、猎奇等讨论</li>
-                        <li>图片不能大于1M，建议换成jpg格式</li>
+                        <li>GIF图片不能大于700kb，其余图片随便发~</li>
                         <li>外链图片无大小限制，如果可以请尽量使用高速稳定的图床</li>
                     </ul>
                 </div>
