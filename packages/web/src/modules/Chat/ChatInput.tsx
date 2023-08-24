@@ -376,8 +376,8 @@ const ChatInput = forwardRef((props, ref) => {
                             image.onload = async () => {
                                 const imageBlob = await compressImage(
                                     image,
-                                    file.type,
-                                    0.8,
+                                    'image/webp',
+                                    1.0,
                                 );
                                 // @ts-ignore
                                 sendImageMessage({
