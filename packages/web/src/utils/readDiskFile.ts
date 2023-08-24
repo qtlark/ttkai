@@ -112,6 +112,7 @@ export default async function readDiskFIle(
                 },
             );
         } else {
+            console.log(result.length);
             result.result = await compressionFile(result.result);
             result.type = 'image/webp';
         }
