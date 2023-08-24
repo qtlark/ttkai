@@ -42,7 +42,7 @@ function ReplyMessage(props: ReplyMessageProps) {
             <div className={`${Style.textMessage} ${Style.replyimg}`} >
                 <font style={{color:'8A2BE2'}}>{jhconvert(jscontent.replywho)}</font>
                 <div style={{textAlign: 'center'}}>
-                    <img src={jscontent.orignmsg} style={{width: `${p_width}px`, height: `${p_height}px`, marginTop: '5px'}} onClick={() => toggleViewer(true) />
+                    <img src={jscontent.orignmsg} style={{width: `${p_width}px`, height: `${p_height}px`, marginTop: '5px'}} onClick={() => toggleViewer(true)} />
                 </div>
                 <hr />
                 {jhconvert(jscontent.replymsg)}
