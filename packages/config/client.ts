@@ -7,7 +7,7 @@ export default {
 
     maxImageSize: process.env.MaxImageSize
         ? parseInt(process.env.MaxImageSize, 10)
-        : MB * 7,
+        : MB * 10,
     maxBackgroundImageSize: process.env.MaxBackgroundImageSize
         ? parseInt(process.env.MaxBackgroundImageSize, 10)
         : MB * 5,
