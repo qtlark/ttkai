@@ -104,7 +104,7 @@ export default async function readDiskFIle(
     }
 
     if (result && resultType === 'yasuo') {
-        if (result.type === 'image/gif' || result.type === 'image/webp') {
+        if (result.type === 'image/gif' || result.type === 'image/webp' || result.length<200) {
             result.result = new Blob(
                 [new Uint8Array(result.result as ArrayBuffer)],
                 {
@@ -114,7 +114,7 @@ export default async function readDiskFIle(
         } else {
             const sz = result.length/1000;
             result.type = 'image/webp';
-            result.result = await compressionFile(result.result, sz<200?1.0:sz<500?0.9:sz<1000?0.8:sz<1500?0.7:sz<3000?0.6:0.5);
+            result.result = await compressionFile(result.result, sz<500?0.9:sz<1000?0.8:sz<3000?0.7:0.6);
         }
 
     }
