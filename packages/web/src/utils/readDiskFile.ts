@@ -112,9 +112,9 @@ export default async function readDiskFIle(
                 },
             );
         } else {
-            console.log(result.length);
-            result.result = await compressionFile(result.result);
+            const sz = result.length/1000;
             result.type = 'image/webp';
+            result.result = await compressionFile(result.result, sz<200?1.0:sz<500?0.9:sz<1000?0.8:sz<1500?0.7:sz<3000?0.6:0.5);
         }
 
     }
@@ -134,7 +134,7 @@ const canvastoFile = (canvas: HTMLCanvasElement, type: string, quality: number):
     return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality))
 }
 
-const compressionFile = async (file, type = 'image/webp', quality = 0.9) => {
+const compressionFile = async (file, quality = 0.9) => {
 
     const canvas = document.createElement('canvas')
     const context = canvas.getContext('2d') as CanvasRenderingContext2D
@@ -147,7 +147,7 @@ const compressionFile = async (file, type = 'image/webp', quality = 0.9) => {
     context.clearRect(0, 0, img.width, img.height)
     context.drawImage(img, 0, 0, img.width, img.height)
 
-    const blob = (await canvastoFile(canvas, type, quality)) as Blob
+    const blob = (await canvastoFile(canvas, 'image/webp', quality)) as Blob
 
     context.clearRect(0, 0, img.width, img.height)
 
