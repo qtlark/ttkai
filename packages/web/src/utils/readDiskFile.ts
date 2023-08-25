@@ -133,7 +133,7 @@ const canvastoFile = (canvas: HTMLCanvasElement, type: string, quality: number):
     return new Promise((resolve) => canvas.toBlob((blob) => resolve(blob), type, quality))
 }
 
-const compressionFile = async (file, quality = 0.9) => {
+const compressionFile = async (file, quality = 0.75) => {
 
     const canvas = document.createElement('canvas')
     const context = canvas.getContext('2d') as CanvasRenderingContext2D
