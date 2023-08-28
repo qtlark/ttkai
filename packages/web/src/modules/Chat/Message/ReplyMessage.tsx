@@ -45,7 +45,7 @@ function ReplyMessage(props: ReplyMessageProps) {
                     <img src={jscontent.orignmsg} style={{width: `${p_width}px`, height: `${p_height}px`, marginTop: '5px'}} onClick={() => toggleViewer(true)} />
                 </div>
                 <hr />
-                {jhconvert(jscontent.replymsg)}
+                <div dangerouslySetInnerHTML={{ __html: jhconvert(jscontent.replymsg) }}></div>
                 {viewer && (
                     <ReactViewerAsync
                         // eslint-disable-next-line react/destructuring-assignment
