@@ -40,12 +40,12 @@ function ReplyMessage(props: ReplyMessageProps) {
 
         return (
             <div className={`${Style.textMessage} ${Style.replyimg}`} >
-                <font style={{color:'8A2BE2'}}>{jhconvert(jscontent.replywho)}</font>
+                <font color='8A2BE2'>{jhconvert(jscontent.replywho)}</font>
                 <div style={{textAlign: 'center'}}>
                     <img src={jscontent.orignmsg} style={{width: `${p_width}px`, height: `${p_height}px`, marginTop: '5px'}} onClick={() => toggleViewer(true)} />
                 </div>
                 <hr />
-                <div dangerouslySetInnerHTML={{ __html: jhconvert(jscontent.replymsg) }}></div>
+                <div dangerouslySetInnerHTML={{ __html: jhconvert(jscontent.replymsg) }} className={`${Style.textMessage}`}></div>
                 {viewer && (
                     <ReactViewerAsync
                         // eslint-disable-next-line react/destructuring-assignment
