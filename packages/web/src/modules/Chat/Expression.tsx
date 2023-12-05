@@ -67,18 +67,12 @@ function Expression(props: ExpressionProps) {
             const picRegex = /hdslb.com(.*)/;
             if (picRegex.test(keywords)) {
                 var cover = `/bpi${picRegex.exec(keywords)[1]}`;
-                console.log(cover);
-                validateImage(cover).then(()=>{
-                    console.log(123);
-                }).catch(()=>{
-                    Message.info('无');
-                })
-                const result = [{"image":cover,"width":90,"height":90}];
-                setSearchResults(result);
+            }else{
+                var cover = keywords;
             }
 
-            validateImage(keywords).then(()=>{
-                const result = [{"image":keywords,"width":90,"height":90}];
+            validateImage(cover).then(()=>{
+                const result = [{"image":cover,"width":90,"height":90}];
                 setSearchResults(result);
             }).catch(()=>{
                 Message.info('无法加载指定链接中的图片');
