@@ -33,7 +33,7 @@ function ReplyMessage(props: ReplyMessageProps) {
     var content = `<font color=8A2BE2>${jhconvert(jscontent.replywho)}</font>:「${jhconvert(jscontent.orignmsg)}」<hr>${jhconvert(jscontent.replymsg)}`;
     if (imgRegex.test(jscontent.orignmsg)) {
         const regexResult = imgRegex.exec(jscontent.orignmsg);
-        const p_width = 110;
+        const p_width = 120;
         const p_height = parseInt(parseInt(regexResult[2]) * p_width / parseInt(regexResult[1]));
 
         
@@ -42,7 +42,7 @@ function ReplyMessage(props: ReplyMessageProps) {
             <div className={`${Style.textMessage} ${Style.replyimg}`} >
                 <font color='8A2BE2'>{jhconvert(jscontent.replywho)}</font>
                 <div style={{textAlign: 'center'}}>
-                    <img src={jscontent.orignmsg} style={{width: `${p_width}px`, height: `${p_height}px`, marginTop: '5px'}} onClick={() => toggleViewer(true)} />
+                    <img src={jscontent.orignmsg} style={{width: `${p_width}px`, height: `${p_height}px`, marginTop: '5px', borderRadius:'6px'}} onClick={() => toggleViewer(true)} />
                 </div>
                 <hr />
                 <div dangerouslySetInnerHTML={{ __html: jhconvert(jscontent.replymsg) }} className={`${Style.textMessage}`}></div>
