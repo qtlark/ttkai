@@ -64,9 +64,17 @@ function Expression(props: ExpressionProps) {
         if (keywords) {
             toggleSearchLoading(true);
             setSearchResults([]);
-            const result = [{"image":keywords,"width":90,"height":90}];
+            const picRegex = /hdslb.com(.*)/;
+            if (picRegex.test(keywords)) {
+                var cover = `/bpi${picRegex.exec(keywords)[1]}`;
+                console.log(cover);
+                console.log(validateImage(cover));
+                const result = [{"image":cover,"width":90,"height":90}];
+                setSearchResults(result);
+            }
 
             validateImage(keywords).then(()=>{
+                const result = [{"image":keywords,"width":90,"height":90}];
                 setSearchResults(result);
             }).catch(()=>{
                 Message.info('无法加载指定链接中的图片');
