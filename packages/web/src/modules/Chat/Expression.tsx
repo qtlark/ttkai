@@ -65,12 +65,13 @@ function Expression(props: ExpressionProps) {
             toggleSearchLoading(true);
             setSearchResults([]);
             const picRegex = /hdslb.com(.*)/;
+            const picRegex2 = /biliimg.com(.*)/;
+            var cover = keywords;
             if (picRegex.test(keywords)) {
                 var cover = `/bpi${picRegex.exec(keywords)[1]}`;
-            }else{
-                var cover = keywords;
-            }
-
+            if (picRegex2.test(keywords)) {
+                var cover = `/bpi${picRegex2.exec(keywords)[1]}`;
+            
             validateImage(cover).then(()=>{
                 const result = [{"image":cover,"width":90,"height":90}];
                 setSearchResults(result);
