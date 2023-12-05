@@ -69,8 +69,10 @@ function Expression(props: ExpressionProps) {
             var cover = keywords;
             if (picRegex.test(keywords)) {
                 cover = `/bpi${picRegex.exec(keywords)[1]}`;
+            }
             if (picRegex2.test(keywords)) {
                 cover = `/bpi${picRegex2.exec(keywords)[1]}`;
+            }
             console.log(cover);
             
             validateImage(cover).then(()=>{
