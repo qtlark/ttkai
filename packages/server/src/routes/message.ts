@@ -312,7 +312,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             const regexResult = bvRegex.exec(messageContent);
             if (regexResult) {
                 const ansbv = await getBV(regexResult[0]);
-                if(ansbv){
+                if(Object.keys(ansbv).length>0){
                     type = 'bilibili';
                     messageContent = JSON.stringify(ansbv);
                 }
@@ -327,7 +327,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 console.log(ansup);
                 
 
-                if(anslv.length>0 && ansup.length>0){
+                if(Object.keys(anslv).length>0 && Object.keys(ansup).length>0){
                     type = 'bilibili';
                     messageContent = JSON.stringify(Object.assign(anslv,ansup));
                     console.log(messageContent);
@@ -341,7 +341,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                     const regexResult2 = bvRegex.exec(trueurl);
                     if (regexResult2) {
                         const ansbv = await getBV(regexResult2[0]);
-                        if(ansbv){
+                        if(Object.keys(ansbv).length>0){
                             type = 'bilibili';
                             messageContent = JSON.stringify(ansbv);
                         }
@@ -351,7 +351,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                     if (regexResult3) {
                         const anslv = await getLive(regexResult3[1]);
                         const ansup = await getVup(anslv.uid);
-                        if(anslv && ansup){
+                        if(Object.keys(anslv).length>0 && Object.keys(ansup).length>0){
                             type = 'bilibili';
                             messageContent = JSON.stringify(Object.assign(anslv,ansup));
                         }
