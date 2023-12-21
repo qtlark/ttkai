@@ -322,10 +322,12 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             if (regexResult) {
                 const anslv = await getLive(regexResult[1]);
                 const ansup = await getVup(anslv.uid);
+                delete anslv['description'];
                 console.log(anslv);
                 console.log(ansup);
                 
-                if(anslv && ansup){
+
+                if(anslv.length>0 && ansup.length>0){
                     type = 'bilibili';
                     messageContent = JSON.stringify(Object.assign(anslv,ansup));
                     console.log(messageContent);
