@@ -227,7 +227,6 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
     let messageContent = content;
     if (type === 'text') {
         assert(messageContent.length <= 2048, '消息长度过长');
-        console.log(messageContent);
         
         const rollRegex = /^-roll( ([0-9]*))?$/;
         const gptRegex  = /^-gpt( (.*))?$/;
@@ -320,19 +319,16 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             }
         } else if (liveRegex.test(messageContent)){
             const regexResult = liveRegex.exec(messageContent);
-            console.log(regexResult);
             
             if (regexResult) {
                 const anslv = await getLive(regexResult[1]);
                 const ansup = await getVup(anslv.uid);
-                console.log(anslv);
-                console.log(ansup);
                 delete anslv['description'];
-                console.log(anslv);
-                console.log(ansup);
                 if(Object.keys(anslv).length>0 && Object.keys(ansup).length>0){
                     type = 'bilibili';
                     messageContent = JSON.stringify(Object.assign(anslv,ansup));
+                    console.log(messageContent);
+                    
                 }
             }
         } else if (b23Regex.test(messageContent)){
