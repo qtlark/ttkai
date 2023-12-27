@@ -323,7 +323,8 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 const anslv = await getLive(regexResult[1]);
                 const ansup = await getVup(anslv.uid);
                 delete anslv['description'];
-
+                console.log(anslv);
+                console.log(ansup);
                 if(Object.keys(anslv).length>0 && Object.keys(ansup).length>0){
                     type = 'bilibili';
                     messageContent = JSON.stringify(Object.assign(anslv,ansup));
@@ -347,10 +348,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                     if (regexResult3) {
                         const anslv = await getLive(regexResult3[1]);
                         const ansup = await getVup(anslv.uid);
-                        console.log(anslv);
-                        console.log(ansup);
-                        
-                        
+
                         if(Object.keys(anslv).length>0 && Object.keys(ansup).length>0){
                             type = 'bilibili';
                             messageContent = JSON.stringify(Object.assign(anslv,ansup));
