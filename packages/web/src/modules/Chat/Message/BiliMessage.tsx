@@ -35,7 +35,13 @@ function BiliMessage(props: BiliMessageProps) {
         var blink = `https://live.bilibili.com/${jsc.room_id}`;
         var name  = jsc.info.uname;
         var face  = `/bpi${picRegex.exec(jsc.info.face)[1]}@30w_!web-avatar-search-user.webp`;
-        var cover = `/bpi${picRegex.exec(jsc.user_cover)[1]}@300w_!web-search-common-cover.webp`;
+        
+        if(jsc.user_cover.length>0){
+            var cover = `/bpi${picRegex.exec(jsc.user_cover)[1]}@300w_!web-search-common-cover.webp`;
+        }else{
+            var cover = `/bpi${picRegex.exec(jsc.keyframe)[1]}@300w_!web-search-common-cover.webp`;
+        }
+        
         var info  = [`${bignum(jsc.online)}人气`, `${bignum(jsc.attention)}粉丝`, `${jsc.exp.master_level.level}等级`];
     }else{
         var blink = `https://www.bilibili.com/video/${jsc.bvid}`;
