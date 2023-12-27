@@ -327,6 +327,8 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                 if(Object.keys(anslv).length>0 && Object.keys(ansup).length>0){
                     type = 'bilibili';
                     messageContent = JSON.stringify(Object.assign(anslv,ansup));
+                    console.log(messageContent);
+                    
                 }
             }
         } else if (b23Regex.test(messageContent)){

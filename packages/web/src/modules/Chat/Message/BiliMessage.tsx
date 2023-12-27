@@ -37,8 +37,10 @@ function BiliMessage(props: BiliMessageProps) {
         var face  = `/bpi${picRegex.exec(jsc.info.face)[1]}@30w_!web-avatar-search-user.webp`;
         
         if(jsc.user_cover.length>0){
+            console.log(0);
             var cover = `/bpi${picRegex.exec(jsc.user_cover)[1]}@300w_!web-search-common-cover.webp`;
         }else{
+            console.log(1);
             var cover = `/bpi${picRegex.exec(jsc.keyframe)[1]}@300w_!web-search-common-cover.webp`;
         }
         
