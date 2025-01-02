@@ -125,6 +125,7 @@ async function short2long(surl) {
     assert(res.status === 200, 'bilibili服务端错误');
 
     try {
+        console.log(res.request.res.responseUrl);
         return res.request.res.responseUrl;
     } catch (err) {
         assert(false, '屑b站的数据解析异常');
