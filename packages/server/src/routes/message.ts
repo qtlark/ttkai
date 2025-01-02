@@ -236,6 +236,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         const bvRegex   = /BV\w{10}/i;
         const liveRegex = /\w+:\/\/live.bilibili.com\/(\d+)/;
         const b23Regex  = /\w+:\/\/b23.tv\/\w{7}/;
+        const b23Regex2  = /\w+:\/\/bili2233.cn\/\w{7}/;  
         const musicRegex= /.*music.163.com.*\bsong\?id=\b(\d+).*/;
         const m163Regex = /\w+:\/\/163cn.tv\/\w+/;
         if (rollRegex.test(messageContent)) {
@@ -329,10 +330,17 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                     messageContent = JSON.stringify(Object.assign(anslv,ansup));
                 }
             }
-        } else if (b23Regex.test(messageContent)){
+        } else if (b23Regex.test(messageContent) || b23Regex2.test(messageContent)){
             const regexResult = b23Regex.exec(messageContent);
-            if (regexResult) {
-                const trueurl = await short2long(regexResult[0]);
+            const regexResult2 = b23Regex2.exec(messageContent);
+            if (regexResult || regexResult2) {
+
+                if (regexResult){
+                    const trueurl = await short2long(regexResult[0]);
+                }else if(regexResult2){
+                    const trueurl = await short2long(regexResult2[0]);
+                }
+                
                 if (bvRegex.test(trueurl)){
                     const regexResult2 = bvRegex.exec(trueurl);
                     if (regexResult2) {
