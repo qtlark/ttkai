@@ -125,7 +125,6 @@ async function short2long(surl) {
     assert(res.status === 200, 'bilibili服务端错误');
 
     try {
-        console.log(res.request.res.responseUrl);
         return res.request.res.responseUrl;
     } catch (err) {
         assert(false, '屑b站的数据解析异常');
@@ -335,34 +334,55 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             const regexResult = b23Regex.exec(messageContent);
             const regexResult2 = b23Regex2.exec(messageContent);
             if (regexResult || regexResult2) {
-
                 if (regexResult){
                     const trueurl = await short2long(regexResult[0]);
+                    if (bvRegex.test(trueurl)){
+                        const regexResult2 = bvRegex.exec(trueurl);
+                        if (regexResult2) {
+                            const ansbv = await getBV(regexResult2[0]);
+                            if(Object.keys(ansbv).length>0){
+                                type = 'bilibili';
+                                messageContent = JSON.stringify(ansbv);
+                            }
+                        }
+                    }else if (liveRegex.test(trueurl)){
+                        const regexResult3 = liveRegex.exec(trueurl);
+                        if (regexResult3) {
+                            const anslv = await getLive(regexResult3[1]);
+                            const ansup = await getVup(anslv.uid);
+    
+                            if(Object.keys(anslv).length>0 && Object.keys(ansup).length>0){
+                                type = 'bilibili';
+                                messageContent = JSON.stringify(Object.assign(anslv,ansup));
+                            }
+                        }
+                    }
                 }else if(regexResult2){
                     const trueurl = await short2long(regexResult2[0]);
+                    if (bvRegex.test(trueurl)){
+                        const regexResult2 = bvRegex.exec(trueurl);
+                        if (regexResult2) {
+                            const ansbv = await getBV(regexResult2[0]);
+                            if(Object.keys(ansbv).length>0){
+                                type = 'bilibili';
+                                messageContent = JSON.stringify(ansbv);
+                            }
+                        }
+                    }else if (liveRegex.test(trueurl)){
+                        const regexResult3 = liveRegex.exec(trueurl);
+                        if (regexResult3) {
+                            const anslv = await getLive(regexResult3[1]);
+                            const ansup = await getVup(anslv.uid);
+    
+                            if(Object.keys(anslv).length>0 && Object.keys(ansup).length>0){
+                                type = 'bilibili';
+                                messageContent = JSON.stringify(Object.assign(anslv,ansup));
+                            }
+                        }
+                    }
                 }
                 
-                if (bvRegex.test(trueurl)){
-                    const regexResult2 = bvRegex.exec(trueurl);
-                    if (regexResult2) {
-                        const ansbv = await getBV(regexResult2[0]);
-                        if(Object.keys(ansbv).length>0){
-                            type = 'bilibili';
-                            messageContent = JSON.stringify(ansbv);
-                        }
-                    }
-                }else if (liveRegex.test(trueurl)){
-                    const regexResult3 = liveRegex.exec(trueurl);
-                    if (regexResult3) {
-                        const anslv = await getLive(regexResult3[1]);
-                        const ansup = await getVup(anslv.uid);
 
-                        if(Object.keys(anslv).length>0 && Object.keys(ansup).length>0){
-                            type = 'bilibili';
-                            messageContent = JSON.stringify(Object.assign(anslv,ansup));
-                        }
-                    }
-                }
             }
         } else if (musicRegex.test(messageContent)){
             const regexResult = musicRegex.exec(messageContent);
