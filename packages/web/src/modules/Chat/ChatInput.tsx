@@ -630,7 +630,7 @@ const ChatInput = forwardRef((props, ref) => {
                     iconSize={32}
                 />
             </Dropdown>
-            <text
+            <form
                 className={Style.form}
                 autoComplete="off"
                 onSubmit={(e) => e.preventDefault()}
