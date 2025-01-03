@@ -4,4 +4,4 @@ import ScrollableInkTabBar from 'rc-tabs/lib/ScrollableInkTabBar';
 import ScrollableTabBar from 'rc-tabs/lib/ScrollableTabBar';
 import 'rc-tabs/assets/index.css';
 
-export { Tabs, TabPane, TabContent, ScrollableInkTabBar };
+export { Tabs, TabPane, TabContent, ScrollableInkTabBar, ScrollableTabBar };
