@@ -13,7 +13,7 @@ import {
 } from '../../components/Tabs';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import { searchExpression } from '../../service';
+import { searchExpression, addExpression } from '../../service';
 import Message from '../../components/Message';
 
 interface ExpressionProps {
@@ -115,7 +115,8 @@ function Expression(props: ExpressionProps) {
             width: $target.naturalWidth,
             height: $target.naturalHeight,
         });
-        console.log("qwe");
+        addExpression(url);
+        console.log(url);
         onSelectImage(url);
     }
 

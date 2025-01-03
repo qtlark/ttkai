@@ -123,6 +123,15 @@ export async function changeAvatar(avatar: string) {
 }
 
 /**
+ * 增加收藏表情
+ * @param vurl
+ */
+export async function addExpression(vurl: string) {
+    const [error] = await fetch('addExpression', { vurl });
+    return !error;
+}
+
+/**
  * 修改用户密码
  * @param oldPassword 旧密码
  * @param newPassword 新密码

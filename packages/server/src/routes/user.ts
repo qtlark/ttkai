@@ -437,6 +437,43 @@ export async function deleteFriend(ctx: Context<{ userId: string }>) {
 }
 
 /**
+ * 增加收藏表情
+ * @param ctx Context
+ */
+export async function addExpression(
+    ctx: Context<{ vurl: string }>,
+) {
+    const { vurl } = ctx.data;
+    assert(newPassword, 'url不能为空');
+
+
+    const user = await User.findOne({ _id: ctx.socket.user });
+    if (!user) {
+        throw new AssertionError({ message: '用户不存在' });
+    }
+
+
+
+    let exp = user.expressions;
+    exp.unshift(vurl);  
+    
+    if (exp.length > 3) {
+      exp.pop();
+    }
+    
+    user.expressions = exp;  
+
+
+
+    await user.save();
+
+    return {
+        msg: 'ok',
+    };
+}
+
+
+/**
  * 修改用户密码
  * @param ctx Context
  */
