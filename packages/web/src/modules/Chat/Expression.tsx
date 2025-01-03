@@ -116,7 +116,6 @@ function Expression(props: ExpressionProps) {
             height: $target.naturalHeight,
         });
         addExpression(url);
-        console.log(url);
         onSelectImage(url);
     }
 
