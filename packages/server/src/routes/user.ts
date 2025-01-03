@@ -445,18 +445,11 @@ export async function addExpression(
 ) {
     const { vurl } = ctx.data;
     assert(vurl, 'url不能为空');
-    if(/\w+:\/\/ttkai.xyz\/\w+/.test(vurl)){
-        return {
-            msg: 'ok',
-        };
-    }
-
-
+    
     const user = await User.findOne({ _id: ctx.socket.user });
     if (!user) {
         throw new AssertionError({ message: '用户不存在' });
     }
-
 
 
     let exp = user.expressions;
