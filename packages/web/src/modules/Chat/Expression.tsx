@@ -119,7 +119,7 @@ function Expression(props: ExpressionProps) {
     }
 
     function handleClickExpression2(e: any) {
-        console.log("qwe");
+        console.warn("qwe");
     }
 
     const renderSearchExpression = (
