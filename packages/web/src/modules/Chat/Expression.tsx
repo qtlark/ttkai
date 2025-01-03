@@ -45,7 +45,7 @@ function Expression(props: ExpressionProps) {
 
     async function handleGetExpression(e: any) {
         let result = [];
-        if(e=='search'){
+        if(e=='myexp'){
             result = await getExpression();
         }
         setSearchResults(result);
@@ -217,6 +217,23 @@ function Expression(props: ExpressionProps) {
         </div>
     );
 
+    const renderMyExpression = (
+        <div className={Style.searchExpression}>
+            <div className={Style.searchResult}>
+                {searchResults.map(({ image }) => (
+                    <div className={Style.searchImage}>
+                        <img
+                            src={image}
+                            alt="收藏图片"
+                            key={image}
+                            onClick={handleClickExpression}
+                        />
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+
     return (
         <div className={Style.expression}>
             <Tabs
@@ -228,10 +245,13 @@ function Expression(props: ExpressionProps) {
                 <TabPane tab="默认表情" key="default">
                     {renderDefaultExpression}
                 </TabPane>
+                <TabPane tab="收藏夹" key="myexp">
+                    {renderMyExpression}
+                </TabPane>
                 <TabPane tab="搜索表情包" key="search">
                     {renderSearchExpression}
                 </TabPane>
-                <TabPane tab="发送外链图片" key="outer">
+                <TabPane tab="发送外链" key="outer">
                     {renderOuterExpression}
                 </TabPane>
             </Tabs>
