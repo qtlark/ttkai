@@ -118,10 +118,13 @@ function Expression(props: ExpressionProps) {
 
     function handleClickExpression(e: any) {
         const $target = e.target;
-        const url = addParam($target.src, {
-            width: $target.naturalWidth,
-            height: $target.naturalHeight,
-        });
+        let url = $target.src;
+        if(!url.includes("width=")){
+            url = addParam($target.src, {
+                width: $target.naturalWidth,
+                height: $target.naturalHeight,
+            });
+        }
         if(!(/\w+:\/\/chat.ttkai.xyz\/\S+/.test(url))){
             addExpression(url);
         }       
