@@ -251,7 +251,7 @@ function Expression(props: ExpressionProps) {
                 <TabPane tab="搜图" key="search">
                     {renderSearchExpression}
                 </TabPane>
-                <TabPane tab="发送外链" key="outer">
+                <TabPane tab="外链" key="outer">
                     {renderOuterExpression}
                 </TabPane>
             </Tabs>
