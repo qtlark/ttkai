@@ -444,7 +444,7 @@ export async function addExpression(
     ctx: Context<{ vurl: string }>,
 ) {
     const { vurl } = ctx.data;
-    assert(newPassword, 'url不能为空');
+    assert(vurl, 'url不能为空');
 
 
     const user = await User.findOne({ _id: ctx.socket.user });
