@@ -115,8 +115,7 @@ function Expression(props: ExpressionProps) {
             width: $target.naturalWidth,
             height: $target.naturalHeight,
         });
-        console.log((/\w+:\/\/ttkai.xyz\/\w+/.test(url)));
-        if(!(/\w+:\/\/ttkai.xyz\/\w+/.test(url))){
+        if(!(/\w+:\/\/chat.ttkai.xyz\/\S+/.test(url))){
             addExpression(url);
         }       
         onSelectImage(url);
