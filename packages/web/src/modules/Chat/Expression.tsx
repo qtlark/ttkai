@@ -219,14 +219,15 @@ function Expression(props: ExpressionProps) {
                 defaultActiveKey="default"
                 renderTabBar={() => <ScrollableInkTabBar />}
                 renderTabContent={() => <TabContent />}
+                onChange={getExpression}
             >
                 <TabPane tab="默认表情" key="default">
                     {renderDefaultExpression}
                 </TabPane>
-                <TabPane tab="搜索表情包" key="search" onClick={handleGetExpression}>
+                <TabPane tab="搜索表情包" key="search">
                     {renderSearchExpression}
                 </TabPane>
-                <TabPane tab="发送外链图片" key="outer" onClick={handleGetExpression}>
+                <TabPane tab="发送外链图片" key="outer">
                     {renderOuterExpression}
                 </TabPane>
             </Tabs>
