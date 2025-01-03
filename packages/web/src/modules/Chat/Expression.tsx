@@ -44,7 +44,9 @@ function Expression(props: ExpressionProps) {
     }
 
     async function handleGetExpression() {
+        console.log("qwe");
         const result = await getExpression();
+        console.log(result);
         setSearchResults(result);
     }
 
