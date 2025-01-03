@@ -437,6 +437,23 @@ export async function deleteFriend(ctx: Context<{ userId: string }>) {
 }
 
 /**
+ * 导入收藏表情
+ * @param ctx Context
+ */
+export async function getExpression(
+    ctx: Context<{  }>,
+) {
+    const user = await User.findOne({ _id: ctx.socket.user });
+    if (!user) {
+        throw new AssertionError({ message: '用户不存在' });
+    }
+
+    return user.expressions;
+}
+
+
+
+/**
  * 增加收藏表情
  * @param ctx Context
  */

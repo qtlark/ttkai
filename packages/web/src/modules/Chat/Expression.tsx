@@ -13,7 +13,7 @@ import {
 } from '../../components/Tabs';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import { searchExpression, addExpression } from '../../service';
+import { searchExpression, addExpression, getExpression } from '../../service';
 import Message from '../../components/Message';
 
 interface ExpressionProps {
@@ -43,6 +43,10 @@ function Expression(props: ExpressionProps) {
         })
     }
 
+    async function handleGetExpression() {
+        const result = await getExpression();
+        setSearchResults(result);
+    }
 
     async function handleSearchExpression() {
         if (keywords) {
@@ -217,10 +221,10 @@ function Expression(props: ExpressionProps) {
                 <TabPane tab="默认表情" key="default">
                     {renderDefaultExpression}
                 </TabPane>
-                <TabPane tab="搜索表情包" key="search">
+                <TabPane tab="搜索表情包" key="search" onClick={handleGetExpression}>
                     {renderSearchExpression}
                 </TabPane>
-                <TabPane tab="发送外链图片" key="outer">
+                <TabPane tab="发送外链图片" key="outer" onClick={handleGetExpression}>
                     {renderOuterExpression}
                 </TabPane>
             </Tabs>

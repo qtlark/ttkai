@@ -123,6 +123,16 @@ export async function changeAvatar(avatar: string) {
 }
 
 /**
+ * 导入收藏表情
+ * @param vurl
+ */
+export async function getExpression() {
+    const res = await fetch('getExpression', {  });
+    return res;
+}
+
+
+/**
  * 增加收藏表情
  * @param vurl
  */
