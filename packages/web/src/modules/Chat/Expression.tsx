@@ -238,7 +238,7 @@ function Expression(props: ExpressionProps) {
         <div className={Style.expression}>
             <Tabs
                 defaultActiveKey="default"
-                renderTabBar={() => <ScrollableInkTabBar />}
+                renderTabBar={() => <ScrollableTabBar />}
                 renderTabContent={() => <TabContent />}
                 onChange={handleGetExpression}
             >
@@ -248,10 +248,10 @@ function Expression(props: ExpressionProps) {
                 <TabPane tab="收藏夹" key="myexp">
                     {renderMyExpression}
                 </TabPane>
-                <TabPane tab="搜图" key="search">
+                <TabPane tab="搜表情" key="search">
                     {renderSearchExpression}
                 </TabPane>
-                <TabPane tab="外链" key="outer">
+                <TabPane tab="发送外链" key="outer">
                     {renderOuterExpression}
                 </TabPane>
             </Tabs>
