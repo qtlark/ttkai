@@ -219,7 +219,7 @@ function Expression(props: ExpressionProps) {
 
     const renderMyExpression = (
         <div className={Style.searchExpression}>
-            <div className={Style.searchResult}>
+            <div className={Style.myResult}>
                 {searchResults.map(({ image }) => (
                     <div className={Style.searchImage}>
                         <img
@@ -248,7 +248,7 @@ function Expression(props: ExpressionProps) {
                 <TabPane tab="收藏夹" key="myexp">
                     {renderMyExpression}
                 </TabPane>
-                <TabPane tab="搜索表情包" key="search">
+                <TabPane tab="搜表情" key="search">
                     {renderSearchExpression}
                 </TabPane>
                 <TabPane tab="发送外链" key="outer">
