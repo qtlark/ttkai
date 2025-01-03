@@ -218,7 +218,7 @@ function Expression(props: ExpressionProps) {
     );
 
     const renderMyExpression = (
-        <div className={Style.searchExpression}>
+        <div className={Style.myExpression}>
             <div className={Style.myResult}>
                 {searchResults.map(({ image }) => (
                     <div className={Style.searchImage}>
