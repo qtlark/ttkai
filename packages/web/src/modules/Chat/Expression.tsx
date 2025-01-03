@@ -115,6 +115,7 @@ function Expression(props: ExpressionProps) {
             width: $target.naturalWidth,
             height: $target.naturalHeight,
         });
+        console.log("qweqwe");
         onSelectImage(url);
     }
 
