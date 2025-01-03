@@ -44,8 +44,10 @@ function Expression(props: ExpressionProps) {
     }
 
     async function handleGetExpression(e: any) {
-        console.log(e);
-        const result = await getExpression();
+        let result = [];
+        if(e=='search'){
+            result = await getExpression();
+        }
         setSearchResults(result);
     }
 
