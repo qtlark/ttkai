@@ -127,8 +127,8 @@ export async function changeAvatar(avatar: string) {
  * @param vurl
  */
 export async function getExpression() {
-    const res = await fetch('getExpression', {  });
-    return res;
+    const [, result] = await fetch('getExpression', {  });
+    return result;
 }
 
 
