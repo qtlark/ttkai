@@ -115,11 +115,8 @@ function Expression(props: ExpressionProps) {
             width: $target.naturalWidth,
             height: $target.naturalHeight,
         });
+        console.log("qwe");
         onSelectImage(url);
-    }
-
-    function handleClickExpression2(e: any) {
-        console.warn("qwe");
     }
 
     const renderSearchExpression = (
@@ -157,7 +154,7 @@ function Expression(props: ExpressionProps) {
                             src={image}
                             alt="表情"
                             key={image}
-                            onClick={handleClickExpression2}
+                            onClick={handleClickExpression}
                         />
                     </div>
                 ))}
@@ -200,7 +197,7 @@ function Expression(props: ExpressionProps) {
                             src={image}
                             alt="外链图片"
                             key={image}
-                            onClick={handleClickExpression2}
+                            onClick={handleClickExpression}
                         />
                     </div>
                 ))}
