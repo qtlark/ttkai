@@ -452,7 +452,16 @@ export async function addExpression(
     }
 
 
+
+
+    
     let exp = user.expressions;
+
+    const index = exp.indexOf(vurl);
+    if (index !== -1) {
+      exp.splice(index, 1);
+    }
+
     exp.unshift(vurl);  
     
     if (exp.length > 3) {
@@ -460,9 +469,6 @@ export async function addExpression(
     }
     
     user.expressions = exp;  
-
-
-
     await user.save();
 
     return {
