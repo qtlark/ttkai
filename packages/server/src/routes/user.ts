@@ -445,7 +445,11 @@ export async function addExpression(
 ) {
     const { vurl } = ctx.data;
     assert(vurl, 'url不能为空');
-    assert(/\w+:\/\/ttkai.xyz\/\w+/.test(vurl), '不能添加本站图片');
+    if(/\w+:\/\/ttkai.xyz\/\w+/.test(vurl)){
+        return {
+            msg: 'ok',
+        };
+    }
 
 
     const user = await User.findOne({ _id: ctx.socket.user });
