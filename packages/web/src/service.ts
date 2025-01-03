@@ -128,7 +128,7 @@ export async function changeAvatar(avatar: string) {
  */
 export async function getExpression() {
     const res = await fetch('getExpression', {  });
-    return res[1];
+    return res;
 }
 
 

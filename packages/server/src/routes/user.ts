@@ -448,7 +448,23 @@ export async function getExpression(
         throw new AssertionError({ message: '用户不存在' });
     }
 
-    return user.expressions;
+    const data = user.expressions;
+
+    type Image = {
+        locImageLink: string;
+        width: number;
+        height: number;
+    };
+
+    var img_arr=[];
+
+    data.forEach(element=>{
+        img_arr.push({image:element,width:90,height:90});
+    })
+        
+    const images = img_arr as Image[];
+
+    return images;
 }
 
 
