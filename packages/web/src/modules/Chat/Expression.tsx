@@ -219,7 +219,7 @@ function Expression(props: ExpressionProps) {
                 defaultActiveKey="default"
                 renderTabBar={() => <ScrollableInkTabBar />}
                 renderTabContent={() => <TabContent />}
-                onTabClick={handleGetExpression}
+                onChange={handleGetExpression}
             >
                 <TabPane tab="默认表情" key="default">
                     {renderDefaultExpression}
