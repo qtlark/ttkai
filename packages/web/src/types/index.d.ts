@@ -20,7 +20,6 @@ declare module 'react-radio-buttons';
 declare module 'rc-tabs';
 declare module 'rc-tabs/lib/TabContent';
 declare module 'rc-tabs/lib/ScrollableInkTabBar';
-declare module 'rc-tabs/lib/ScrollableTabBar';
 declare module 'rc-menu';
 declare module 'rc-dropdown';
 declare module 'rc-notification';

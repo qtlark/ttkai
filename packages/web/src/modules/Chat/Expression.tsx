@@ -10,6 +10,7 @@ import {
     TabPane,
     TabContent,
     ScrollableInkTabBar,
+    ScrollableTabBar
 } from '../../components/Tabs';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
