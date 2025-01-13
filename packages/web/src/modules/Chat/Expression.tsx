@@ -73,9 +73,18 @@ function Expression(props: ExpressionProps) {
             toggleSearchLoading(true);
             setSearchResults([]);
 
+            const picRegex = /hdslb.com(.*)/;
+            const picRegex2 = /biliimg.com(.*)/;
+            var cover = keywords;
+            if (picRegex.test(keywords)) {
+                cover = `/bpi${picRegex.exec(keywords)[1]}`;
+            }
+            if (picRegex2.test(keywords)) {
+                cover = `/bpi${picRegex2.exec(keywords)[1]}`;
+            }
             
-            validateImage(keywords).then(()=>{
-                const result = [{"image":cover,"width":90,"height":90}];
+            validateImage(cover).then(()=>{
+                const result = [{"image":keywords,"width":90,"height":90}];
                 setSearchResults(result);
             }).catch(()=>{
                 Message.info('无法加载指定链接中的图片');
