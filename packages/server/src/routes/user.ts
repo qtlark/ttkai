@@ -497,7 +497,7 @@ export async function addExpression(
 
     exp.unshift(vurl);  
     
-    if (exp.length > 8) {
+    if (exp.length > 96) {
       exp.pop();
     }
     
