@@ -78,6 +78,7 @@ function ImageMessage(props: ImageMessageProps) {
                     width={width}
                     height={height}
                     onClick={() => toggleViewer(true)}
+                    referrerpolicy="no-referrer"
                 />
                 <CircleProgress
                     className={Style.imageProgress}

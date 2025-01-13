@@ -712,6 +712,7 @@ const ChatInput = forwardRef((props, ref) => {
                                 src={image}
                                 key={image}
                                 alt="表情图"
+                                referrerpolicy="no-referrer"
                                 onClick={() =>
                                     handleClickExpressionImage(
                                         image,

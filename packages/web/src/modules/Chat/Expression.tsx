@@ -72,18 +72,9 @@ function Expression(props: ExpressionProps) {
         if (keywords) {
             toggleSearchLoading(true);
             setSearchResults([]);
-            const picRegex = /hdslb.com(.*)/;
-            const picRegex2 = /biliimg.com(.*)/;
-            var cover = keywords;
-            if (picRegex.test(keywords)) {
-                cover = `/bpi${picRegex.exec(keywords)[1]}`;
-            }
-            if (picRegex2.test(keywords)) {
-                cover = `/bpi${picRegex2.exec(keywords)[1]}`;
-            }
 
             
-            validateImage(cover).then(()=>{
+            validateImage(keywords).then(()=>{
                 const result = [{"image":cover,"width":90,"height":90}];
                 setSearchResults(result);
             }).catch(()=>{
@@ -168,6 +159,7 @@ function Expression(props: ExpressionProps) {
                             alt="表情"
                             key={image}
                             onClick={handleClickExpression}
+                            referrerpolicy="no-referrer"
                         />
                     </div>
                 ))}
@@ -211,6 +203,7 @@ function Expression(props: ExpressionProps) {
                             alt="外链图片"
                             key={image}
                             onClick={handleClickExpression}
+                            referrerpolicy="no-referrer"
                         />
                     </div>
                 ))}
@@ -228,6 +221,7 @@ function Expression(props: ExpressionProps) {
                             alt="收藏图片"
                             key={image}
                             onClick={handleClickExpression}
+                            referrerpolicy="no-referrer"
                         />
                     </div>
                 ))}
