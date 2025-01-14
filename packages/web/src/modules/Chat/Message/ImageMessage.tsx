@@ -25,17 +25,15 @@ function ImageMessage(props: ImageMessageProps) {
     const $container = useRef(null);
 
     let imageSrc = src;
-    console.log(1);
-    console.log(imageSrc);
     const containerWidth = isMobile ? window.innerWidth - 25 - 50 : 450;
     const maxWidth = containerWidth - 100 > 500 ? 500 : containerWidth - 100;
     const maxHeight = 200;
     let width = 200;
     let height = 200;
-    const parseResult = /width=([0-9]+)&height=([0-9]+)/.exec(imageSrc);
+    const parseResult = /(.+)\?width=([0-9]+)&height=([0-9]+)/.exec(imageSrc);
     if (parseResult) {
-        const natureWidth = +parseResult[1];
-        const naturehHeight = +parseResult[2];
+        const natureWidth = +parseResult[2];
+        const naturehHeight = +parseResult[3];
         let scale = 1;
         if (natureWidth * scale > maxWidth) {
             scale = maxWidth / natureWidth;
@@ -45,16 +43,7 @@ function ImageMessage(props: ImageMessageProps) {
         }
         width = natureWidth * scale;
         height = naturehHeight * scale;
-        imageSrc = /^(blob|data):/.test(imageSrc)
-            ? imageSrc.split('?')[0]
-            : getOSSFileUrl(
-                src,
-                `image/resize,w_${Math.floor(width)},h_${Math.floor(
-                    height,
-                )}/quality,q_90`,
-            );
-        console.log(2);
-        console.log(imageSrc);
+        imageSrc = parseResult[1];
     }
 
     let className = Style.imageMessage;
