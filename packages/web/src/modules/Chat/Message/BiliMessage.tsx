@@ -59,7 +59,7 @@ function BiliMessage(props: BiliMessageProps) {
                 <hr />
 
                 <div className={Style.clo}>
-                    <img src={face} className={Style.face} referrerpolicy="no-referrer"/>
+                    <img src={face} className={Style.face} crossorigin="*"/>
                     <div className={Style.upname}>{name}</div>
                     <div className={Style.up}>{jsc.keyframe?'主播':'UP主'}</div>
                 </div>
@@ -67,7 +67,7 @@ function BiliMessage(props: BiliMessageProps) {
                 
 
                 <a href={blink} target="_blank" className={Style.blink}>
-                    <img src={cover} className={Style.co} referrerpolicy="no-referrer"/>
+                    <img src={cover} className={Style.co} crossorigin="*"/>
                 </a>
 
                 <div className={Style.st}>

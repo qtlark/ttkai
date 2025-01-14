@@ -168,7 +168,7 @@ function Expression(props: ExpressionProps) {
                             alt="表情"
                             key={image}
                             onClick={handleClickExpression}
-                            referrerpolicy="no-referrer"
+                            crossorigin="*"
                         />
                     </div>
                 ))}
@@ -212,7 +212,7 @@ function Expression(props: ExpressionProps) {
                             alt="外链图片"
                             key={image}
                             onClick={handleClickExpression}
-                            referrerpolicy="no-referrer"
+                            crossorigin="*"
                         />
                     </div>
                 ))}
@@ -230,7 +230,7 @@ function Expression(props: ExpressionProps) {
                             alt="收藏图片"
                             key={image}
                             onClick={handleClickExpression}
-                            referrerpolicy="no-referrer"
+                            crossorigin="*"
                         />
                     </div>
                 ))}
