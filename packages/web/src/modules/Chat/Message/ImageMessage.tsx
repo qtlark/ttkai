@@ -25,6 +25,8 @@ function ImageMessage(props: ImageMessageProps) {
     const $container = useRef(null);
 
     let imageSrc = src;
+    console.log(1);
+    console.log(imageSrc);
     const containerWidth = isMobile ? window.innerWidth - 25 - 50 : 450;
     const maxWidth = containerWidth - 100 > 500 ? 500 : containerWidth - 100;
     const maxHeight = 200;
@@ -51,6 +53,8 @@ function ImageMessage(props: ImageMessageProps) {
                     height,
                 )}/quality,q_90`,
             );
+        console.log(2);
+        console.log(imageSrc);
     }
 
     let className = Style.imageMessage;
