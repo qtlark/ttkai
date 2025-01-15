@@ -168,7 +168,6 @@ function Expression(props: ExpressionProps) {
                             alt="表情"
                             key={image}
                             onClick={handleClickExpression}
-                            crossorigin="*"
                         />
                     </div>
                 ))}
@@ -223,17 +222,27 @@ function Expression(props: ExpressionProps) {
     const renderMyExpression = (
         <div className={Style.myExpression}>
             <div className={Style.myResult}>
-                {searchResults.map(({ image }) => (
+                {searchResults.map(({ image }) => image.includes("hdslb.com")?(
                     <div className={Style.searchImage}>
                         <img
                             src={image}
-                            alt="收藏图片"
+                            alt="b站收藏图片"
                             key={image}
                             onClick={handleClickExpression}
                             crossorigin="*"
                         />
                     </div>
-                ))}
+                ):(
+                    <div className={Style.searchImage}>
+                        <img
+                            src={image}
+                            alt="外链收藏图片"
+                            key={image}
+                            onClick={handleClickExpression}
+                        />
+                    </div>
+                )
+                )}
             </div>
         </div>
     );

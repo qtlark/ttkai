@@ -61,18 +61,36 @@ function ImageMessage(props: ImageMessageProps) {
         }
     }
 
+
+
+
+
+    let csimg = imageSrc.includes("hdslb.com")?(
+        <img
+            className={Style.image}
+            src={imageSrc}
+            alt="b站图片"
+            width={width}
+            height={height}
+            onClick={() => toggleViewer(true)}
+            crossorigin="*"
+        />
+        ):(
+            <img
+                className={Style.image}
+                src={imageSrc}
+                alt="消息图片"
+                width={width}
+                height={height}
+                onClick={() => toggleViewer(true)}
+            />
+        );
+
+    
     return (
         <>
             <div className={className} ref={$container}>
-                <img
-                    className={Style.image}
-                    src={imageSrc}
-                    alt="消息图片"
-                    width={width}
-                    height={height}
-                    onClick={() => toggleViewer(true)}
-                    crossorigin="*"
-                />
+                {csimg}
                 <CircleProgress
                     className={Style.imageProgress}
                     percent={percent}
