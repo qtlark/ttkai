@@ -27,12 +27,15 @@ import { State } from '../../../state/reducer';
 import Tooltip from '../../../components/Tooltip';
 import themes from '../../../themes';
 
-
+import {Message as minfo} from '../../../components/Message';
 
 import ReplyMessage from './ReplyMessage';
 import BiliMessage from './BiliMessage';
 import MusicMessage from './MusicMessage';
 
+
+
+import { addExpression } from '../../../service';
 
 
 const { dispatch } = store;
@@ -89,7 +92,7 @@ class Message extends Component<MessageProps, MessageState> {
     }
 
     handleMouseEnter = () => {
-        const { isAdmin, isSelf, type } = this.props;
+        const { isAdmin, isSelf, type, content } = this.props;
         if (type === 'system') {
             return;
         }
@@ -99,7 +102,7 @@ class Message extends Component<MessageProps, MessageState> {
         if (!isAdmin && (type==='text' || type==='reply' || type==='bilibili' ) && !isSelf) {
             this.setState({ showReplyList: true  });
         }
-        if (!isAdmin &&  type==='image'  && !isSelf) {
+        if (!isAdmin &&  type==='image'  && !content.includes("ImageMessage")  &&!isSelf) {
             this.setState({ showImgList: true  });
         }
     };
@@ -139,6 +142,13 @@ class Message extends Component<MessageProps, MessageState> {
         }
     };
 
+    handleAddExpression = async () => {
+        const { type, content, username, qwe } = this.props;
+        addExpression(content);
+        minfo.success('添加表情成功');
+        this.setState({ showImgList: false});
+    };
+
     handleReplyMessage = async () => {
         const { type, content, username, qwe } = this.props;
         if (type==='text'){
@@ -152,6 +162,7 @@ class Message extends Component<MessageProps, MessageState> {
         }else if (type=='image'){
             qwe.current.insertCursor(`回复${username}的图片「${content}」:   `);
         }
+        this.setState({ showReplyList: false});
     };
 
     handleClickAvatar(showUserInfo: (userinfo: any) => void) {
