@@ -27,7 +27,8 @@ import { State } from '../../../state/reducer';
 import Tooltip from '../../../components/Tooltip';
 import themes from '../../../themes';
 
-import {Message as minfo} from '../../../components/Message';
+import Minfo from '../../../components/Message';
+
 
 import ReplyMessage from './ReplyMessage';
 import BiliMessage from './BiliMessage';
@@ -145,7 +146,8 @@ class Message extends Component<MessageProps, MessageState> {
     handleAddExpression = async () => {
         const { type, content, username, qwe } = this.props;
         addExpression(content);
-        minfo.success('添加表情成功');
+        const message: string = "添加表情成功";
+        Minfo.success(message);
         this.setState({ showImgList: false});
     };
 
