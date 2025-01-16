@@ -22,6 +22,7 @@ import store from '../../../state/store';
 import { ActionTypes, DeleteMessagePayload } from '../../../state/action';
 import { deleteMessage } from '../../../service';
 import IconButton from '../../../components/IconButton';
+import IconButton2 from '../../../components/IconButton2';
 import { State } from '../../../state/reducer';
 import Tooltip from '../../../components/Tooltip';
 import themes from '../../../themes';
@@ -58,6 +59,7 @@ interface MessageProps {
 interface MessageState {
     showDeleteList: boolean;
     showReplyList: boolean;
+    showImgList: boolean;
 }
 
 /**
@@ -74,6 +76,7 @@ class Message extends Component<MessageProps, MessageState> {
         this.state = {
             showDeleteList: false,
             showReplyList: false,
+            showImgList: false,
         };
     }
 
@@ -93,13 +96,16 @@ class Message extends Component<MessageProps, MessageState> {
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
             this.setState({ showDeleteList: true });
         }
-        if (!isAdmin && (type==='text' || type==='reply' || type==='bilibili' || type==='image' ) && (!client.disableDeleteMessage && !isSelf)) {
+        if (!isAdmin && (type==='text' || type==='reply' || type==='bilibili' ) && !isSelf) {
             this.setState({ showReplyList: true  });
+        }
+        if (!isAdmin &&  type==='image'  && !isSelf) {
+            this.setState({ showImgList: true  });
         }
     };
 
     handleMouseLeave = () => {
-            this.setState({ showDeleteList: false, showReplyList: false });
+            this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
     };
 
     /**
@@ -225,7 +231,7 @@ class Message extends Component<MessageProps, MessageState> {
 
     render() {
         const { isSelf, avatar, tag, tagColorMode, username } = this.props;
-        const { showDeleteList, showReplyList } = this.state;
+        const { showDeleteList, showReplyList, showImgList } = this.state;
 
         let tagColor = `rgb(${themes.default.primaryColor})`;
         if (tagColorMode === 'fixedColor') {
@@ -303,6 +309,27 @@ class Message extends Component<MessageProps, MessageState> {
                                 >
                                     <div>
                                         <IconButton
+                                            className={Style.button}
+                                            icon="chat"
+                                            iconSize={16}
+                                            width={20}
+                                            height={20}
+                                            onClick={this.handleReplyMessage}
+                                        />
+                                    </div>
+                                </Tooltip>
+                            </div>
+                        )}
+
+                        {showImgList && (
+                            <div className={Style.buttonList}>
+                                <Tooltip
+                                    placement={isSelf ? 'left' : 'right'}
+                                    mouseEnterDelay={0.3}
+                                    overlay={<span>收藏表情</span>}
+                                >
+                                    <div>
+                                        <IconButton2
                                             className={Style.button}
                                             icon="chat"
                                             iconSize={16}

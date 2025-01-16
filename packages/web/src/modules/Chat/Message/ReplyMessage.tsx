@@ -36,13 +36,19 @@ function ReplyMessage(props: ReplyMessageProps) {
         const p_width = 120;
         const p_height = parseInt(parseInt(regexResult[2]) * p_width / parseInt(regexResult[1]));
 
-        
+
+
+        let csimg = jscontent.orignmsg.includes("hdslb.com")?(
+            <img src={jscontent.orignmsg} style={{width: `${p_width}px`, height: `${p_height}px`, margin: '1px 0 -6px', borderRadius:'6px'}} onClick={() => toggleViewer(true)} crossorigin="*"/>
+        ):(
+            <img src={jscontent.orignmsg} style={{width: `${p_width}px`, height: `${p_height}px`, margin: '1px 0 -6px', borderRadius:'6px'}} onClick={() => toggleViewer(true)}/>
+        );
 
         return (
             <div className={`${Style.textMessage} ${Style.replyimg}`} >
                 <font color='8A2BE2'>{jhconvert(jscontent.replywho)}</font>
                 <div style={{textAlign: 'center'}}>
-                    <img src={jscontent.orignmsg} style={{width: `${p_width}px`, height: `${p_height}px`, margin: '1px 0 -6px', borderRadius:'6px'}} onClick={() => toggleViewer(true)} crossorigin="*"/>
+                    {csimg}
                 </div>
                 <hr />
                 <div dangerouslySetInnerHTML={{ __html: jhconvert(jscontent.replymsg) }} className={`${Style.textMessage}`}></div>

@@ -12,7 +12,8 @@ type Props = {
     onClick?: () => void;
 };
 
-function IconButton({
+
+function IconButton2({
     width,
     height,
     icon,
@@ -29,12 +30,11 @@ function IconButton({
             role="button"
         >
             <i
-                className={`iconfont icon-${icon}`}
+                className={`iconfont2 icon-${icon}`}
                 style={{ fontSize: iconSize, lineHeight: `${height}px` }}
             />
         </div>
     );
 }
 
-
-export default IconButton;
+export default IconButton2;
