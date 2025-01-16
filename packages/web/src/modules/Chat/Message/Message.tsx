@@ -346,7 +346,7 @@ class Message extends Component<MessageProps, MessageState> {
                                             iconSize={16}
                                             width={20}
                                             height={20}
-                                            onClick={this.handleReplyMessage}
+                                            onClick={this.handleAddExpression}
                                         />
                                     </div>
                                 </Tooltip>
