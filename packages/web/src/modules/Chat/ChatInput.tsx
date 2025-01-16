@@ -584,7 +584,7 @@ const ChatInput = forwardRef((props, ref) => {
 
     return (
         <div className={Style.chatInput} {...aero}>
-            {toggleExpressionDialog?(
+            {expressionDialog?(
             <Dropdown
                 trigger={['click']}
                 visible={expressionDialog}
