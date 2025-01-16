@@ -331,7 +331,7 @@ class Message extends Component<MessageProps, MessageState> {
                                     <div>
                                         <IconButton2
                                             className={Style.button}
-                                            icon="chat"
+                                            icon="shoucang"
                                             iconSize={16}
                                             width={20}
                                             height={20}
