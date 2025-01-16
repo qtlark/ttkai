@@ -607,7 +607,7 @@ const ChatInput = forwardRef((props, ref) => {
                     iconSize={32}
                 />
             </Dropdown>
-            }
+            
             <Dropdown
                 trigger={['click']}
                 overlay={
