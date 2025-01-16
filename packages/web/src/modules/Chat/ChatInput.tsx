@@ -594,7 +594,7 @@ const ChatInput = forwardRef((props, ref) => {
                             onSelectText={handleSelectExpression}
                             onSelectImage={sendImageMessage}
                         />
-                    </div>):null
+                    </div>):(<div></div>)
                 }
                 animation="slide-up"
                 placement="topLeft"
