@@ -127,7 +127,7 @@ function Expression(props: ExpressionProps) {
             });
         }
         if(!(/\w+:\/\/chat.ttkai.xyz\/\S+/.test(url))){
-            addExpression(url);z
+            addExpression(url);
         }       
         onSelectImage(url);
     }
