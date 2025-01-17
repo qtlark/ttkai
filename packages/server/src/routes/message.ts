@@ -36,7 +36,7 @@ import client from '../../../config/client';
 async function chatGPT(ctx) {
     const res = await axios({
         method: 'post',
-        url: 'https://api.chatanywhere.com.cn/v1/chat/completions',
+        url: 'https://api.chatanywhere.org/v1/chat/completions',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': "Bearer "+ config.chatGPTtoken
