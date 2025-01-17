@@ -588,7 +588,7 @@ const ChatInput = forwardRef((props, ref) => {
                 trigger={['click']}
                 visible={expressionDialog}
                 onVisibleChange={toggleExpressionDialog}
-                overlay={false?(
+                overlay={expressionDialog?(
                     <div className={Style.expressionDropdown}>
                         <ExpressionAsync
                             onSelectText={handleSelectExpression}
