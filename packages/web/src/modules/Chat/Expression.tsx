@@ -205,7 +205,7 @@ function Expression(props: ExpressionProps) {
             </div>
             <div className={Style.searchResult}>
                 {searchResults.map(({ image }) => image.includes("hdslb.com")?(
-                    <div className={Style.searchImage}>
+                    <div className={Style.disImage}>
                         <img
                             src={image}
                             alt="b站外链图片"
@@ -215,7 +215,7 @@ function Expression(props: ExpressionProps) {
                         />
                     </div>
                 ):(
-                    <div className={Style.searchImage}>
+                    <div className={Style.disImage}>
                         <img
                             src={image}
                             alt="外链搜索图片"
