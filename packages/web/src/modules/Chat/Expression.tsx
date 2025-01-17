@@ -204,17 +204,27 @@ function Expression(props: ExpressionProps) {
                 />
             </div>
             <div className={Style.searchResult}>
-                {searchResults.map(({ image }) => (
-                    <div className={Style.disImage}>
+                {searchResults.map(({ image }) => image.includes("hdslb.com")?(
+                    <div className={Style.searchImage}>
                         <img
                             src={image}
-                            alt="外链图片"
+                            alt="b站外链图片"
                             key={image}
                             onClick={handleClickExpression}
                             crossorigin="*"
                         />
                     </div>
-                ))}
+                ):(
+                    <div className={Style.searchImage}>
+                        <img
+                            src={image}
+                            alt="外链搜索图片"
+                            key={image}
+                            onClick={handleClickExpression}
+                        />
+                    </div>
+                )
+                )}
             </div>
         </div>
     );
