@@ -8,6 +8,7 @@ import { State } from '../../state/reducer';
 import useIsLogin from '../../hooks/useIsLogin';
 import useAction from '../../hooks/useAction';
 import IconButton from '../../components/IconButton';
+import IconButton2 from '../../../components/IconButton2';
 import Message from '../../components/Message';
 
 import Style from './HeaderBar.less';
@@ -123,10 +124,10 @@ function HeaderBar(props: Props) {
                             />
                         </CopyToClipboard>
                     )}
-                    <IconButton
+                    <IconButton2
                         width={40}
                         height={40}
-                        icon="gongneng"
+                        icon="guanli"
                         iconSize={24}
                         onClick={onClickFunction}
                     />
