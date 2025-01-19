@@ -72,7 +72,7 @@ function About(props: AboutProps) {
                     <ul>
                         <li>网易云音乐链接将被自动渲染成卡片</li>
                         <li>B站视频、直播链接将被自动渲染成卡片</li>
-                        <li>emoji将自动渲染，现在只支持笑哭<span class="iconfont2 icon-shoucang" style="color: white;"></span></li>
+                        <li>emoji将自动渲染，现在只支持笑哭</li>
                     </ul>
                 </div>
                 <div className={Common.block}>
