@@ -124,7 +124,7 @@ function HeaderBar(props: Props) {
                             />
                         </CopyToClipboard>
                     )}
-                    <IconButton2
+                    <IconButton
                         width={40}
                         height={40}
                         icon="guanli"
