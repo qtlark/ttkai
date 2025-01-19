@@ -8,7 +8,7 @@ import { State } from '../../state/reducer';
 import useIsLogin from '../../hooks/useIsLogin';
 import useAction from '../../hooks/useAction';
 import IconButton from '../../components/IconButton';
-import IconButton2 from '../../../components/IconButton2';
+import IconButton2 from '../../components/IconButton2';
 import Message from '../../components/Message';
 
 import Style from './HeaderBar.less';
