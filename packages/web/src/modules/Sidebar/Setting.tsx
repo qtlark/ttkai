@@ -203,7 +203,7 @@ function Setting(props: SettingProps) {
                                         checked={voiceSwitch}
                                     />
                                 </div>
-                                {/* <div className={Style.switch}>
+                                <div className={Style.switch}>
                                     <p className={Style.switchText}>
                                         播报自己消息
                                     </p>
@@ -216,8 +216,8 @@ function Setting(props: SettingProps) {
                                         }
                                         checked={selfVoiceSwitch}
                                     />
-                                </div> */}
-                                {/* <div className={Style.switch}>
+                                </div>
+                                <div className={Style.switch}>
                                     <p className={Style.switchText}>
                                         根据输入内容推荐表情
                                     </p>
@@ -230,7 +230,7 @@ function Setting(props: SettingProps) {
                                         }
                                         checked={enableSearchExpression}
                                     />
-                                </div> */}
+                                </div>
                             </div>
                         </div>
                         <div className={Common.block}>
@@ -249,11 +249,15 @@ function Setting(props: SettingProps) {
                                         苹果
                                     </RadioButton>
                                     <RadioButton value="pcqq">
-                                        QQ
+                                        电脑QQ
                                     </RadioButton>
-                                    {/* <RadioButton value="mobileqq">手机QQ</RadioButton> */}
-                                    {/* <RadioButton value="momo">陌陌</RadioButton> */}
-                                    {/* <RadioButton value="huaji">滑稽</RadioButton> */}
+                                    <RadioButton value="mobileqq">
+                                        手机QQ
+                                    </RadioButton>
+                                    <RadioButton value="momo">陌陌</RadioButton>
+                                    <RadioButton value="huaji">
+                                        滑稽
+                                    </RadioButton>
                                 </RadioGroup>
                             </div>
                         </div>
