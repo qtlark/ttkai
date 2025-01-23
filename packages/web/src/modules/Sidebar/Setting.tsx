@@ -29,6 +29,16 @@ import themes from '../../themes';
 
 import { delExpression } from '../../service';
 import Button from '../../components/Button';
+import { css } from 'linaria';
+
+const styles = {
+    button: css`
+        min-width: 100px;
+        height: 36px;
+        margin-right: 12px;
+        padding: 0 10px;
+    `,
+};
 
 interface SettingProps {
     visible: boolean;
