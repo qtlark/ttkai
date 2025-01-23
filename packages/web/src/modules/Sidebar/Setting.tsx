@@ -26,6 +26,9 @@ import {
 import { LocalStorageKey } from '../../localStorage';
 import themes from '../../themes';
 
+
+import { delExpression } from '../../service';
+
 interface SettingProps {
     visible: boolean;
     onClose: () => void;
@@ -112,6 +115,19 @@ function Setting(props: SettingProps) {
         playSound(newSound);
         action.setStatus('sound', newSound);
     }
+
+    function handleDel1() {
+        delExpression(1);
+    }
+
+    function handleDel2() {
+        delExpression(10);
+    }
+
+    function handleDel3() {
+        delExpression(1000);
+    }
+
 
     async function selectBackgroundImage() {
         toggleBackgroundLoading(true);
@@ -286,6 +302,29 @@ function Setting(props: SettingProps) {
                                     </RadioButton>
                                 </RadioGroup>
                             </div>
+                        </div>
+
+
+                        <div className={Common.block}>
+                            <p className={Common.title}>表情包管理</p>
+                            <Button
+                                className={styles.button}
+                                onClick={handleDel1}
+                            >
+                                删除第一个表情包
+                            </Button>
+                            <Button
+                                className={styles.button}
+                                onClick={handleDel2}
+                            >
+                                删除前十个表情包
+                            </Button>
+                            <Button
+                                className={styles.button}
+                                onClick={handleDel3}
+                            >
+                                删除所有表情包
+                            </Button>
                         </div>
                     </div>
                 </TabPane>

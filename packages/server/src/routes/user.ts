@@ -511,6 +511,28 @@ export async function addExpression(
 
 
 /**
+ * 删除收藏表情
+ * @param ctx Context
+ */
+export async function delExpression(
+    ctx: Context<{ qnum: number }>,
+) {
+    const { qnum } = ctx.data;
+    
+    const user = await User.findOne({ _id: ctx.socket.user });
+    if (!user) {
+        throw new AssertionError({ message: '用户不存在' });
+    }
+    
+    user.expressions = user.expressions.slice(qnum);  
+    await user.save();
+
+    return {
+        msg: 'ok',
+    };
+}
+
+/**
  * 修改用户密码
  * @param ctx Context
  */

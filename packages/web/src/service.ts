@@ -142,6 +142,17 @@ export async function addExpression(vurl: string) {
 }
 
 /**
+ * 删除收藏表情
+ * @param qnum
+ */
+export async function delExpression(qnum: number) {
+    const [error] = await fetch('delExpression', { qnum });
+    return !error;
+}
+
+
+
+/**
  * 修改用户密码
  * @param oldPassword 旧密码
  * @param newPassword 新密码
