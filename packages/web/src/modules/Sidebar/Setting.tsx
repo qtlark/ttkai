@@ -29,6 +29,7 @@ import themes from '../../themes';
 
 import { delExpression } from '../../service';
 import Button from '../../components/Button';
+import Minfo from '../../components/Message';
 import { css } from 'linaria';
 
 const styles = {
@@ -129,14 +130,17 @@ function Setting(props: SettingProps) {
 
     function handleDel1() {
         delExpression(1);
+        Minfo.success("已成功删除第一个表情");
     }
 
     function handleDel2() {
         delExpression(10);
+        Minfo.success("已成功删除前十个表情");
     }
 
     function handleDel3() {
         delExpression(1000);
+        Minfo.success("已成功删除所有表情");
     }
 
 
@@ -322,19 +326,19 @@ function Setting(props: SettingProps) {
                                 className={styles.button}
                                 onClick={handleDel1}
                             >
-                                删除第一个表情包
+                                删除第一个表情
                             </Button>
                             <Button
                                 className={styles.button}
                                 onClick={handleDel2}
                             >
-                                删除前十个表情包
+                                删除前十个表情
                             </Button>
                             <Button
                                 className={styles.button}
                                 onClick={handleDel3}
                             >
-                                删除所有表情包
+                                删除所有表情
                             </Button>
                         </div>
                     </div>
