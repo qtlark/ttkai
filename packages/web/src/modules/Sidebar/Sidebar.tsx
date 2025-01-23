@@ -111,7 +111,8 @@ function Sidebar() {
                                 onClick={() => toggleAdminDialogVisible(true)}
                             />,
                         )}
-                    {renderTooltip(
+                    
+                    {isLogin && renderTooltip(
                         '关于',
                         <IconButton
                             width={40}
