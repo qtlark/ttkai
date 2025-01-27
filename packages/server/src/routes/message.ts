@@ -34,15 +34,27 @@ import client from '../../../config/client';
 
 
 async function chatGPT(ctx) {
+    // const res = await axios({
+    //     method: 'post',
+    //     url: 'https://api.chatanywhere.org/v1/chat/completions',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': "Bearer "+ config.chatGPTtoken
+    //     },
+    //     data: {
+    //         "model": "gpt-4o-mini",
+    //         "messages": [{"role": "user", "content": ctx.trim()}]
+    //     }
+    // });
     const res = await axios({
         method: 'post',
-        url: 'https://api.chatanywhere.org/v1/chat/completions',
+        url: 'https://api.deepseek.com/v1/chat/completions',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': "Bearer "+ config.chatGPTtoken
         },
         data: {
-            "model": "gpt-4o-mini",
+            "model": "deepseek-reasoner",
             "messages": [{"role": "user", "content": ctx.trim()}]
         }
     });
