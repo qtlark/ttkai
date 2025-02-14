@@ -16,3 +16,9 @@ export const updateDefaultGroupNameDescription =
 
 export const doctorDescription =
     'Run doctor to diagnose environment and configuration issues';
+
+export const getUserIpDescription =
+    'New';
+
+export const deleteXSCDescription =
+    'New';

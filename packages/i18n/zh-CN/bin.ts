@@ -13,3 +13,9 @@ export const deleteMessagesDescription = '删除所有消息';
 export const updateDefaultGroupNameDescription = '修改默认群组名称';
 
 export const doctorDescription = '运行诊断工具检查环境和配置问题';
+
+export const getUserIpDescription =
+    '新';
+
+export const deleteXSCDescription =
+    '新';
