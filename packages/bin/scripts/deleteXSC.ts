@@ -12,7 +12,9 @@ export async function deleteXSC() {
 
     await initMongoDB();
 
-    await Message.deleteMany({to:'64b16720c1c61f70b9f8dd32'});
+    await Message.deleteMany({to:'6254afd404b67034641a6200'});
+
+    await History.deleteMany({linkman:'6254afd404b67034641a6200'});
 
     console.log(chalk.green('Successfully deleted all messages'));
 }
