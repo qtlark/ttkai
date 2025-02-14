@@ -16,7 +16,6 @@ export async function deleteXSC() {
 
     await History.deleteMany({linkman:'6254afd404b67034641a6200'});
 
-    console.log(chalk.green('Successfully deleted all messages'));
 }
 
 async function run() {
