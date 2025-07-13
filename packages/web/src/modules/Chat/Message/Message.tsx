@@ -108,9 +108,9 @@ class Message extends Component<MessageProps, MessageState> {
         }
     };
 
-    handleMouseLeave = () => {
-            this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
-    };
+    // handleMouseLeave = () => {
+    //         this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
+    // };
 
     /**
      * 管理员撤回消息
@@ -292,6 +292,29 @@ class Message extends Component<MessageProps, MessageState> {
                         <div className={Style.content}>
                             {this.renderContent()}
                         </div>
+
+                        {showImgList && (
+                            <div className={Style.buttonList_sc}>
+                                <Tooltip
+                                    placement={isSelf ? 'topLeft' : 'topRight'}
+                                    mouseEnterDelay={0.3}
+                                    overlay={<span>收藏表情</span>}
+                                >
+                                    <div>
+                                        <IconButton2
+                                            className={Style.button}
+                                            icon="shoucang"
+                                            iconSize={16}
+                                            width={20}
+                                            height={20}
+                                            onClick={this.handleAddExpression}
+                                        />
+                                    </div>
+                                </Tooltip>
+                            </div>
+                        )}
+
+
                         {showDeleteList && (
                             <div className={Style.buttonList}>
                                 <Tooltip
@@ -334,26 +357,7 @@ class Message extends Component<MessageProps, MessageState> {
                             </div>
                         )}
 
-                        {showImgList && (
-                            <div className={Style.buttonList_sc}>
-                                <Tooltip
-                                    placement={isSelf ? 'topLeft' : 'topRight'}
-                                    mouseEnterDelay={0.3}
-                                    overlay={<span>收藏表情</span>}
-                                >
-                                    <div>
-                                        <IconButton2
-                                            className={Style.button}
-                                            icon="shoucang"
-                                            iconSize={16}
-                                            width={20}
-                                            height={20}
-                                            onClick={this.handleAddExpression}
-                                        />
-                                    </div>
-                                </Tooltip>
-                            </div>
-                        )}
+
                     </div>
                     <div className={Style.arrow} />
                 </div>
