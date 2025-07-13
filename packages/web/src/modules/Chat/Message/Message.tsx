@@ -108,9 +108,9 @@ class Message extends Component<MessageProps, MessageState> {
         }
     };
 
-    // handleMouseLeave = () => {
-    //         this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
-    // };
+    handleMouseLeave = () => {
+            this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
+    };
 
     /**
      * 管理员撤回消息
