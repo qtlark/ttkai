@@ -109,7 +109,7 @@ class Message extends Component<MessageProps, MessageState> {
     };
 
     handleMouseLeave = () => {
-            this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
+        this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
     };
 
     /**
@@ -148,7 +148,7 @@ class Message extends Component<MessageProps, MessageState> {
         addExpression(content);
         const message: string = "添加表情成功";
         Minfo.success(message);
-        this.setState({ showImgList: false});
+        this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
     };
 
     handleReplyMessage = async () => {
@@ -164,17 +164,30 @@ class Message extends Component<MessageProps, MessageState> {
         }else if (type=='image'){
             qwe.current.insertCursor(`回复${username}的图片「${content}」:   `);
         }
-        this.setState({ showReplyList: false});
+        this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
     };
 
     handleClickAvatar(showUserInfo: (userinfo: any) => void) {
-        const { isSelf, userId, type, username, avatar } = this.props;
+        const { isSelf, userId, type, username, avatar, qwe, content } = this.props;
         if (!isSelf && type !== 'system') {
             showUserInfo({
                 _id: userId,
                 username,
                 avatar,
             });
+        }
+        if (isSelf && type !== 'system') {
+            if (type==='text'){
+                qwe.current.insertCursor(`回复${username}「${content}」:   `);
+            }else if (type==='reply'){
+                const jscontent = JSON.parse(content);
+                qwe.current.insertCursor(`回复${username}「${jscontent.replymsg}」:   `);
+            }else if (type=='bilibili'){
+                const jscontent = JSON.parse(content);
+                qwe.current.insertCursor(`回复${username}的B站分享「${jscontent.title}」:   `);
+            }else if (type=='image'){
+                qwe.current.insertCursor(`回复${username}的图片「${content}」:   `);
+            }
         }
     }
 
