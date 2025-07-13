@@ -108,9 +108,9 @@ class Message extends Component<MessageProps, MessageState> {
         }
     };
 
-    // handleMouseLeave = () => {
-    //         this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
-    // };
+    handleMouseLeave = () => {
+            this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
+    };
 
     /**
      * 管理员撤回消息
@@ -335,7 +335,7 @@ class Message extends Component<MessageProps, MessageState> {
                         )}
 
                         {showImgList && (
-                            <div className={Style.buttonList}>
+                            <div className={Style.buttonList_sc}>
                                 <Tooltip
                                     placement={isSelf ? 'topLeft' : 'topRight'}
                                     mouseEnterDelay={0.3}
