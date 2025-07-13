@@ -337,7 +337,7 @@ class Message extends Component<MessageProps, MessageState> {
                         {showImgList && (
                             <div className={Style.buttonList}>
                                 <Tooltip
-                                    placement={isSelf ? 'right' : 'left'}
+                                    placement={isSelf ? 'topLeft' : 'topRight'}
                                     mouseEnterDelay={0.3}
                                     overlay={<span>收藏表情</span>}
                                 >
