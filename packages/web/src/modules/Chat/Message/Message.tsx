@@ -100,7 +100,7 @@ class Message extends Component<MessageProps, MessageState> {
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
             this.setState({ showDeleteList: true });
         }
-        if (!isAdmin && (type==='text' || type==='reply' || type==='bilibili' ) && !isSelf) {
+        if (!isAdmin && (type==='text' || type==='reply' || type==='bilibili' || type==='image' ) && !isSelf) {
             this.setState({ showReplyList: true  });
         }
         if (!isAdmin &&  type==='image'  && !content.includes("ImageMessage")  &&!isSelf) {
@@ -337,7 +337,7 @@ class Message extends Component<MessageProps, MessageState> {
                         {showImgList && (
                             <div className={Style.buttonList}>
                                 <Tooltip
-                                    placement={isSelf ? 'left' : 'right'}
+                                    placement={isSelf ? 'right' : 'left'}
                                     mouseEnterDelay={0.3}
                                     overlay={<span>收藏表情</span>}
                                 >
