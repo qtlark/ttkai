@@ -10,10 +10,14 @@ interface AudioMessageProps {
 function AudioMessage(props: AudioMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
     const q_width = isMobile?200:260;
-    const content = `<audio src="${props.content}" controls></audio>`;
+    const content = `<audio style="
+        height: 30px;
+        width: ${q_width}px;
+        margin-bottom: -4px;"
+        src="${props.content}" controls controlslist="nodownload noplaybackrate"></audio>`;
 
     return (
-        <div className={Style.textMessage} style={{margin:'-10px -12px -14px -12px', height: '90px', width:`${q_width}px`}} dangerouslySetInnerHTML={{ __html: content }}>
+        <div className={Style.textMessage} dangerouslySetInnerHTML={{ __html: content }}>
         </div>
     );
 }
