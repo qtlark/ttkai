@@ -180,6 +180,10 @@ function Setting(props: SettingProps) {
         setCssVariable(primaryColor, mewPrimaryTextColor);
     }
 
+    function handleDarkTheme() {
+        document.documentElement.style.cssText += 'filter: brightness(0.8);'
+    }
+
     return (
         <Dialog
             className={`dialog ${Style.setting}`}
@@ -361,12 +365,14 @@ function Setting(props: SettingProps) {
                                         默认
                                     </RadioButton>
                                     <RadioButton value="cool">清爽</RadioButton>
+                                    <RadioButton value="dark">夜间</RadioButton>
                                     <RadioButton value="custom">
                                         自定义
                                     </RadioButton>
                                 </RadioGroup>
                             </div>
                         </div>
+                        {theme === 'dark' && handleDarkTheme()}
                         {theme === 'custom' && (
                             <>
                                 <div className={Common.block}>

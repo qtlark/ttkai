@@ -23,6 +23,12 @@ const themes: Themes = {
         backgroundImage: BackgroundCoolImage,
         aero: false,
     },
+    dark: {
+        primaryColor: '0,0,0',
+        primaryTextColor: '255, 255, 255',
+        backgroundImage: BackgroundCoolImage,
+        aero: false,
+    },
 };
 
 export default themes;
