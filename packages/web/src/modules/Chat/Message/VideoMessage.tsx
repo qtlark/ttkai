@@ -3,11 +3,11 @@ import Style from './Message.less';
 
 import { isMobile } from '@fiora/utils/ua';
 
-interface VedioMessageProps {
+interface VideoMessageProps {
     content: string;
 }
 
-function VedioMessage(props: VedioMessageProps) {
+function VideoMessage(props: VideoMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
     const q_width = isMobile?200:260;
     const content = `<video style="
@@ -22,4 +22,4 @@ function VedioMessage(props: VedioMessageProps) {
     );
 }
 
-export default VedioMessage;
+export default VideoMessage;
