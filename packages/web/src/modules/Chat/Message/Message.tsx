@@ -33,7 +33,7 @@ import Minfo from '../../../components/Message';
 import ReplyMessage from './ReplyMessage';
 import BiliMessage from './BiliMessage';
 import MusicMessage from './MusicMessage';
-
+import AudioMessage from './AudioMessage';
 
 
 import { addExpression } from '../../../service';
@@ -220,6 +220,9 @@ class Message extends Component<MessageProps, MessageState> {
             }
             case 'music': {
                 return <MusicMessage content={content} />;
+            }
+            case 'audio': {
+                return <AudioMessage content={content} />;
             }
             case 'image': {
                 return (

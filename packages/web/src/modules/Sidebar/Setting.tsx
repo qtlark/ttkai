@@ -367,7 +367,7 @@ function Setting(props: SettingProps) {
                                     <RadioButton value="cool">清爽</RadioButton>
                                     <RadioButton value="dark">夜间</RadioButton>
                                     <RadioButton value="custom">
-                                        自定义
+                                        自设
                                     </RadioButton>
                                 </RadioGroup>
                             </div>

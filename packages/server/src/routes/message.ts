@@ -244,6 +244,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         const gptRegex  = /^-gpt( (.*))?$/;
         const missRegex = /^-miss( (.*))?$/;
         const sysRegex = /^-sys( (.*))?$/;
+        const audioRegex = /^-yy( (.*))?$/;
         const replyRegex= /^回复(.*)「(.*)」:(.*)/;
         const bvRegex   = /BV\w{10}/i;
         const liveRegex = /\w+:\/\/live.bilibili.com\/(\d+)/;
@@ -411,6 +412,12 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                     type = 'music';
                     messageContent = regexResult2[1];
                 }
+            }
+        } else if (audioRegex.test(messageContent)){
+            const regexResult = audioRegex.exec(messageContent);
+            if (regexResult) {
+                type = 'audio';
+                messageContent = regexResult[1];
             }
         };
         messageContent = xss(messageContent);
