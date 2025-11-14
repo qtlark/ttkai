@@ -245,6 +245,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         const missRegex = /^-miss( (.*))?$/;
         const sysRegex = /^-sys( (.*))?$/;
         const audioRegex = /^-yy( (.*))?$/;
+        const videoRegex = /^-sp( (.*))?$/;
         const replyRegex= /^回复(.*)「(.*)」:(.*)/;
         const bvRegex   = /BV\w{10}/i;
         const liveRegex = /\w+:\/\/live.bilibili.com\/(\d+)/;
@@ -417,6 +418,12 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
             const regexResult = audioRegex.exec(messageContent);
             if (regexResult) {
                 type = 'audio';
+                messageContent = regexResult[1];
+            }
+        }else if (videoRegex.test(messageContent)){
+            const regexResult = videoRegex.exec(messageContent);
+            if (regexResult) {
+                type = 'video';
                 messageContent = regexResult[1];
             }
         };

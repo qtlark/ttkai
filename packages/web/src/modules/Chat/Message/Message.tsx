@@ -34,6 +34,7 @@ import ReplyMessage from './ReplyMessage';
 import BiliMessage from './BiliMessage';
 import MusicMessage from './MusicMessage';
 import AudioMessage from './AudioMessage';
+import VedioMessage from './VideoMessage';
 
 
 import { addExpression } from '../../../service';
@@ -223,6 +224,9 @@ class Message extends Component<MessageProps, MessageState> {
             }
             case 'audio': {
                 return <AudioMessage content={content} />;
+            }
+            case 'video': {
+                return <VedioMessage content={content} />;
             }
             case 'image': {
                 return (
