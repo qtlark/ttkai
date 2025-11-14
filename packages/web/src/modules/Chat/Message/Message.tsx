@@ -101,7 +101,7 @@ class Message extends Component<MessageProps, MessageState> {
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
             this.setState({ showDeleteList: true });
         }
-        if (!isAdmin && (type==='text' || type==='reply' || type==='bilibili' || type==='image' || type==='audio' || type==='video' ) && !isSelf) {
+        if (!isAdmin && (type==='text' || type==='reply' || type==='bilibili' || type==='image' ) && !isSelf) {
             this.setState({ showReplyList: true  });
         }
         if (!isAdmin &&  type==='image'  && !content.includes("ImageMessage")  &&!isSelf) {
@@ -164,10 +164,6 @@ class Message extends Component<MessageProps, MessageState> {
             qwe.current.insertCursor(`回复${username}的B站分享「${jscontent.title}」:   `);
         }else if (type=='image'){
             qwe.current.insertCursor(`回复${username}的图片「${content}」:   `);
-        }else if (type=='audio'){
-            qwe.current.insertCursor(`回复${username}的音频:   `);
-        }else if (type=='video'){
-            qwe.current.insertCursor(`回复${username}的视频:   `);
         }
         this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
     };
