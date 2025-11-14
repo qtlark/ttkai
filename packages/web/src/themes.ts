@@ -1,5 +1,6 @@
 import BackgroundImage from '@fiora/assets/images/background.jpg';
 import BackgroundCoolImage from '@fiora/assets/images/background-cool.jpg';
+import BackgroundDarkImage from '@fiora/assets/images/background-dark.jpg';
 
 type Themes = {
     [theme: string]: {
@@ -26,7 +27,7 @@ const themes: Themes = {
     dark: {
         primaryColor: '0,0,0',
         primaryTextColor: '255, 255, 255',
-        backgroundImage: BackgroundCoolImage,
+        backgroundImage: BackgroundDarkImage,
         aero: false,
     },
 };

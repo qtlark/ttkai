@@ -180,8 +180,8 @@ function Setting(props: SettingProps) {
         setCssVariable(primaryColor, mewPrimaryTextColor);
     }
 
-    function handleDarkTheme() {
-        document.documentElement.style.cssText += 'filter: brightness(0.8);'
+    function handleDarkTheme(lum: string) {
+        document.documentElement.style.setProperty('filter', `brightness(${lum})`);
     }
 
     return (
@@ -372,7 +372,7 @@ function Setting(props: SettingProps) {
                                 </RadioGroup>
                             </div>
                         </div>
-                        {theme === 'dark' && handleDarkTheme()}
+                        {theme === 'dark'?handleDarkTheme('0.8'):handleDarkTheme('1')}
                         {theme === 'custom' && (
                             <>
                                 <div className={Common.block}>
