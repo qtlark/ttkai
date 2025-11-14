@@ -9,7 +9,7 @@ interface VideoMessageProps {
 
 function VideoMessage(props: VideoMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
-    const q_width = isMobile?200:260;
+    const q_width = isMobile?180:260;
     const content = `<video style="
         width: ${q_width}px;
         margin-bottom: -5px;

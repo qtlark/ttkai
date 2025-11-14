@@ -34,7 +34,7 @@ import ReplyMessage from './ReplyMessage';
 import BiliMessage from './BiliMessage';
 import MusicMessage from './MusicMessage';
 import AudioMessage from './AudioMessage';
-import VedioMessage from './VideoMessage';
+import VideoMessage from './VideoMessage';
 
 
 import { addExpression } from '../../../service';
@@ -101,7 +101,7 @@ class Message extends Component<MessageProps, MessageState> {
         if (isAdmin || (!client.disableDeleteMessage && isSelf)) {
             this.setState({ showDeleteList: true });
         }
-        if (!isAdmin && (type==='text' || type==='reply' || type==='bilibili' || type==='image' ) && !isSelf) {
+        if (!isAdmin && (type==='text' || type==='reply' || type==='bilibili' || type==='image' || type==='audio' || type==='video' ) && !isSelf) {
             this.setState({ showReplyList: true  });
         }
         if (!isAdmin &&  type==='image'  && !content.includes("ImageMessage")  &&!isSelf) {
@@ -164,6 +164,10 @@ class Message extends Component<MessageProps, MessageState> {
             qwe.current.insertCursor(`回复${username}的B站分享「${jscontent.title}」:   `);
         }else if (type=='image'){
             qwe.current.insertCursor(`回复${username}的图片「${content}」:   `);
+        }else if (type=='audio'){
+            qwe.current.insertCursor(`回复${username}的音频:   `);
+        }else if (type=='video'){
+            qwe.current.insertCursor(`回复${username}的视频:   `);
         }
         this.setState({ showDeleteList: false, showReplyList: false, showImgList: false });
     };
@@ -226,7 +230,7 @@ class Message extends Component<MessageProps, MessageState> {
                 return <AudioMessage content={content} />;
             }
             case 'video': {
-                return <VedioMessage content={content} />;
+                return <VideoMessage content={content} />;
             }
             case 'image': {
                 return (
