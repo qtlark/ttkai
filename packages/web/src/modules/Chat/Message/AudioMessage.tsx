@@ -9,7 +9,7 @@ interface AudioMessageProps {
 
 function AudioMessage(props: AudioMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
-    const q_width = isMobile?200:260;
+    const q_width = isMobile?150:260;
     const content = `<audio style="
         height: 30px;
         width: ${q_width}px;
