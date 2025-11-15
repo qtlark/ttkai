@@ -202,7 +202,7 @@ function Setting(props: SettingProps) {
 
     function handleAnataColorChange(color: Color) {
         const newAnataColor = `${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}`;
-        action.setStatus('AnataColor', newAnataColor);
+        action.setStatus('anataColor', newAnataColor);
         setCssVariable(primaryColor, primaryTextColor, newAnataColor, anataTextColor);
     }
 
