@@ -191,25 +191,25 @@ function Setting(props: SettingProps) {
     function handlePrimaryColorChange(color: Color) {
         const newPrimaryColor = `${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}`;
         action.setStatus('primaryColor', newPrimaryColor);
-        setCssVariable(newPrimaryColor, primaryTextColor);
+        setCssVariable(newPrimaryColor, primaryTextColor, anataColor, anataTextColor);
     }
 
     function handlePrimaryTextColorChange(color: Color) {
-        const mewPrimaryTextColor = `${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}`;
-        action.setStatus('primaryTextColor', mewPrimaryTextColor);
-        setCssVariable(primaryColor, mewPrimaryTextColor);
+        const newPrimaryTextColor = `${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}`;
+        action.setStatus('primaryTextColor', newPrimaryTextColor);
+        setCssVariable(primaryColor, newPrimaryTextColor, anataColor, anataTextColor);
     }
 
     function handleAnataColorChange(color: Color) {
         const newAnataColor = `${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}`;
         action.setStatus('AnataColor', newAnataColor);
-        setCssVariable(newAnataColor, anataTextColor);
+        setCssVariable(primaryColor, primaryTextColor, newAnataColor, anataTextColor);
     }
 
     function handleAnataTextColorChange(color: Color) {
-        const mewAnataTextColor = `${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}`;
-        action.setStatus('anataTextColor', mewAnataTextColor);
-        setCssVariable(anataColor, mewAnataTextColor);
+        const newAnataTextColor = `${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}`;
+        action.setStatus('anataTextColor', newAnataTextColor);
+        setCssVariable(primaryColor, primaryTextColor, anataColor, newAnataTextColor);
     }
 
     function handleDarkTheme(lum: string) {
