@@ -47,8 +47,8 @@ export default function getData() {
     let themeConfig = {
         primaryColor: '',
         primaryTextColor: '',
-        anataColor = '',
-        anataTextColor = '',
+        anataColor: '',
+        anataTextColor: '',
         backgroundImage: '',
         aero: false,
     };
