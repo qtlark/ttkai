@@ -40,8 +40,8 @@ if (config.frontendMonitorAppId) {
 }
 
 // 更新 css variable
-const { primaryColor, primaryTextColor } = getData();
-setCssVariable(primaryColor, primaryTextColor);
+const { primaryColor, primaryTextColor, anataColor, anataTextColor } = getData();
+setCssVariable(primaryColor, primaryTextColor, anataColor, anataTextColor);
 
 // 请求 Notification 授权
 if (

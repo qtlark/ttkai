@@ -109,10 +109,14 @@ export interface State {
         loginRegisterDialogVisible: boolean;
         /** 主题 */
         theme: string;
-        /** 主题主色调 */
+        /** 自身主色调 */
         primaryColor: string;
-        /** 主题文字主色调 */
+        /** 自身文字主色调 */
         primaryTextColor: string;
+        /** 对方主色调 */
+        anataColor: string;
+        /** 对方文字主色调 */
+        anataTextColor: string;
         /** 背景图 */
         backgroundImage: string;
         /** 启用毛玻璃效果 */

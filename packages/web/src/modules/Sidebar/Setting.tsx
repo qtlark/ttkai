@@ -74,6 +74,12 @@ function Setting(props: SettingProps) {
     const primaryTextColor = useSelector(
         (state: State) => state.status.primaryTextColor,
     );
+    const anataColor = useSelector(
+        (state: State) => state.status.anataColor,
+    );
+    const anataTextColor = useSelector(
+        (state: State) => state.status.anataTextColor,
+    );
     const backgroundImage = useSelector(
         (state: State) => state.status.backgroundImage,
     );
@@ -95,14 +101,20 @@ function Setting(props: SettingProps) {
         if (themeConfig) {
             action.setStatus('primaryColor', themeConfig.primaryColor);
             action.setStatus('primaryTextColor', themeConfig.primaryTextColor);
+            action.setStatus('anataColor', themeConfig.anataColor);
+            action.setStatus('anataTextColor', themeConfig.anataTextColor);
             action.setStatus('backgroundImage', themeConfig.backgroundImage);
             action.setStatus('aero', themeConfig.aero);
             setCssVariable(
                 themeConfig.primaryColor,
                 themeConfig.primaryTextColor,
+                themeConfig.anataColor,
+                themeConfig.anataTextColor,
             );
             window.localStorage.removeItem(LocalStorageKey.PrimaryColor);
             window.localStorage.removeItem(LocalStorageKey.PrimaryTextColor);
+            window.localStorage.removeItem(LocalStorageKey.AnataColor);
+            window.localStorage.removeItem(LocalStorageKey.AnataTextColor);
             window.localStorage.removeItem(LocalStorageKey.BackgroundImage);
             window.localStorage.removeItem(LocalStorageKey.Aero);
             Message.success('已修改主题');
@@ -114,6 +126,14 @@ function Setting(props: SettingProps) {
             window.localStorage.setItem(
                 LocalStorageKey.PrimaryTextColor,
                 primaryTextColor,
+            );
+            window.localStorage.setItem(
+                LocalStorageKey.AnataColor,
+                anataColor,
+            );
+            window.localStorage.setItem(
+                LocalStorageKey.AnataTextColor,
+                anataTextColor,
             );
             window.localStorage.setItem(
                 LocalStorageKey.BackgroundImage,
@@ -178,6 +198,18 @@ function Setting(props: SettingProps) {
         const mewPrimaryTextColor = `${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}`;
         action.setStatus('primaryTextColor', mewPrimaryTextColor);
         setCssVariable(primaryColor, mewPrimaryTextColor);
+    }
+
+    function handleAnataColorChange(color: Color) {
+        const newAnataColor = `${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}`;
+        action.setStatus('AnataColor', newAnataColor);
+        setCssVariable(newAnataColor, anataTextColor);
+    }
+
+    function handleAnataTextColorChange(color: Color) {
+        const mewAnataTextColor = `${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}`;
+        action.setStatus('anataTextColor', mewAnataTextColor);
+        setCssVariable(anataColor, mewAnataTextColor);
     }
 
     function handleDarkTheme(lum: string) {
@@ -372,7 +404,7 @@ function Setting(props: SettingProps) {
                                 </RadioGroup>
                             </div>
                         </div>
-                        {theme === 'dark'?handleDarkTheme('0.8'):handleDarkTheme('1')}
+                        {theme === 'dark'?handleDarkTheme('1'):handleDarkTheme('1')}
                         {theme === 'custom' && (
                             <>
                                 <div className={Common.block}>
@@ -426,7 +458,7 @@ function Setting(props: SettingProps) {
                                 </div>
                                 {TwitterPicker && (
                                     <div className={Common.block}>
-                                        <p className={Common.title}>主题颜色</p>
+                                        <p className={Common.title}>自身话泡颜色</p>
                                         <div className={Style.colorInfo}>
                                             <div
                                                 style={{
@@ -445,7 +477,7 @@ function Setting(props: SettingProps) {
                                 )}
                                 {TwitterPicker && (
                                     <div className={Common.block}>
-                                        <p className={Common.title}>文字颜色</p>
+                                        <p className={Common.title}>自身文字颜色</p>
                                         <div className={Style.colorInfo}>
                                             <div
                                                 style={{
@@ -460,6 +492,46 @@ function Setting(props: SettingProps) {
                                             color={`rgb(${primaryTextColor})`}
                                             onChange={
                                                 handlePrimaryTextColorChange
+                                            }
+                                        />
+                                    </div>
+                                )}
+                                {TwitterPicker && (
+                                    <div className={Common.block}>
+                                        <p className={Common.title}>对方话泡颜色</p>
+                                        <div className={Style.colorInfo}>
+                                            <div
+                                                style={{
+                                                    backgroundColor: `rgb(${anataColor})`,
+                                                }}
+                                            />
+                                            <span>{`rgb(${anataColor})`}</span>
+                                        </div>
+                                        <TwitterPicker
+                                            // @ts-ignore
+                                            className={Style.colorPicker}
+                                            color={`rgb(${anataColor})`}
+                                            onChange={handleAnataColorChange}
+                                        />
+                                    </div>
+                                )}
+                                {TwitterPicker && (
+                                    <div className={Common.block}>
+                                        <p className={Common.title}>对方文字颜色</p>
+                                        <div className={Style.colorInfo}>
+                                            <div
+                                                style={{
+                                                    backgroundColor: `rgb(${anataTextColor})`,
+                                                }}
+                                            />
+                                            <span>{`rgb(${anataTextColor})`}</span>
+                                        </div>
+                                        <TwitterPicker
+                                            // @ts-ignore
+                                            className={Style.colorPicker}
+                                            color={`rgb(${anataTextColor})`}
+                                            onChange={
+                                                handleAnataTextColorChange
                                             }
                                         />
                                     </div>

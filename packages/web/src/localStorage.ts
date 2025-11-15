@@ -6,6 +6,8 @@ export enum LocalStorageKey {
     Theme = 'theme',
     PrimaryColor = 'primaryColor',
     PrimaryTextColor = 'primaryTextColor',
+    AnataColor = 'anataColor',
+    AnataTextColor = 'anataTextColor',
     BackgroundImage = 'backgroundImage',
     Aero = 'aero',
     Sound = 'sound',
@@ -45,6 +47,8 @@ export default function getData() {
     let themeConfig = {
         primaryColor: '',
         primaryTextColor: '',
+        anataColor = '',
+        anataTextColor = '',
         backgroundImage: '',
         aero: false,
     };
@@ -61,6 +65,14 @@ export default function getData() {
             primaryTextColor: getTextValue(
                 LocalStorageKey.PrimaryTextColor,
                 themes[config.defaultTheme]?.primaryTextColor,
+            ),
+            anataColor: getTextValue(
+                LocalStorageKey.AnataColor,
+                themes[config.defaultTheme]?.anataColor,
+            ),
+            anataTextColor: getTextValue(
+                LocalStorageKey.AnataTextColor,
+                themes[config.defaultTheme]?.anataTextColor,
             ),
             backgroundImage: getTextValue(
                 LocalStorageKey.BackgroundImage,
