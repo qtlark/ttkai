@@ -252,6 +252,8 @@ export const initialState: State = {
         theme: localStorage.theme,
         primaryColor: localStorage.primaryColor,
         primaryTextColor: localStorage.primaryTextColor,
+        anataColor: localStorage.anataColor,
+        anataTextColor: localStorage.anataTextColor,
         backgroundImage: localStorage.backgroundImage,
         aero: localStorage.aero,
         soundSwitch: localStorage.soundSwitch,
