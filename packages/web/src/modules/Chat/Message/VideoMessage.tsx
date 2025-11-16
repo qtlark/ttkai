@@ -14,7 +14,7 @@ function VideoMessage(props: VideoMessageProps) {
         width: ${q_width}px;
         margin-bottom: -5px;
         border-radius: 5px;"
-        src="${props.content}" controls controlslist="nodownload noplaybackrate" disablePictureInPicture></video>`;
+        src="${props.content}" preload="metadata" controls controlslist="nodownload noplaybackrate" disablePictureInPicture></video>`;
 
     return (
         <div className={Style.textMessage} dangerouslySetInnerHTML={{ __html: content }}>
