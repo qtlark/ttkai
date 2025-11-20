@@ -3,12 +3,12 @@ import Style from './Message.less';
 
 import { isMobile } from '@fiora/utils/ua';
 
-interface VideoMessageProps {
+interface MediaMessageProps {
     content: string; 
 }
 
 
-function VideoMessage(props: VideoMessageProps) {
+function MediaMessage(props: MediaMessageProps) {
     const mediaRef = useRef<HTMLVideoElement | null>(null);
     const [isAudio, setIsAudio] = useState<boolean | null>(null);
 
@@ -65,4 +65,4 @@ function VideoMessage(props: VideoMessageProps) {
     );
 }
 
-export default VideoMessage;
+export default MediaMessage;

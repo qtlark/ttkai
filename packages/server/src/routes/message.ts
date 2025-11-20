@@ -244,8 +244,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
         const gptRegex  = /^-gpt( (.*))?$/;
         const missRegex = /^-miss( (.*))?$/;
         const sysRegex = /^-sys( (.*))?$/;
-        const audioRegex = /^-yy( (.*))?$/;
-        const videoRegex = /^-sp( (.*))?$/;
+        const mediaRegex = /^-sp( (.*))?$/;
         const replyRegex= /^回复(.*)「(.*)」:(.*)/;
         const bvRegex   = /BV\w{10}/i;
         const liveRegex = /\w+:\/\/live.bilibili.com\/(\d+)/;
@@ -414,16 +413,10 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                     messageContent = regexResult2[1];
                 }
             }
-        } else if (audioRegex.test(messageContent)){
-            const regexResult = audioRegex.exec(messageContent);
+        } else if (mediaRegex.test(messageContent)){
+            const regexResult = mediaRegex.exec(messageContent);
             if (regexResult) {
-                type = 'audio';
-                messageContent = regexResult[1];
-            }
-        }else if (videoRegex.test(messageContent)){
-            const regexResult = videoRegex.exec(messageContent);
-            if (regexResult) {
-                type = 'video';
+                type = 'media';
                 messageContent = regexResult[1];
             }
         };
