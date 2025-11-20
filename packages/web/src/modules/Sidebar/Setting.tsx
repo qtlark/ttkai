@@ -321,7 +321,9 @@ function Setting(props: SettingProps) {
                                     <RadioButton value="mobileqq">
                                         手机QQ
                                     </RadioButton>
-                                    <RadioButton value="momo">可爱</RadioButton>
+                                    <RadioButton value="weixin">
+                                        微信
+                                    </RadioButton>
                                     <RadioButton value="huaji">
                                         滑稽
                                     </RadioButton>
