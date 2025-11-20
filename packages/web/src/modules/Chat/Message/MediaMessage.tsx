@@ -36,6 +36,7 @@ function MediaMessage(props: MediaMessageProps) {
             <audio
             ref={mediaRef as any}
             src={props.content}
+            preload="metadata"
             controls
             controlsList="nodownload noplaybackrate"
             style={{
@@ -43,7 +44,6 @@ function MediaMessage(props: MediaMessageProps) {
                 height: "30px",
                 marginBottom: "-4px",
             }}
-            className={Style.audioMode}
             />
         ) : (
             <video
@@ -58,7 +58,6 @@ function MediaMessage(props: MediaMessageProps) {
                 marginBottom: "-5px",
                 borderRadius: "5px",
             }}
-            className={Style.videoMode}
             />
         )}
         </div>
