@@ -16,8 +16,8 @@ export default function setCssVariable(color: string, textColor: string, anata: 
 
     const sumRGB = (s: string) => s.split(',').reduce((a, b) => a + +b, 0);
     if(sumRGB(color)<50){
-        cssText+=`--icon-color-9: rgba(255, 255, 255, 0.9);`
-        cssText+=`--icon-color-7: rgba(255, 255, 255, 0.7);`
+        cssText+=`--icon-color-9: rgba(255, 255, 255, 0.7);`
+        cssText+=`--icon-color-7: rgba(255, 255, 255, 0.5);`
         cssText+=`--input-color: rgb(51, 51, 51);`
     }else{
         cssText+=`--icon-color-9: rgba(${color}, 0.9);`
