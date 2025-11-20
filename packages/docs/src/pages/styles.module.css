@@ -34,7 +34,7 @@
 .featureImage {
     height: 120px;
     width: 200px;
-    background-color: white;
+    background-color: var(--anata-color-9);;
 }
 
 .featureDescription {

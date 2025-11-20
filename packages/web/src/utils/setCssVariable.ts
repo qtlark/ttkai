@@ -13,5 +13,6 @@ export default function setCssVariable(color: string, textColor: string, anata: 
             10});--anata-color-${i}_5:rgba(${anata}, ${(i + 0.5) /
             10});--anata-text-color-${i}:rgba(${anataText}, ${i / 10});`;
     }
+    console.log(color);
     document.documentElement.style.cssText += cssText;
 }
