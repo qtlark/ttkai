@@ -18,7 +18,7 @@ function VideoMessage(props: VideoMessageProps) {
         if (!el) return;
 
         const onLoadedMetadata = () => {
-        if (el.videoWidth > 0 && el.videoHeight > 0) {
+        if (el.videoWidth > 0 || el.videoHeight > 0) {
             setIsAudio(false);
         } else {
             setIsAudio(true);
@@ -29,9 +29,6 @@ function VideoMessage(props: VideoMessageProps) {
         return () => el.removeEventListener("loadedmetadata", onLoadedMetadata);
     }, [props.content]);
 
-    if (isAudio === null) {
-        return <div className={Style.textMessage}>加载中...</div>;
-    }
 
     return (
         <div className={Style.textMessage}>
