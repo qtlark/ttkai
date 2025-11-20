@@ -13,6 +13,18 @@ export default function setCssVariable(color: string, textColor: string, anata: 
             10});--anata-color-${i}_5:rgba(${anata}, ${(i + 0.5) /
             10});--anata-text-color-${i}:rgba(${anataText}, ${i / 10});`;
     }
-    console.log(color);
+
+    const sumRGB = (s: string) => s.split(',').reduce((a, b) => a + +b, 0);
+    if(sumRGB(color)<50){
+        cssText+=`--icon-color-9: rgba(255, 255, 255, 0.9)`
+        cssText+=`--icon-color-7: rgba(255, 255, 255, 0.7)`
+        cssText+=`--input-color: rgb(51, 51, 51)`
+    }else{
+        cssText+=`--icon-color-9: rgba(${color}, 0.9)`
+        cssText+=`--icon-color-7: rgba(${color}, 0.7)`
+        cssText+=`--input-color: rgb(255, 255, 255)`
+    }
+
     document.documentElement.style.cssText += cssText;
 }
+
