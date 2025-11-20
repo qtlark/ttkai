@@ -4,7 +4,7 @@ import { css } from 'linaria';
 
 const button = css`
     border: none;
-    background-color: var(--primary-color-8_5);
+    background-color: rgba(5,159,149, 0.85);
     color: var(--primary-text-color-10);
     border-radius: 4px;
     font-size: 14px;
