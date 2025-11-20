@@ -315,14 +315,14 @@ function Setting(props: SettingProps) {
                                     <RadioButton value="apple">
                                         苹果
                                     </RadioButton>
+                                    <RadioButton value="weixin">
+                                        微信
+                                    </RadioButton>
                                     <RadioButton value="pcqq">
                                         电脑QQ
                                     </RadioButton>
                                     <RadioButton value="mobileqq">
                                         手机QQ
-                                    </RadioButton>
-                                    <RadioButton value="weixin">
-                                        微信
                                     </RadioButton>
                                     <RadioButton value="huaji">
                                         滑稽
