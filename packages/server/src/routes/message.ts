@@ -308,6 +308,10 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
                     } else {
                         messageContent = `想念${regexResult[1].trim()}的第${tt}天`;
                     }
+
+                    if(regexResult[1].trim()==='yunqiao'){
+                        messageContent = '想念龙小姐的第∞天';
+                    }
                 }else{
                     messageContent = '想念龙小姐的第∞天';
                 }
